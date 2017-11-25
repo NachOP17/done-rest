@@ -160,7 +160,7 @@ ModeloDeUsuario.statics.findByCredentials = function(username, password) {
       if (passwordsCoinciden(usuario.password, password)) {
         resolve(usuario);
       } else {
-        reject({code: 2}, usuario);
+        reject({code: 2});
       }
     });
   });
