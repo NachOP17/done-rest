@@ -7,7 +7,7 @@ var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
 var {autenticar} = require('./middleware/autenticar');
-var {errores} = require('./modelos/errores');
+var {Errores} = require('./modelos/errores');
 
 var app = express();
 
@@ -64,13 +64,17 @@ app.get('/usuarios/me', autenticar, (req, res) => {
 app.post('/usuarios/login', (req, res) => {
   var camposPermitidos = ['username', 'password'];
   var body = _.pick(req.body, camposPermitidos);
-
   Usuario.findByCredentials(body.username, body.password).then((usuario) => {
     usuario.generarTokenDeAutenticidad().then((token) => {
       res.header('x-auth', token).send(usuario);
     });
   }).catch((e) => {
-    res.status(400).send(e);
+    switch(e.code){
+      case 1: res.status(404).send(Errores.usuarioIncorrecto);
+              break;
+      case 2: res.status(401).send(Errores.passwordIncorrecta);
+              break;
+    }
   });
 });
 
