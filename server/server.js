@@ -1,6 +1,5 @@
 require('./config/config');
 const express = require('express');
-const validator = require('validator');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
 
@@ -8,6 +7,7 @@ var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
 var {autenticar} = require('./middleware/autenticar');
+var {errores} = require('./modelos/errores');
 
 var app = express();
 

@@ -148,8 +148,15 @@ ModeloDeUsuario.statics.findByToken = function(token) {
 
 ModeloDeUsuario.statics.findByCredentials = function(username, password) {
   var Usuario = this;
+  var userToBeFound = {username};
 
-  return Usuario.findOne({username}).then((usuario) => {
+  var email;
+  if (validator.isEmail(username)) {
+    email = username;
+    userToBeFound = {email}
+  }
+
+  return Usuario.findOne(userToBeFound).then((usuario) => {
     if (!usuario) {
       return Promise.reject();
     }
