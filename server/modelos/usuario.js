@@ -21,7 +21,7 @@ var ModeloDeUsuario = new mongoose.Schema({
     validate: {
       isAsync: false,
       validator: validator.isEmail,
-      message: '{VALUE} is not a valid email'
+      message: Errores.correoNoValido
     }
   },
 
@@ -152,10 +152,9 @@ ModeloDeUsuario.statics.findByCredentials = function(username, password) {
   var Usuario = this;
   var userToBeFound = {username};
 
-  var email;
   if (validator.isEmail(username)) {
-    email = username;
-    userToBeFound = {email}
+    var email = username;
+    userToBeFound = {email};
   }
 
   return Usuario.findOne(userToBeFound).then((usuario) => {

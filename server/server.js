@@ -2,6 +2,7 @@ require('./config/config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
+const validator = require('validator');
 
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
@@ -38,6 +39,7 @@ app.post('/usuarios', (req, res) => {
   // de esta manera los datos como token o _id no son visibles en la parte de cliente.
   var body = _.pick(req.body, camposPermitidos);
   var usuario = new Usuario(body);
+  var error = [];
 
   usuario.save().then(() => {
     return usuario.generarTokenDeAutenticidad();
@@ -45,8 +47,12 @@ app.post('/usuarios', (req, res) => {
     res.header('x-auth', token).send();
   }).catch((e) => {
     switch(e.code) {
-      case 11000: res.status(412).send(e);
-        break;
+      case 11000: if (validator.contains(e.errmsg, '@')) {
+                    res.status(400).send(Errores.correoExistente);
+                  } else {
+                    res.status(400).send(Errores.usuarioExistente);
+                  }
+                  break;
       default: res.status(400).send(e);
     };
   });
