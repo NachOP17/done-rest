@@ -80,6 +80,11 @@ var ModeloDeUsuario = new mongoose.Schema({
     required: false
   },
 
+  intentos: {
+    type: Number,
+    default: 0
+  },
+
   tokens: [{
   // El token se crea cada vez que un usuario inicia sesión en algún dispositivo
   // al cerrar sesión el token es eliminado
@@ -166,7 +171,9 @@ ModeloDeUsuario.statics.findByCredentials = function(username, password) {
       if (passwordsCoinciden(usuario.password, password)) {
         resolve(usuario);
       } else {
-        reject({code: 2}, usuario);
+        reject({code: 2,
+          user: usuario
+        });
       }
     });
   });
