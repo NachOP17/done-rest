@@ -1,3 +1,5 @@
+const validator = require('validator');
+
 var Errores = {
   correcto: 0,
   usuarioIncorrecto: '1',
@@ -6,7 +8,29 @@ var Errores = {
   usuarioExistente: '4',
   correoExistente: '5',
   correoNoIngresado: '6',
-  correoNoValido: '7'
+  correoNoValido: '7',
+
+  validarErroresRegistro
 }
 
-module.exports = {Errores};
+function validarErroresRegistro(e) {
+  var errores = [];
+  if (e.code == 11000) {
+    if (validator.contains(e.errmsg, '@')) {
+      errores.push(Errores.correoExistente);
+    } else {
+      errores.push(Errores.usuarioExistente);
+    }
+  }
+
+  var campoDeError = JSON.stringify(e.errors);
+  //if (validator.contains(campoDeError, 'email')) {
+
+  //}
+  return errores;
+}
+
+module.exports = {
+  Errores,
+  validarErroresRegistro
+};

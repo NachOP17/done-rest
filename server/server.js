@@ -46,15 +46,7 @@ app.post('/usuarios', (req, res) => {
   }).then((token) => {
     res.header('x-auth', token).send();
   }).catch((e) => {
-    switch(e.code) {
-      case 11000: if (validator.contains(e.errmsg, '@')) {
-                    res.status(400).send(Errores.correoExistente);
-                  } else {
-                    res.status(400).send(Errores.usuarioExistente);
-                  }
-                  break;
-      default: res.status(400).send(e);
-    };
+    res.status(400).send(Errores.validarErroresRegistro(e));
   });
 });
 
