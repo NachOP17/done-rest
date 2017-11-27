@@ -76,7 +76,7 @@ var Errores = {
     mensaje: 'La contraseña es muy larga (Máximo 50 caracteres)'
   },
 
-  // Errores del nombre
+  // Errores del Nombre
   nombreNoIngresado: {
     codigo: '17',
     mensaje: 'El campo de nombre no puede estar vacío'
@@ -87,7 +87,21 @@ var Errores = {
   },
   nombreMuyLargo: {
     codigo: '19',
-    mensaje: 'El nombre largo (Máximo 50 caracteres)'
+    mensaje: 'El nombre es muy largo (Máximo 50 caracteres)'
+  },
+
+  // Errores del apellido
+  apellidoNoIngresado: {
+    codigo: '20',
+    mensaje: 'El campo de apellido no puede estar vacío'
+  },
+  apellidoMuyCorto: {
+    codigo: '21',
+    mensaje: 'El apellido es muy corto (Mínimo 1 caracter)'
+  },
+  apellidoMuyLargo: {
+    codigo: '22',
+    mensaje: 'El apellido es muy largo (Máximo 50 caracteres)'
   },
 
   validarErroresRegistro
@@ -104,7 +118,7 @@ function validarErroresRegistro(e) {
   }
 
   var jsonDelError = JSON.stringify(e.errors);
-  console.log(jsonDelError);
+
   if (jsonDelError) {
     if (validator.contains(jsonDelError, 'email')) {
       switch(e.errors.email.kind) {
@@ -150,6 +164,17 @@ function validarErroresRegistro(e) {
         case 'minlength': errores.push(Errores.nombreMuyCorto);
           break
         case 'maxlength': errores.push(Errores.nombreMuyLargo);
+          break;
+      }
+    }
+
+    if (validator.contains(jsonDelError, 'apellido')) {
+      switch(e.errors.apellido.kind) {
+        case 'required': errores.push(Errores.apellidoNoIngresado);
+          break;
+        case 'minlength': errores.push(Errores.apellidoMuyCorto);
+          break
+        case 'maxlength': errores.push(Errores.apellidoMuyLargo);
           break;
       }
     }
