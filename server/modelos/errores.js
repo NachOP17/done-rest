@@ -1,5 +1,7 @@
 const validator = require('validator');
 
+var {Usuario} = require('./usuario');
+
 var Errores = {
   correcto: {
     codigo: '0',
@@ -178,6 +180,10 @@ function validarErroresRegistro(e) {
           break;
       }
     }
+  }
+  console.log(e.errors);
+  if (validator.contains(jsonDelError, 'fechaDeNacimiento')) {
+    errores.push('23');
   }
   return errores;
 }

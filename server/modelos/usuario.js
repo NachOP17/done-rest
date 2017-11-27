@@ -60,7 +60,14 @@ var ModeloDeUsuario = new mongoose.Schema({
 
   fechaDeNacimiento: {
     type: Date,
-    required: false
+    required: false,
+    validate: {
+      isAsync: false,
+      validator: function (v, cb) {
+
+        console.log(fechaDeNacimiento.getDate());
+      }
+    }
   },
 
   activo: {
@@ -200,6 +207,10 @@ var encriptarPassword = (password) => {
   var encriptado = MD5(password).toString();
   return encriptado + process.env.PASS_SECRET;
 };
+
+var esMayorDeEdad = (fechaDeNacimiento) => {
+  var dia = fechaDeNacimiento.getDate();
+}
 
 var Usuario = mongoose.model('Usuario', ModeloDeUsuario);
 

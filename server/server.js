@@ -39,12 +39,11 @@ app.post('/usuarios', (req, res) => {
   // de esta manera los datos como token o _id no son visibles en la parte de cliente.
   var body = _.pick(req.body, camposPermitidos);
   var usuario = new Usuario(body);
-  var error = [];
 
   usuario.save().then(() => {
     return usuario.generarTokenDeAutenticidad();
   }).then((token) => {
-    res.header('x-auth', token).send();
+    res.header('x-auth', token).send(Errores.correcto);
   }).catch((e) => {
     res.status(400).send(Errores.validarErroresRegistro(e));
   });
