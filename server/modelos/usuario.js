@@ -21,7 +21,7 @@ var ModeloDeUsuario = new mongoose.Schema({
     validate: {
       isAsync: false,
       validator: validator.isEmail,
-      message: Errores.correoNoValido
+      message: 'Correo no válido'
     }
   },
 
