@@ -1,0 +1,15 @@
+{
+  "test": {
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb://localhost:27017/DoneAppTest",
+    "JWT_SECRET": "hdhgfut6wr94hk04eriwe",
+    "PASS_SECRET": "shdgfsdf58w4efsd"
+  },
+
+  "development": {
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb://localhost:27017/DoneApp",
+    "JWT_SECRET": "iudf68ewoydfisd6f987odfk",
+    "PASS_SECRET": "shdgfsdf58w4efsd"
+  }
+}

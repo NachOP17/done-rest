@@ -8,6 +8,8 @@ const _ = require('lodash');
 const {MD5} = require('crypto-js');
 const jwt = require('jsonwebtoken');
 
+var {Errores} = require('./errores');
+
 var ModeloDeUsuario = new mongoose.Schema({
   email: {
     type: String,
@@ -78,6 +80,11 @@ var ModeloDeUsuario = new mongoose.Schema({
     required: false
   },
 
+  intentos: {
+    type: Number,
+    default: 0
+  },
+
   tokens: [{
   // El token se crea cada vez que un usuario inicia sesión en algún dispositivo
   // al cerrar sesión el token es eliminado
@@ -98,7 +105,7 @@ var ModeloDeUsuario = new mongoose.Schema({
 ModeloDeUsuario.methods.toJSON = function() {
   var usuario = this;
   var objetoUsuario = usuario.toObject();
-  var camposPermitidos = ['_id', 'email', 'username', 'nombre', 'apellido', 'fechaDeNacimiento'];
+  var camposPermitidos = ['_id', 'email', 'username', 'nombre', 'apellido', 'fechaDeNacimiento', 'intentos'];
 
   return _.pick(objetoUsuario, camposPermitidos);
 };
@@ -151,14 +158,16 @@ ModeloDeUsuario.statics.findByCredentials = function(username, password) {
 
   return Usuario.findOne({username}).then((usuario) => {
     if (!usuario) {
-      return Promise.reject();
+      return Promise.reject({code: 1});
     }
 
     return new Promise((resolve, reject) => {
       if (passwordsCoinciden(usuario.password, password)) {
         resolve(usuario);
       } else {
-        reject();
+        reject({code: 2,
+          user: usuario
+        });
       }
     });
   });

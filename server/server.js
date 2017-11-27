@@ -8,6 +8,7 @@ var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
 var {autenticar} = require('./middleware/autenticar');
+var {Errores} = require('./modelos/errores');
 
 var app = express();
 
@@ -64,13 +65,32 @@ app.get('/usuarios/me', autenticar, (req, res) => {
 app.post('/usuarios/login', (req, res) => {
   var camposPermitidos = ['username', 'password'];
   var body = _.pick(req.body, camposPermitidos);
-
   Usuario.findByCredentials(body.username, body.password).then((usuario) => {
-    usuario.generarTokenDeAutenticidad().then((token) => {
-      res.header('x-auth', token).send(usuario);
-    });
+    if (usuario.intentos >= 5) res.status(401).send(Errores.usuarioBloqueado);
+    else{
+      Usuario.findByIdAndUpdate(usuario.id, {
+        $set: {
+          intentos: 0
+        }
+      }, {new: true}).then((user) => {
+        usuario.generarTokenDeAutenticidad().then((token) => {
+          res.header('x-auth', token).send(Errores.correcto);
+      })});
+  }
   }).catch((e) => {
-    res.status(400).send(e);
+    switch(e.code){
+      case 1: res.status(404).send(Errores.usuarioIncorrecto);
+              break;
+      case 2: Usuario.findByIdAndUpdate(e.user.id, {
+        $inc: {
+          intentos: 1
+        }
+      }, {new: true}).then((usuario) => {
+        res.status(401).send(Errores.passwordIncorrecta);
+      })
+      break;
+    }
+    //res.status(401).send(e);
   });
 });
 
