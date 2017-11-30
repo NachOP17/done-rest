@@ -109,8 +109,7 @@ describe('ENVIAR /tarea', () => {
       });
   });
 });
-<<<<<<< HEAD
-=======
+
 
 beforeEach((done) => {
   Usuario.remove({}).then(() => done());
@@ -143,4 +142,3 @@ describe('ENVIAR /usuario', () => {
     //  });
   });
  });
->>>>>>> RestApp_Heroku
