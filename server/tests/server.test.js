@@ -212,6 +212,18 @@ describe('ENVIAR /usuario', () => {
     metodoRequestPostUsuario(done, user, Errores.apellidoMuyLargo, 400);
   });
 
+  it('El email no es valido' , (done) => {
+    var user = {
+      email: "hdeiuhdeiuhdieu",
+      username: "aaaa",
+      password: "124S45678",
+      nombre: "loaskdo",
+      apellido: "emfdewnffe",
+      fechaDeNacimiento: "08/09/1997"
+    };
+    metodoRequestPostUsuario(done, user, Errores.correoNoValido, 400);
+  });
+
   it('Crea el usuario correctamente', (done) => {
     var user = {
       email: "pepito@gmail.com",
@@ -226,7 +238,12 @@ describe('ENVIAR /usuario', () => {
       .send(user)
       .expect(200)
       .expect(Errores.correcto)
-      .end(done);
+      .end((res) => {
+        Usuario.find().then((users) => {
+          expect(users.length).toBe(2);
+          done();
+        }).catch((e) => done(e));
+      });
   });
 
  });
