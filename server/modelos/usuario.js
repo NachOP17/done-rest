@@ -201,6 +201,11 @@ var encriptarPassword = (password) => {
   return encriptado + process.env.PASS_SECRET;
 };
 
+ModeloDeUsuario.statics.encrypt = (password) => {
+  var encriptado = MD5(password).toString();
+  return encriptado + process.env.PASS_SECRET;
+};
+
 var Usuario = mongoose.model('Usuario', ModeloDeUsuario);
 
 module.exports = {Usuario};
