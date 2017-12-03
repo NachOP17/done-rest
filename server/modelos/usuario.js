@@ -60,7 +60,12 @@ var ModeloDeUsuario = new mongoose.Schema({
 
   fechaDeNacimiento: {
     type: Date,
-    required: false
+    required: false,
+    validate: {
+      isAsync: false,
+      validator: esMayorDeEdad,
+      message: 'No es mayor de edad'
+    }
   },
 
   activo: {
@@ -102,6 +107,26 @@ var ModeloDeUsuario = new mongoose.Schema({
     }
   }]
 });
+
+function esMayorDeEdad(v) {
+  var day = v.getDate() + 1;
+  var month = v.getMonth();
+  var year = v.getFullYear();
+  var currentDay = new Date().getDate();
+  var currentMonth = new Date().getMonth();
+  var currentYear = new Date().getFullYear();
+
+  var edad = currentYear - year;
+  if (currentMonth > month) {
+    edad--;
+  } else if (currentMonth == month && currentDay > day) {
+    edad--;
+  }
+  if (edad < 18) {
+    return false;
+  }
+  return true;
+};
 
 ModeloDeUsuario.methods.toJSON = function() {
   var usuario = this;

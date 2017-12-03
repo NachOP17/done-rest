@@ -47,6 +47,7 @@ app.post('/usuarios', (req, res) => {
   }).then((token) => {
     res.header('x-auth', token).send(Errores.correcto);
   }).catch((e) => {
+    console.log(e);
     res.status(400).send(Errores.validarErroresRegistro(e));
   });
 });

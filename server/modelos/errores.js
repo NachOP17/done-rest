@@ -104,6 +104,16 @@ var Errores = {
     mensaje: 'El apellido es muy largo (Máximo 50 caracteres)'
   },
 
+  // Errores de la fecha de nacimiento
+  fechaDeNacimientoNoIngresada: {
+    codigo: '23',
+    mensaje: 'La fecha de Nacimiento no puede estar vacía'
+  },
+  noEsMayorDeEdad: {
+    codigo: '24',
+    mensaje: 'Para crearte una cuenta debes ser mayor de edad'
+  },
+
   validarErroresRegistro
 }
 
@@ -143,6 +153,11 @@ function validarErroresRegistro(e) {
     if (validator.contains(jsonDelError, 'apellido')) {
       validadorDeErroresDelRegistro(e.errors.apellido.kind, Errores.apellidoNoIngresado,
         null, Errores.apellidoMuyCorto, Errores.apellidoMuyLargo, errores);
+    }
+
+    if (validator.contains(jsonDelError, 'fechaDeNacimiento')) {
+      validadorDeErroresDelRegistro(e.errors.fechaDeNacimiento.kind, Errores.fechaDeNacimientoNoIngresada,
+        Errores.noEsMayorDeEdad, null, null, errores);
     }
   }
   return errores;
