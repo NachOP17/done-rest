@@ -87,8 +87,9 @@ app.post('/usuarios/login', (req, res) => {
         res.status(401).send(Errores.passwordIncorrecta);
       })
       break;
-      default: res.status(400).send();
+      default: res.status(400).send(Errores.validarErroresRegistro);
               break;
+
     }
     //res.status(401).send(e);
   });
