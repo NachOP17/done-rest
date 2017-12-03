@@ -77,7 +77,8 @@ var ModeloDeUsuario = new mongoose.Schema({
 
   formaDeRegistro: {
     type: String,
-    required: false
+    required: true,
+    default: "Web"
   },
 
   intentos: {

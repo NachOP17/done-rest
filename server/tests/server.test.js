@@ -153,6 +153,7 @@ describe('ENVIAR /usuario', () => {
     };
     // usuario = new Usuario(user);
     // usuario.save();
+
     metodoRequestPostUsuario(done, user, Errores.correoExistente, 400)
   });
 
@@ -262,3 +263,55 @@ describe('ENVIAR /usuario', () => {
       }).catch((e) => done(e));
     });
  }
+
+ // beforeEach((done) => {
+ //   Usuario.remove({}).then(() =>
+ //   Usuario.insertMany(usuarios)).then(() ).then(() => done());
+ // });
+
+describe('PATCH de usuarios(desbloquear cuenta)', () => {
+  var id = usuarios[0]._id.toHexString();
+  var user = {
+    password: Usuario.encrypt("124568")
+  };
+    console.log(user);
+
+  it('Desbloquea usario y cambia la contraseña', (done) => {
+    Usuario.findByIdAndUpdate(id, {
+      $set: {
+        intentos: 5
+      }
+    }, {new: true}).then((usuario) => console.log());
+    console.log(user);
+    request(app)
+    .patch(`/usuarios/me/${id}`)
+    .send(user)
+    .expect(200)
+    .expect({
+      codigo: "0",
+      mensaje: "Correcto"
+    })
+    .end((res)=> {
+      Usuario.findOne().then((usuario) => {
+        expect(usuario.password).toBe(Usuario.encrypt(user.password));
+        expect(usuario.intentos).toBe(0);
+        done();
+      })
+    });
+  })
+  it('Si id no es valido retorna error 404', (done) => {
+    request(app)
+    .patch('/usuarios/me/124241')
+    .send(user)
+    .expect(404)
+    .end(done);
+  })
+  it('Si id no existe retorna error 404', (done) => {
+    request(app)
+    .patch('/usuarios/me/5a209e58d31f5f2742972152')
+    .send(user)
+    .expect(404)
+    .end(done);
+  })
+});
+

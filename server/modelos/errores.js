@@ -121,65 +121,43 @@ function validarErroresRegistro(e) {
 
   if (jsonDelError) {
     if (validator.contains(jsonDelError, 'email')) {
-      switch(e.errors.email.kind) {
-        case 'required': errores.push(Errores.correoNoIngresado);
-          break;
-        case 'user defined': errores.push(Errores.correoNoValido);
-          break;
-        case 'minlength': errores.push(Errores.correoMuyCorto);
-          break
-        case 'maxlength': errores.push(Errores.correoMuyLargo);
-          break;
-      }
+      validadorDeErroresDelRegistro(e.errors.email.kind, Errores.correoNoIngresado,
+        Errores.correoNoValido, Errores.correoMuyCorto, Errores.correoMuyLargo, errores);
     }
 
     if (validator.contains(jsonDelError, 'username')) {
-      switch(e.errors.username.kind) {
-        case 'required': errores.push(Errores.usuarioNoIngresado);
-          break;
-        case 'minlength': errores.push(Errores.usuarioMuyCorto);
-          break
-        case 'maxlength': errores.push(Errores.usuarioMuyLargo);
-          break;
-      }
+      validadorDeErroresDelRegistro(e.errors.username.kind, Errores.usuarioNoIngresado,
+        null, Errores.usuarioMuyCorto, Errores.usuarioMuyLargo, errores);
     }
 
     if (validator.contains(jsonDelError, 'password')) {
-      switch(e.errors.password.kind) {
-        case 'required': errores.push(Errores.pwdNoIngresada);
-          break;
-        case 'user defined': errores.push(Errores.pwdNoValida);
-          break;
-        case 'minlength': errores.push(Errores.pwdMuyCorta);
-          break
-        case 'maxlength': errores.push(Errores.pwdMuyLarga);
-          break;
-      }
+      validadorDeErroresDelRegistro(e.errors.password.kind, Errores.pwdNoIngresada,
+        Errores.pwdNoValida, Errores.pwdMuyCorta, Errores.pwdMuyLarga, errores);
     }
 
     if (validator.contains(jsonDelError, 'nombre')) {
-      switch(e.errors.nombre.kind) {
-        case 'required': errores.push(Errores.nombreNoIngresado);
-          break;
-        case 'minlength': errores.push(Errores.nombreMuyCorto);
-          break
-        case 'maxlength': errores.push(Errores.nombreMuyLargo);
-          break;
-      }
+      validadorDeErroresDelRegistro(e.errors.nombre.kind, Errores.nombreNoIngresado,
+        null, Errores.nombreMuyCorto, Errores.nombreMuyLargo, errores);
     }
 
     if (validator.contains(jsonDelError, 'apellido')) {
-      switch(e.errors.apellido.kind) {
-        case 'required': errores.push(Errores.apellidoNoIngresado);
-          break;
-        case 'minlength': errores.push(Errores.apellidoMuyCorto);
-          break
-        case 'maxlength': errores.push(Errores.apellidoMuyLargo);
-          break;
-      }
+      validadorDeErroresDelRegistro(e.errors.apellido.kind, Errores.apellidoNoIngresado,
+        null, Errores.apellidoMuyCorto, Errores.apellidoMuyLargo, errores);
     }
   }
   return errores;
+}
+
+function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, muyLargo, errores) {
+  switch(kind) {
+    case 'required': errores.push(noIngresado);
+      break;
+    case 'user defined': errores.push(noValido);
+      break;
+    case 'minlength': errores.push(muyCorto);
+      break;
+    case 'maxlength': errores.push(muyLargo);
+  }
 }
 
 module.exports = {Errores};
