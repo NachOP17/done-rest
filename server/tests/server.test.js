@@ -2,6 +2,7 @@ const expect = require('expect');
 const request = require('supertest');
 const {ObjectId} = require('mongodb');
 
+const {Errores} = require('./../modelos/errores')
 const {app} = require('./../server');
 const {Tarea} = require('./../modelos/tarea');
 const {Usuario} = require('./../modelos/usuario');
@@ -128,10 +129,23 @@ beforeEach((done) => {
 });
 
 describe('ENVIAR /usuario', () => {
+
+  it('El nombre de usuario no puede estar repetido', (done) => {
+    var user = {
+      email: "prueba1@gmail.com",
+      username: "pruebas",
+      password: "12345678",
+      nombre: "Prueba",
+      apellido: "Demail",
+      fechaDeNacimiento: "08/09/1997"
+    };
+    metodoRequestPostUsuario(done, user, Errores.usuarioExistente, 400)
+  });
+
   it('El email no puede estar repetido', (done) => {
     var user = {
       email: "prueba@gmail.com",
-      username: "pruebas",
+      username: "pruebas1",
       password: "12345678",
       nombre: "Prueba",
       apellido: "Demail",
@@ -139,19 +153,116 @@ describe('ENVIAR /usuario', () => {
     };
     // usuario = new Usuario(user);
     // usuario.save();
+
+    metodoRequestPostUsuario(done, user, Errores.correoExistente, 400)
+  });
+
+  it('El nombre de usuario no puede tener mas de 20 caracteres', (done) => {
+    var user = {
+      email: "prueba1@gmail.com",
+      username: "pruebas1sadjwidheuhfweufwyfgweyfbwhcdbhwebdweybdfkwe",
+      password: "12345678",
+      nombre: "Prueba",
+      apellido: "Demail",
+      fechaDeNacimiento: "08/09/1997"
+    };
+    metodoRequestPostUsuario(done, user, Errores.usuarioMuyLargo, 400)
+  });
+
+  it('El correo no puede tener más de 50 caracteres', (done) => {
+    var user = {
+      email: "prueba1adadeadewybdedyayudawyedveyadvagvdyuqevdyaevyudavdyvydveydveydveydve"+
+      "hdauehdaedhcvnnvreydgyuedgayuedgyuedgayuedgyuedgeydgyedgeydgeydgeydgedyg11wsdwddew"+
+      "degdedgbkmploañjaieohdundñakmdopeajdioedmopdepodkioaejdiaedoedmaomioemdim@gmail.com",
+      username: "pruebas1",
+      password: "12345678",
+      nombre: "Prueba",
+      apellido: "Demail",
+      fechaDeNacimiento: "08/09/1997"
+    };
+    metodoRequestPostUsuario(done, user, Errores.correoMuyLargo, 400)
+  });
+
+  it("El nombre no puede tener mas de 50 caracteres", (done) => {
+    var user = {
+      email: "prueba1@gmail.com",
+      username: "pruebas",
+      password: "12345678",
+      nombre: '12345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890',
+      apellido: "Demail",
+      fechaDeNacimiento: "08/09/1997"
+    }
+    metodoRequestPostUsuario(done, user, Errores.nombreMuyLargo, 400);
+  });
+
+  it('El apellido no puede tener más de 50 caracteres', (done) => {
+    var user = {
+      email: "prueba1@gmail.com",
+      username: "pruebas1",
+      password: "12345678",
+      nombre: "Prueba",
+      apellido: '12345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890',
+      fechaDeNacimiento: "08/09/1997"
+    };
+    metodoRequestPostUsuario(done, user, Errores.apellidoMuyLargo, 400);
+  });
+
+  it('El email no es valido' , (done) => {
+    var user = {
+      email: "hdeiuhdeiuhdieu",
+      username: "aaaa",
+      password: "124S45678",
+      nombre: "loaskdo",
+      apellido: "emfdewnffe",
+      fechaDeNacimiento: "08/09/1997"
+    };
+    metodoRequestPostUsuario(done, user, Errores.correoNoValido, 400);
+  });
+
+  it('Crea el usuario correctamente', (done) => {
+    var user = {
+      email: "pepito@gmail.com",
+      username: "aaaa",
+      password: "124S45678",
+      nombre: "loaskdo",
+      apellido: "emfdewnffe",
+      fechaDeNacimiento: "08/09/1997"
+    };
     request(app)
       .post('/usuarios')
       .send(user)
-      .expect(400)
-      .end((err, res) => {
-        if (err)  return done(err);
-        Usuario.find().then((usuarios) => {
-          expect(usuarios.length).toBe(1);
+      .expect(200)
+      .expect(Errores.correcto)
+      .end((res) => {
+        Usuario.find().then((users) => {
+          expect(users.length).toBe(2);
           done();
         }).catch((e) => done(e));
-     });
+      });
   });
+
  });
+    
+ var metodoRequestPostUsuario = function(done, user, error, codigo_error){
+   request(app)
+    .post('/usuarios')
+    .send(user)
+    .expect(codigo_error)
+    .expect([error])
+    .end((err, res) => {
+      if (err) return done(err);
+      Usuario.find().then((users) => {
+        expect(users.length).toBe(1);
+        done();
+      }).catch((e) => done(e));
+    });
+ }
 
 
 describe('Iniciar Sesión', () => {
@@ -237,6 +348,8 @@ describe('Iniciar Sesión', () => {
 
 
 
+
+
  // beforeEach((done) => {
  //   Usuario.remove({}).then(() =>
  //   Usuario.insertMany(usuarios)).then(() ).then(() => done());
@@ -288,3 +401,4 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
   })
 
 });
+
