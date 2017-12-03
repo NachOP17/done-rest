@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
 const validator = require('validator');
+const {ObjectId} = require('mongodb');
 
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
@@ -71,7 +72,7 @@ app.post('/usuarios/login', (req, res) => {
         }
       }, {new: true}).then((user) => {
         usuario.generarTokenDeAutenticidad().then((token) => {
-          res.header('x-auth', token).send(Errores.correcto);
+          res.header('x-auth', token).send(usuario);
       })});
   }
   }).catch((e) => {
@@ -86,8 +87,31 @@ app.post('/usuarios/login', (req, res) => {
         res.status(401).send(Errores.passwordIncorrecta);
       })
       break;
+      default: res.status(400).send();
+              break;
     }
     //res.status(401).send(e);
+  });
+});
+
+//
+
+//desbloquear usuario por id
+app.patch('/usuarios/me/:id', (req,res) => {
+  var id = req.params.id;
+  var camposPermitidos = ['password'];
+  var body = _.pick(req.body, camposPermitidos);
+  if (!ObjectId.isValid(id)) return res.status(404).send();
+  Usuario.findByIdAndUpdate(id, {
+    $set:{
+      intentos: 0,
+      password: Usuario.encrypt(body.password)
+    }
+  }, {new: true}).then((usuario) => {
+    if (!usuario) res.status(404).send();
+    else res.status(200).send(Errores.correcto);
+  }).catch((e) => {
+    res.status(400).send(e);
   });
 });
 
