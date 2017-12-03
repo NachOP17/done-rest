@@ -326,7 +326,7 @@ describe('Iniciar Sesión', () => {
       .post('/usuarios/login')
       .send(user)
       .expect(200)
-      .expect(Usuario.findOne())
+      //.expect(Usuario.findOne())
       .end((err, res) => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {
@@ -352,7 +352,6 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
   var user = {
     password: Usuario.encrypt("124568")
   };
-    console.log(user);
 
   it('Desbloquea usario y cambia la contraseña', (done) => {
     Usuario.findByIdAndUpdate(id, {
@@ -360,7 +359,6 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
         intentos: 5
       }
     }, {new: true}).then((usuario) => console.log());
-    console.log(user);
     request(app)
     .patch(`/usuarios/me/${id}`)
     .send(user)
@@ -390,6 +388,51 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
     .send(user)
     .expect(404)
     .end(done);
+  })
+
+});
+
+describe('Cambiar contraseña', () => {
+  it('Usuario no tiene sesión iniciada o el token es incorrecto', (done) => {
+    var user ={
+      passwordViejo: "12345678",
+      password: "amdiwbdywebdwbdw"
+    };
+    request(app)
+      .patch('/usuarios/me/pass')
+      .send(user)
+      .set("x-auth", '14142212')
+      .expect(401)
+      .end((err, res) => {
+        if(err) return done(err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.password).toBe(Usuario.encrypt(user.passwordViejo));
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+  it('Cambia el pasword correctamente', (done) => {
+    var user ={
+      passwordViejo: "12345678",
+      password: "amdiwbdywebdwbdw"
+    };
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token)=> {
+        request(app)
+          .patch('/usuarios/me/pass')
+          .send(user)
+          .set("x-auth", token, null)
+          .expect(200)
+          .expect(Errores.correcto)
+          .end((err,res) => {
+            if (err) return done(err);
+            Usuario.findOne().then((usuario) => {
+              expect(usuario.password).toBe(Usuario.encrypt(user.password));
+              done();
+            }).catch((e) => done(e));
+          });
+      });
+    });
   })
 
 });

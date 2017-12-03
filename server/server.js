@@ -101,7 +101,7 @@ app.post('/usuarios/login', (req, res) => {
 app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var id = req.usuario.id;
-  console.log(id);
+  //console.log(id);
   var body= _.pick(req.body, camposPermitidos);
   Usuario.findOneAndUpdate({password: Usuario.encrypt(body.passwordViejo)}, {
     $set:{
