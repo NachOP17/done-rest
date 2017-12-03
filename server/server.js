@@ -10,6 +10,7 @@ var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
 var {autenticar} = require('./middleware/autenticar');
 var {Errores} = require('./modelos/errores');
+var {Mailer} = require('./mailer');
 
 var app = express();
 
@@ -64,8 +65,12 @@ app.post('/usuarios/login', (req, res) => {
   var camposPermitidos = ['username', 'password'];
   var body = _.pick(req.body, camposPermitidos);
   Usuario.findByCredentials(body.username, body.password).then((usuario) => {
-    if (usuario.intentos >= 5) res.status(401).send(Errores.usuarioBloqueado);
-    else{
+    if (usuario.intentos >= 5) {
+      if (usuario.intentos == 5) {
+        Mailer.enviarCorreo(usuario.email, usuario.id);
+      }
+      res.status(401).send(Errores.usuarioBloqueado);
+    } else {
       Usuario.findByIdAndUpdate(usuario.id, {
         $set: {
           intentos: 0
@@ -84,7 +89,14 @@ app.post('/usuarios/login', (req, res) => {
           intentos: 1
         }
       }, {new: true}).then((usuario) => {
-        res.status(401).send(Errores.passwordIncorrecta);
+        if (usuario.intentos >= 5) {
+          if (usuario.intentos == 5) {
+            console.log(e.user.id)
+            Mailer.enviarCorreo(usuario.email, e.user.id);
+          }
+          res.status(401).send(Errores.usuarioBloqueado);
+        } else
+          res.status(401).send(Errores.passwordIncorrecta);
       })
       break;
       default: res.status(400).send(Errores.validarErroresRegistro);
