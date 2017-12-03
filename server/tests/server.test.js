@@ -248,7 +248,7 @@ describe('ENVIAR /usuario', () => {
   });
 
  });
-
+    
  var metodoRequestPostUsuario = function(done, user, error, codigo_error){
    request(app)
     .post('/usuarios')
@@ -263,6 +263,92 @@ describe('ENVIAR /usuario', () => {
       }).catch((e) => done(e));
     });
  }
+
+
+describe('Iniciar Sesión', () => {
+  var id = usuarios[0]._id.toHexString();
+  it('Bloquea cuenta de usuario después de 5 intentos fallidos', (done) => {
+    var user =  {
+      username: "pruebas",
+      password: "12345678"
+    };
+    Usuario.findByIdAndUpdate(id, {
+      $set:{
+        intentos: 5
+      }
+    }, {new: true}).then((usuarios) => console.log());
+    request(app)
+      .post('/usuarios/login')
+      .send(user)
+      .expect(401)
+      .expect({
+        codigo: '3',
+        mensaje: 'Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión'
+      })
+      .end((err, res) => {
+        if (err) return done (err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.intentos).toBe(5);
+          expect(usuario.tokens.length).toBe(0);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+  it('Suma 1 a los intentos si la contraseña no existe', (done) => {
+    var user = {
+      username: 'pruebas',
+      password: 'ksanndjshafbf'
+    };
+    request(app)
+      .post('/usuarios/login')
+      .send(user)
+      .expect(401)
+      .expect({
+        codigo: '2',
+        mensaje: 'Contraseña Incorrecta'
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.intentos).toBe(1);
+          expect(usuario.tokens.length).toBe(0);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+  it('Reinicializa la cantidad de intentos en 0 al iniciar sesión correctamente', (done) => {
+    var user = {
+      username: "pruebas",
+      password: "12345678"
+    };
+    Usuario.findByIdAndUpdate(id,{
+      $set:{
+        intentos: 2
+      }
+    }, {new: true}).then((usuario) => console.log());
+    request(app)
+      .post('/usuarios/login')
+      .send(user)
+      .expect(200)
+      .expect({
+        codigo: '0',
+        mensaje: 'Correcto'
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.intentos).toBe(0);
+          expect(usuario.tokens.length).toBe(1);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+
+
+
 
  // beforeEach((done) => {
  //   Usuario.remove({}).then(() =>
@@ -313,5 +399,6 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
     .expect(404)
     .end(done);
   })
+
 });
 
