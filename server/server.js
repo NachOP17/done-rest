@@ -96,6 +96,25 @@ app.post('/usuarios/login', (req, res) => {
 });
 
 //
+// Cambiar contraseña
+
+app.patch('/usuarios/me/pass', autenticar, (req,res) => {
+  var camposPermitidos = ['passwordViejo', 'password'];
+  var id = req.usuario.id;
+  console.log(id);
+  var body= _.pick(req.body, camposPermitidos);
+  Usuario.findOneAndUpdate({password: Usuario.encrypt(body.passwordViejo)}, {
+    $set:{
+      intentos: 0,
+      password: Usuario.encrypt(body.password)
+    }
+  }, {new: true}).then((user) => {
+    if (!user) res.status(404).send(Errores.passwordIncorrecta);
+    else res.status(200).send(Errores.correcto);
+  }).catch((e) => {
+    res.status(400).send(Errores.validarErroresRegistro);
+  });
+});
 
 //desbloquear usuario por id
 app.patch('/usuarios/me/:id', (req,res) => {
@@ -112,7 +131,7 @@ app.patch('/usuarios/me/:id', (req,res) => {
     if (!usuario) res.status(404).send();
     else res.status(200).send(Errores.correcto);
   }).catch((e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.validarErroresRegistro);
   });
 });
 
