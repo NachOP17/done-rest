@@ -248,7 +248,7 @@ describe('ENVIAR /usuario', () => {
   });
 
  });
-    
+
  var metodoRequestPostUsuario = function(done, user, error, codigo_error){
    request(app)
     .post('/usuarios')
@@ -281,10 +281,7 @@ describe('Iniciar Sesión', () => {
       .post('/usuarios/login')
       .send(user)
       .expect(401)
-      .expect({
-        codigo: '3',
-        mensaje: 'Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión'
-      })
+      .expect(Errores.usuarioBloqueado)
       .end((err, res) => {
         if (err) return done (err);
         Usuario.findOne().then((usuario) => {
@@ -304,10 +301,7 @@ describe('Iniciar Sesión', () => {
       .post('/usuarios/login')
       .send(user)
       .expect(401)
-      .expect({
-        codigo: '2',
-        mensaje: 'Contraseña Incorrecta'
-      })
+      .expect(Errores.passwordIncorrecta)
       .end((err, res) => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {
@@ -332,10 +326,7 @@ describe('Iniciar Sesión', () => {
       .post('/usuarios/login')
       .send(user)
       .expect(200)
-      .expect({
-        codigo: '0',
-        mensaje: 'Correcto'
-      })
+      .expect(Usuario.findOne())
       .end((err, res) => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {
@@ -345,6 +336,7 @@ describe('Iniciar Sesión', () => {
         }).catch((e) => done(e));
       });
   });
+});
 
 
 
@@ -384,7 +376,7 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
         done();
       })
     });
-  })
+  });
   it('Si id no es valido retorna error 404', (done) => {
     request(app)
     .patch('/usuarios/me/124241')
@@ -401,4 +393,3 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
   })
 
 });
-
