@@ -264,6 +264,84 @@ describe('ENVIAR /usuario', () => {
     });
  }
 
+
+describe('Iniciar Sesión', () => {
+  var id = usuarios[0]._id.toHexString();
+  it('Bloquea cuenta de usuario después de 5 intentos fallidos', (done) => {
+    var user =  {
+      username: "pruebas",
+      password: "12345678"
+    };
+    Usuario.findByIdAndUpdate(id, {
+      $set:{
+        intentos: 5
+      }
+    }, {new: true}).then((usuarios) => console.log());
+    request(app)
+      .post('/usuarios/login')
+      .send(user)
+      .expect(401)
+      .expect(Errores.usuarioBloqueado)
+      .end((err, res) => {
+        if (err) return done (err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.intentos).toBe(5);
+          expect(usuario.tokens.length).toBe(0);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+  it('Suma 1 a los intentos si la contraseña no existe', (done) => {
+    var user = {
+      username: 'pruebas',
+      password: 'ksanndjshafbf'
+    };
+    request(app)
+      .post('/usuarios/login')
+      .send(user)
+      .expect(401)
+      .expect(Errores.passwordIncorrecta)
+      .end((err, res) => {
+        if (err) return done(err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.intentos).toBe(1);
+          expect(usuario.tokens.length).toBe(0);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+  it('Reinicializa la cantidad de intentos en 0 al iniciar sesión correctamente', (done) => {
+    var user = {
+      username: "pruebas",
+      password: "12345678"
+    };
+    Usuario.findByIdAndUpdate(id,{
+      $set:{
+        intentos: 2
+      }
+    }, {new: true}).then((usuario) => console.log());
+    request(app)
+      .post('/usuarios/login')
+      .send(user)
+      .expect(200)
+      .expect(Usuario.findOne())
+      .end((err, res) => {
+        if (err) return done(err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.intentos).toBe(0);
+          expect(usuario.tokens.length).toBe(1);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+});
+
+
+
+
+
  // beforeEach((done) => {
  //   Usuario.remove({}).then(() =>
  //   Usuario.insertMany(usuarios)).then(() ).then(() => done());
@@ -298,7 +376,7 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
         done();
       })
     });
-  })
+  });
   it('Si id no es valido retorna error 404', (done) => {
     request(app)
     .patch('/usuarios/me/124241')
@@ -313,5 +391,5 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
     .expect(404)
     .end(done);
   })
-});
 
+});
