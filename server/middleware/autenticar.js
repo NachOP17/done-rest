@@ -1,4 +1,5 @@
 var {Usuario} = require('./../modelos/usuario');
+var {Errores} = require('./../modelos/errores')
 
 var autenticar = (req, res, next) => {
   var token = req.header('x-auth');
@@ -11,7 +12,7 @@ var autenticar = (req, res, next) => {
     req.token = token;
     next();
   }).catch((e) => {
-    res.status(401).send();
+     res.status(401).send(Errores.tokenInvalido);
   });
 };
 
