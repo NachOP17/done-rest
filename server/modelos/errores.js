@@ -110,6 +110,12 @@ var Errores = {
     mensaje: 'El token no es correcto o el usuario no tiene una sesión abierta'
   },
 
+  //Errores del body
+  faltanDatos: {
+    codigo: 24,
+    mensaje: 'Faltan datos en el body'
+  },
+
   validarErroresRegistro
 }
 

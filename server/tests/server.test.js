@@ -2,10 +2,11 @@ const expect = require('expect');
 const request = require('supertest');
 const {ObjectId} = require('mongodb');
 
-const {Errores} = require('./../modelos/errores')
+const {Errores} = require('./../modelos/errores');
 const {app} = require('./../server');
 const {Tarea} = require('./../modelos/tarea');
 const {Usuario} = require('./../modelos/usuario');
+
 
 const usuarios = [{
   _id: new ObjectId(),
@@ -265,16 +266,16 @@ describe('ENVIAR /usuario', () => {
  }
 
 
-describe('Iniciar Sesión', () => {
+describe('POST usuarios/login (Iniciar Sesión)', () => {
   var id = usuarios[0]._id.toHexString();
   it('Bloquea cuenta de usuario después de 5 intentos fallidos', (done) => {
     var user =  {
       username: "pruebas",
-      password: "12345678"
+      password: "1234567"
     };
     Usuario.findByIdAndUpdate(id, {
       $set:{
-        intentos: 5
+        intentos: 4
       }
     }, {new: true}).then((usuarios) => console.log());
     request(app)
@@ -326,7 +327,7 @@ describe('Iniciar Sesión', () => {
       .post('/usuarios/login')
       .send(user)
       .expect(200)
-      //.expect(Usuario.findOne())
+      .expect(Errores.correcto)
       .end((err, res) => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {
@@ -363,10 +364,7 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
     .patch(`/usuarios/me/${id}`)
     .send(user)
     .expect(200)
-    .expect({
-      codigo: "0",
-      mensaje: "Correcto"
-    })
+    .expect(Errores.correcto)
     .end((res)=> {
       Usuario.findOne().then((usuario) => {
         expect(usuario.password).toBe(Usuario.encrypt(user.password));
@@ -392,8 +390,8 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
 
 });
 
-describe('Cambiar contraseña', () => {
-  it('Usuario no tiene sesión iniciada o el token es incorrecto', (done) => {
+describe('PATCH usuarios/me/pass(cambiar contraseña)', () => {
+  it('Retorna 401 si usuario no tiene sesión iniciada o el token es incorrecto', (done) => {
     var user ={
       passwordViejo: "12345678",
       password: "amdiwbdywebdwbdw"
@@ -403,14 +401,63 @@ describe('Cambiar contraseña', () => {
       .send(user)
       .set("x-auth", '14142212')
       .expect(401)
+      .expect(Errores.tokenInvalido)
       .end((err, res) => {
         if(err) return done(err);
         Usuario.findOne().then((usuario) => {
-          expect(usuario.password).toBe(Usuario.encrypt(user.passwordViejo));
+          expect(usuario.password).toBe(usuarios[0].password);
           done();
         }).catch((e) => done(e));
       });
   });
+
+  it('Retorna 404 si el password anterior no es el de la cuenta', (done) => {
+    var user={
+      passwordViejo: "adueudneueu",
+      password: "deuind4eun"
+    };
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .patch('/usuarios/me/pass')
+          .send(user)
+          .set("x-auth", token, null)
+          .expect(404)
+          .expect(Errores.passwordIncorrecta)
+          .end((err,res) => {
+            if (err) return done(err);
+            Usuario.findOne().then((usuario) => {
+              expect(usuario.password).toBe(usuarios[0].password);
+              done();
+            }).catch((e) => done(e));
+          });
+      });
+    });
+  });
+
+  it('Retorna 400 si falta algun dato', (done) => {
+    var user= {
+      passwordViejo: "12345678"
+    };
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) =>{
+        request(app)
+          .patch('/usuarios/me/pass')
+          .send(user)
+          .set("x-auth", token, null)
+          .expect(400)
+          .expect(Errores.faltanDatos)
+          .end((err, res)=> {
+            if (err) return done(err);
+            Usuario.findOne().then((usuario) => {
+              expect(usuario.password).toBe(usuarios[0].password);
+              done();
+            }).catch((e) => done(e));
+          });
+      });
+    });
+  });
+
   it('Cambia el pasword correctamente', (done) => {
     var user ={
       passwordViejo: "12345678",

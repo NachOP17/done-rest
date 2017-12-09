@@ -64,17 +64,15 @@ app.post('/usuarios/login', (req, res) => {
   var camposPermitidos = ['username', 'password'];
   var body = _.pick(req.body, camposPermitidos);
   Usuario.findByCredentials(body.username, body.password).then((usuario) => {
-    if (usuario.intentos >= 5) res.status(401).send(Errores.usuarioBloqueado);
-    else{
-      Usuario.findByIdAndUpdate(usuario.id, {
-        $set: {
-          intentos: 0
-        }
-      }, {new: true}).then((user) => {
-        usuario.generarTokenDeAutenticidad().then((token) => {
-          res.header('x-auth', token).send(usuario);
-      })});
-  }
+    Usuario.findByIdAndUpdate(usuario.id, {
+      $set: {
+        intentos: 0
+      }
+    }, {new: true}).then((user) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        res.header('x-auth', token).send(Errores.correcto);
+      })
+    });
   }).catch((e) => {
     switch(e.code){
       case 1: res.status(404).send(Errores.usuarioIncorrecto);
@@ -84,9 +82,9 @@ app.post('/usuarios/login', (req, res) => {
           intentos: 1
         }
       }, {new: true}).then((usuario) => {
-        if (usuario.intentos == 5) res.status(401).send(Errores.usuarioBloqueado)
+        if (usuario.intentos >= 5) res.status(401).send(Errores.usuarioBloqueado)
         else
-          res.status(401).send(Errores.passwordIncorrecto);
+          res.status(401).send(Errores.passwordIncorrecta);
       })
       break;
       default: res.status(400).send(Errores.validarErroresRegistro);
@@ -104,12 +102,14 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
   var user = req.usuario;
-  if (body.password.length < 8)
+  console.log(body);
+  if ((body.password == undefined) || (body.passwordViejo == undefined))
+      res.status(400).send(Errores.faltanDatos);
+  else if (body.password.length < 8)
     res.status(400).send(Errores.pwdMuyCorta);
   else if (body.password.length > 50)
     res.status(400).send(Errores.pwdMuyLarga);
-  else{
-    if (user.password == Usuario.encrypt(body.passwordViejo)){
+  else if (user.password == Usuario.encrypt(body.passwordViejo)){
       Usuario.findByIdAndUpdate(user.id, {
         $set: {
           password: Usuario.encrypt(body.password)
@@ -121,8 +121,7 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
     else if(user.password != Usuario.encrypt(body.passwordViejo))
       res.status(404).send(Errores.passwordIncorrecta);
     else
-      res.status(400).send(Errores.validarErroresRegistro);
-  }
+      res.status(400).send();
 });
 
 //desbloquear usuario por id
