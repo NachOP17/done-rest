@@ -22,7 +22,7 @@ function enviarCorreo(to, id) {
     to: to,
     subject: 'Cuenta de Done bloqueada',
     html: '<p>Su cuenta ha sido bloqueada por seguridad. Hemos generado la siguiente contraseña' +
-    ' para que pueda iniciar sesión: <b><i>' + generateRandomPassword() + '</b></i>. <br /> ' +
+    ' para que pueda iniciar sesión: <b><i>' + generateRandomPassword(id) + '</b></i>. <br /> ' +
     'Le recomendamos cambiar contraseña al iniciar sesión'
   };
 
@@ -38,11 +38,11 @@ function enviarCorreo(to, id) {
 function generateRandomPassword(id) {
   var pass = Math.random().toString(36).slice(-8);
   console.log(pass);
-  // Usuario.findByIdAndUpdate(id, {
-  //   $set: {
-  //     password: Usuario.encrypt(pass)
-  //   }
-  // }, {new: true});
+  Usuario.findByIdAndUpdate(id, {
+    $set: {
+      password: Usuario.encrypt(pass)
+    }
+  }, {new: true}).then((usuario) => console.log());
   return pass;
 }
 
