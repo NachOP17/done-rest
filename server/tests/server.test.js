@@ -457,47 +457,34 @@ describe('PATCH usuarios/me/pass(cambiar contraseña)', () => {
       passwordViejo: "adueudneueu",
       password: "deuind4eun"
     };
-    Usuario.findOne().then((usuario) => {
-      usuario.generarTokenDeAutenticidad().then((token) => {
-        request(app)
-          .patch('/usuarios/me/pass')
-          .send(user)
-          .set("x-auth", token, null)
-          .expect(404)
-          .expect(Errores.passwordIncorrecta)
-          .end((err,res) => {
-            if (err) return done(err);
-            Usuario.findOne().then((usuario) => {
-              expect(usuario.password).toBe(usuarios[0].password);
-              done();
-            }).catch((e) => done(e));
-          });
-      });
-    });
+    cambiaPassWrong(done, 404, user, Errores.passwordIncorrecta);
   });
-
+12345678
   it('Retorna 400 si falta algun dato', (done) => {
     var user= {
       passwordViejo: "12345678"
     };
-    Usuario.findOne().then((usuario) => {
-      usuario.generarTokenDeAutenticidad().then((token) =>{
-        request(app)
-          .patch('/usuarios/me/pass')
-          .send(user)
-          .set("x-auth", token, null)
-          .expect(400)
-          .expect(Errores.faltanDatos)
-          .end((err, res)=> {
-            if (err) return done(err);
-            Usuario.findOne().then((usuario) => {
-              expect(usuario.password).toBe(usuarios[0].password);
-              done();
-            }).catch((e) => done(e));
-          });
-      });
-    });
+    cambiaPassWrong(done,400, user, Errores.faltanDatos);
   });
+
+  it('Retorna 400 si el password nuevo tiene más de 50 caracteres', (done) => {
+    var user= {
+      passwordViejo: "12345678",
+      password: '12345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890'
+    };
+    cambiaPassWrong(done, 400, user, Errores.pwdMuyLarga);
+  });
+
+  it('Retorna 400 si el password nuevo tiene menos de 8 caracteres', (done) => {
+    var user = {
+      passwordViejo: "12345678",
+      password: "124"
+    };
+    cambiaPassWrong(done, 400, user, Errores.pwdMuyCorta);
+  })
 
   it('Cambia el pasword correctamente', (done) => {
     var user ={
@@ -524,3 +511,23 @@ describe('PATCH usuarios/me/pass(cambiar contraseña)', () => {
   })
 
 });
+
+var cambiaPassWrong = function(done, status, user, error){
+  Usuario.findOne().then((usuario) => {
+    usuario.generarTokenDeAutenticidad().then((token)=> {
+      request(app)
+        .patch('/usuarios/me/pass')
+        .send(user)
+        .set("x-auth", token, null)
+        .expect(status)
+        .expect(error)
+        .end((err,res) => {
+          if (err) return done(err);
+          Usuario.findOne().then((usuario) => {
+            expect(usuario.password).toBe(usuarios[0].password);
+            done();
+          }).catch((e) => done(e));
+        });
+    });
+  });
+}

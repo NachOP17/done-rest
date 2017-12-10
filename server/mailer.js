@@ -7,7 +7,7 @@ var Mailer = {
 
 function enviarCorreo(to, id) {
 
-  console.log('El correo se está enviando');
+  //console.log('El correo se está enviando');
 
   var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -28,7 +28,7 @@ function enviarCorreo(to, id) {
 
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
-      console.log(error);
+      console.log();
     } else {
       console.log('Email sent: ' + info.response);
     }

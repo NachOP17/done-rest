@@ -85,7 +85,7 @@ app.post('/usuarios/login', (req, res) => {
       }, {new: true}).then((usuario) => {
         if (usuario.intentos >= 5) {
           if (usuario.intentos == 5) {
-            console.log(e.user.id)
+            //console.log(e.user.id)
             Mailer.enviarCorreo(usuario.email, e.user.id);
           }
           res.status(401).send(Errores.usuarioBloqueado);
@@ -108,7 +108,6 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
   var user = req.usuario;
-  console.log(body);
   if ((body.password == undefined) || (body.passwordViejo == undefined))
       res.status(400).send(Errores.faltanDatos);
   else if (body.password.length < 8)

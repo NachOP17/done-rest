@@ -104,16 +104,6 @@ var Errores = {
     mensaje: 'El apellido es muy largo (Máximo 50 caracteres)'
   },
 
-  //Errores del token
-  tokenInvalido: {
-    codigo: 25,
-    mensaje: 'El token no es correcto o el usuario no tiene una sesión abierta'
-  },
-
-  //Errores del body
-  faltanDatos: {
-    codigo: 26,
-    mensaje: 'Faltan datos en el body'
   // Errores de la fecha de nacimiento
   fechaDeNacimientoNoIngresada: {
     codigo: 23,
@@ -124,6 +114,18 @@ var Errores = {
     mensaje: 'Para crearte una cuenta debes ser mayor de edad'
   },
 
+  //Errores del token
+  tokenInvalido: {
+    codigo: 25,
+    mensaje: 'El token no es correcto o el usuario no tiene una sesión abierta'
+  },
+
+  //Errores del body
+  faltanDatos: {
+    codigo: 26,
+    mensaje: 'Faltan datos en el body'
+  },
+  
   validarErroresRegistro
 }
 
