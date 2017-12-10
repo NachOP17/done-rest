@@ -226,6 +226,47 @@ describe('ENVIAR /usuario', () => {
     metodoRequestPostUsuario(done, user, Errores.correoNoValido, 400);
   });
 
+  it('El usuario no es mayor de edad por el año', (done) => {
+    var year = new Date().getFullYear() - 17;
+    console.log(year);
+    var user = {
+      email: 'prueba1@example.com',
+      username: 'prueba1',
+      password: '12345678',
+      nombre: 'Prueba',
+      apellido: 'kjhsfsf',
+      fechaDeNacimiento: '08/09/' + year
+    };
+    metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
+  });
+
+  it('El usuario no es mayor de edad por el mes', (done) => {
+    var mes = new Date().getMonth();
+    console.log(mes);
+    var user = {
+      email: 'prueba1@example.com',
+      username: 'prueba1',
+      password: '12345678',
+      nombre: 'Prueba',
+      apellido: 'kjhsfsf',
+      fechaDeNacimiento: mes + '/01/1999'
+    };
+    metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
+  });
+
+  it('El usuario no es mayor de edad por el dia', (done) => {
+    var dia = new Date().getDate();
+    var user = {
+      email: 'prueba1@example.com',
+      username: 'prueba1',
+      password: '12345678',
+      nombre: 'Prueba',
+      apellido: 'kjhsfsf',
+      fechaDeNacimiento: '12/' + dia-1 + '/1999'
+    };
+    metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
+  });
+
   it('Crea el usuario correctamente', (done) => {
     var user = {
       email: "pepito@gmail.com",
