@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-var Tarea = mongoose.model('Todo', {
+var Tarea = mongoose.model('Tarea', {
   titulo: {
     type: String,
     required: true,

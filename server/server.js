@@ -31,6 +31,13 @@ app.post('/tareas', (req, res) => {
   });
 });
 
+app.get('/tareas', (req, res) =>{
+  Tarea.find().then((tarea) => {
+    res.send({tarea});
+  }, (e) => {
+    res.status(400).send(e);
+  })
+});
 
 // POST guarda el usuario en la base de datos
 // Crear Usuario
