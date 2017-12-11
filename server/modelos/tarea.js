@@ -7,7 +7,6 @@ var Tarea = mongoose.model('Tarea', {
     required: true,
     minlength: 1,
     maxlength: 255,
-    trim: true,
     validate: {
       isAsync: false,
       validator: validator.isAlphanumeric
@@ -16,7 +15,6 @@ var Tarea = mongoose.model('Tarea', {
 
   descripcion: {
     type: String,
-    trim: true,
     maxlength: 250,
     required: true
   },
