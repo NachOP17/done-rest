@@ -10,6 +10,7 @@ var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
 var {autenticar} = require('./middleware/autenticar');
 var {Errores} = require('./modelos/errores');
+var {Mailer} = require('./mailer');
 
 var app = express();
 
@@ -64,17 +65,15 @@ app.post('/usuarios/login', (req, res) => {
   var camposPermitidos = ['username', 'password'];
   var body = _.pick(req.body, camposPermitidos);
   Usuario.findByCredentials(body.username, body.password).then((usuario) => {
-    if (usuario.intentos >= 5) res.status(401).send(Errores.usuarioBloqueado);
-    else{
-      Usuario.findByIdAndUpdate(usuario.id, {
-        $set: {
-          intentos: 0
-        }
-      }, {new: true}).then((user) => {
-        usuario.generarTokenDeAutenticidad().then((token) => {
-          res.header('x-auth', token).send(usuario);
-      })});
-  }
+    Usuario.findByIdAndUpdate(usuario.id, {
+      $set: {
+        intentos: 0
+      }
+    }, {new: true}).then((user) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        res.header('x-auth', token).send(Errores.correcto);
+      })
+    });
   }).catch((e) => {
     switch(e.code){
       case 1: res.status(404).send(Errores.usuarioIncorrecto);
@@ -84,7 +83,14 @@ app.post('/usuarios/login', (req, res) => {
           intentos: 1
         }
       }, {new: true}).then((usuario) => {
-        res.status(401).send(Errores.passwordIncorrecta);
+        if (usuario.intentos >= 5) {
+          if (usuario.intentos == 5) {
+            //console.log(e.user.id)
+            Mailer.enviarCorreo(usuario.email, e.user.id);
+          }
+          res.status(401).send(Errores.usuarioBloqueado);
+        } else
+          res.status(401).send(Errores.passwordIncorrecta);
       })
       break;
       default: res.status(400).send(Errores.validarErroresRegistro);
@@ -96,6 +102,32 @@ app.post('/usuarios/login', (req, res) => {
 });
 
 //
+// Cambiar contraseña
+
+app.patch('/usuarios/me/pass', autenticar, (req,res) => {
+  var camposPermitidos = ['passwordViejo', 'password'];
+  var body= _.pick(req.body, camposPermitidos);
+  var user = req.usuario;
+  if ((body.password == undefined) || (body.passwordViejo == undefined))
+      res.status(400).send(Errores.faltanDatos);
+  else if (body.password.length < 8)
+    res.status(400).send(Errores.pwdMuyCorta);
+  else if (body.password.length > 50)
+    res.status(400).send(Errores.pwdMuyLarga);
+  else if (user.password == Usuario.encrypt(body.passwordViejo)){
+      Usuario.findByIdAndUpdate(user.id, {
+        $set: {
+          password: Usuario.encrypt(body.password)
+        }
+      }, {new:true}).then((usuario) => {
+        res.status(200).send(Errores.correcto);
+      }).catch((e) => res.status(400).send(Errores.validarErroresRegistro));
+    }
+    else if(user.password != Usuario.encrypt(body.passwordViejo))
+      res.status(404).send(Errores.passwordIncorrecta);
+    else
+      res.status(400).send();
+});
 
 //desbloquear usuario por id
 app.patch('/usuarios/me/:id', (req,res) => {
@@ -112,7 +144,7 @@ app.patch('/usuarios/me/:id', (req,res) => {
     if (!usuario) res.status(404).send();
     else res.status(200).send(Errores.correcto);
   }).catch((e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.validarErroresRegistro);
   });
 });
 

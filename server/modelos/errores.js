@@ -8,102 +8,124 @@ var Errores = {
 
   // Errores del Correo
   correoExistente: {
-    codigo: '5',
+    codigo: 5,
     mensaje: 'Este correo ya está en uso'
   },
   correoNoIngresado: {
-    codigo: '6',
+    codigo: 6,
     mensaje: 'El campo de correo no puede estar vacío'
   },
   correoNoValido: {
-    codigo: '7',
+    codigo: 7,
     mensaje: 'El correo no es válido'
   },
   correoMuyCorto: {
-    codigo: '8',
+    codigo: 8,
     mensaje: 'El correo es muy corto (Mínimo 1 caracter)'
   },
   correoMuyLargo: {
-    codigo: '9',
+    codigo: 9,
     mensaje: 'El correo es muy largo (Máximo 50 caracteres)'
   },
 
   // Errores del Usuario
   usuarioIncorrecto: {
-    codigo: '1',
+    codigo: 1,
     mensaje: 'Usuario Incorrecto'
   },
   usuarioBloqueado: {
-    codigo: '3',
+    codigo: 3,
     mensaje: 'Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión'
   },
   usuarioExistente: {
-    codigo: '4',
+    codigo: 4,
     mensaje: 'Este usuario ya está en uso'
   },
   usuarioNoIngresado: {
-    codigo: '10',
+    codigo: 10,
     mensaje: 'El campo de nombre de usuario no puede estar vacío'
   },
   usuarioMuyCorto: {
-    codigo: '11',
+    codigo: 11,
     mensaje: 'El nombre de usuario es muy corto (Mínimo 1 caracter)'
   },
   usuarioMuyLargo: {
-    codigo: '12',
+    codigo: 12,
     mensaje: 'El nombre de usuario es muy largo (Máximo 20 caracteres)'
   },
 
   // Errores de la contraseña
   passwordIncorrecta: {
-    codigo: '2',
+    codigo: 2,
     mensaje: 'Contraseña Incorrecta'
   },
   pwdNoIngresada: {
-    codigo: '13',
+    codigo: 13,
     mensaje: 'El campo la contraseña no puede estar vacío'
   },
   pwdNoValida: {
-    codigo: '14',
+    codigo: 14,
     mensaje: 'La contraseña solo puede contener caracteres alfanuméricos'
   },
   pwdMuyCorta: {
-    codigo: '15',
+    codigo: 15,
     mensaje: 'La contraseña es muy corta (Mínimo 8 caracteres)'
   },
   pwdMuyLarga: {
-    codigo: '16',
+    codigo: 16,
     mensaje: 'La contraseña es muy larga (Máximo 50 caracteres)'
   },
 
   // Errores del Nombre
   nombreNoIngresado: {
-    codigo: '17',
+    codigo: 17,
     mensaje: 'El campo de nombre no puede estar vacío'
   },
   nombreMuyCorto: {
-    codigo: '18',
+    codigo: 18,
     mensaje: 'El nombre es muy corto (Mínimo 1 caracter)'
   },
   nombreMuyLargo: {
-    codigo: '19',
+    codigo: 19,
     mensaje: 'El nombre es muy largo (Máximo 50 caracteres)'
   },
 
   // Errores del apellido
   apellidoNoIngresado: {
-    codigo: '20',
+    codigo: 20,
     mensaje: 'El campo de apellido no puede estar vacío'
   },
   apellidoMuyCorto: {
-    codigo: '21',
+    codigo: 21,
     mensaje: 'El apellido es muy corto (Mínimo 1 caracter)'
   },
   apellidoMuyLargo: {
-    codigo: '22',
+    codigo: 22,
     mensaje: 'El apellido es muy largo (Máximo 50 caracteres)'
   },
 
+  // Errores de la fecha de nacimiento
+  fechaDeNacimientoNoIngresada: {
+    codigo: 23,
+    mensaje: 'La fecha de Nacimiento no puede estar vacía'
+  },
+  noEsMayorDeEdad: {
+    codigo: 24,
+    mensaje: 'Para crearte una cuenta debes ser mayor de edad'
+  },
+
+  //Errores del token
+  tokenInvalido: {
+    codigo: 25,
+    mensaje: 'El token no es correcto o el usuario no tiene una sesión abierta'
+  },
+
+  //Errores del body
+  faltanDatos: {
+    codigo: 26,
+    mensaje: 'Faltan datos en el body'
+  },
+  
   validarErroresRegistro
 }
 
@@ -143,6 +165,11 @@ function validarErroresRegistro(e) {
     if (validator.contains(jsonDelError, 'apellido')) {
       validadorDeErroresDelRegistro(e.errors.apellido.kind, Errores.apellidoNoIngresado,
         null, Errores.apellidoMuyCorto, Errores.apellidoMuyLargo, errores);
+    }
+
+    if (validator.contains(jsonDelError, 'fechaDeNacimiento')) {
+      validadorDeErroresDelRegistro(e.errors.fechaDeNacimiento.kind, Errores.fechaDeNacimientoNoIngresada,
+        Errores.noEsMayorDeEdad, null, null, errores);
     }
   }
   return errores;
