@@ -1,33 +1,54 @@
 const expect = require('expect');
 const request = require('supertest');
 const {ObjectId} = require('mongodb');
+const jwt = require('jsonwebtoken');
 
 const {Errores} = require('./../modelos/errores')
 const {app} = require('./../server');
 const {Tarea} = require('./../modelos/tarea');
 const {Usuario} = require('./../modelos/usuario');
 
+const idUsuarioUno = new ObjectId();
+
 const usuarios = [{
-  _id: new ObjectId(),
+  _id: idUsuarioUno,
   email: "prueba@gmail.com",
   username: "pruebas",
   password: Usuario.encrypt("12345678"),
   nombre: "Prueba",
   apellido: "Demail",
-  fechaDeNacimiento: "08/09/1997"
+  fechaDeNacimiento: "08/09/1997",
+  tokens: [{
+    access: 'auth',
+    token: jwt.sign({_id: idUsuarioUno, access: 'auth'}, 'abc123').toString()
+  }]
+}];
+
+const tareas = [{
+  _id: new ObjectId(),
+  titulo: 'Prueba',
+  descripcion: 'Esto es una prueba',
+  _creador: idUsuarioUno
 }];
 
 beforeEach((done) => {
-  Tarea.remove({}).then(() => done());
-})
+  Usuario.remove({}).then(() =>
+  Usuario.insertMany(usuarios)).then(() => done());
+});
 
-describe('ENVIAR /tarea', () => {
+beforeEach((done) => {
+  Tarea.remove({}).then(() => 
+  Tarea.insertMany(tareas)).then(() => done());
+});
+
+describe('POST /tarea', () => {
   it('Debería crear una nueva tarea', (done) => {
     var titulo = 'Prueba';
     var descripcion = 'Esto es una prueba';
 
     request(app)
       .post('/tareas')
+      .set('x-auth', usuarios[0].tokens[0].token)
       .send({
         titulo,
         descripcion
@@ -120,12 +141,6 @@ describe('ENVIAR /tarea', () => {
         }).catch((e) => done(e));
       });
   });
-});
-
-
-beforeEach((done) => {
-  Usuario.remove({}).then(() =>
-  Usuario.insertMany(usuarios)).then(() => done());
 });
 
 describe('ENVIAR /usuario', () => {
