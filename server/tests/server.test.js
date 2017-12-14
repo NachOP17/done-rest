@@ -37,7 +37,7 @@ beforeEach((done) => {
 });
 
 beforeEach((done) => {
-  Tarea.remove({}).then(() => 
+  Tarea.remove({}).then(() =>
   Tarea.insertMany(tareas)).then(() => done());
 });
 
@@ -45,6 +45,7 @@ describe('POST /tarea', () => {
   it('Debería crear una nueva tarea', (done) => {
     var titulo = 'Prueba';
     var descripcion = 'Esto es una prueba';
+    console.log(usuarios[0].tokens[0].token);
 
     request(app)
       .post('/tareas')
@@ -301,7 +302,7 @@ describe('Iniciar Sesión', () => {
         if (err) return done (err);
         Usuario.findOne().then((usuario) => {
           expect(usuario.intentos).toBe(5);
-          expect(usuario.tokens.length).toBe(0);
+          expect(usuario.tokens.length).toBe(1);
           done();
         }).catch((e) => done(e));
       });
@@ -321,7 +322,7 @@ describe('Iniciar Sesión', () => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {
           expect(usuario.intentos).toBe(1);
-          expect(usuario.tokens.length).toBe(0);
+          expect(usuario.tokens.length).toBe(1);
           done();
         }).catch((e) => done(e));
       });
