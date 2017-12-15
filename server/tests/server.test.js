@@ -3,7 +3,7 @@ const request = require('supertest');
 const {ObjectId} = require('mongodb');
 const jwt = require('jsonwebtoken');
 
-const {Errores} = require('./../modelos/errores')
+const {Errores} = require('./../modelos/errores');
 const {app} = require('./../server');
 const {Tarea} = require('./../modelos/tarea');
 const {Usuario} = require('./../modelos/usuario');
@@ -18,10 +18,6 @@ const usuarios = [{
   nombre: "Prueba",
   apellido: "Demail",
   fechaDeNacimiento: "08/09/1997",
-  // tokens: [{
-  //   access: 'auth',
-  //   token: jwt.sign({_id: idUsuarioUno, access: 'auth'}, 'abc123').toString()
-  // }]
 }];
 
 const tareas = [{
@@ -147,8 +143,6 @@ describe('ENVIAR /usuario', () => {
       apellido: "Demail",
       fechaDeNacimiento: "08/09/1997"
     };
-    // usuario = new Usuario(user);
-    // usuario.save();
 
     metodoRequestPostUsuario(done, user, Errores.correoExistente, 400)
   });
@@ -221,6 +215,47 @@ describe('ENVIAR /usuario', () => {
     metodoRequestPostUsuario(done, user, Errores.correoNoValido, 400);
   });
 
+  it('El usuario no es mayor de edad por el año', (done) => {
+    var year = new Date().getFullYear() - 17;
+    console.log(year);
+    var user = {
+      email: 'prueba1@example.com',
+      username: 'prueba1',
+      password: '12345678',
+      nombre: 'Prueba',
+      apellido: 'kjhsfsf',
+      fechaDeNacimiento: '08/09/' + year
+    };
+    metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
+  });
+
+  it('El usuario no es mayor de edad por el mes', (done) => {
+    var mes = new Date().getMonth();
+    console.log(mes);
+    var user = {
+      email: 'prueba1@example.com',
+      username: 'prueba1',
+      password: '12345678',
+      nombre: 'Prueba',
+      apellido: 'kjhsfsf',
+      fechaDeNacimiento: mes + '/01/1999'
+    };
+    metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
+  });
+
+  it('El usuario no es mayor de edad por el dia', (done) => {
+    var dia = new Date().getDate();
+    var user = {
+      email: 'prueba1@example.com',
+      username: 'prueba1',
+      password: '12345678',
+      nombre: 'Prueba',
+      apellido: 'kjhsfsf',
+      fechaDeNacimiento: '12/' + dia-1 + '/1999'
+    };
+    metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
+  });
+
   it('Crea el usuario correctamente', (done) => {
     var user = {
       email: "pepito@gmail.com",
@@ -261,16 +296,16 @@ describe('ENVIAR /usuario', () => {
  }
 
 
-describe('Iniciar Sesión', () => {
+describe('POST usuarios/login (Iniciar Sesión)', () => {
   var id = usuarios[0]._id.toHexString();
   it('Bloquea cuenta de usuario después de 5 intentos fallidos', (done) => {
     var user =  {
       username: "pruebas",
-      password: "12345678"
+      password: "1234567"
     };
     Usuario.findByIdAndUpdate(id, {
       $set:{
-        intentos: 5
+        intentos: 4
       }
     }, {new: true}).then((usuarios) => console.log());
     request(app)
@@ -335,20 +370,11 @@ describe('Iniciar Sesión', () => {
 });
 
 
-
-
-
- // beforeEach((done) => {
- //   Usuario.remove({}).then(() =>
- //   Usuario.insertMany(usuarios)).then(() ).then(() => done());
- // });
-
 describe('PATCH de usuarios(desbloquear cuenta)', () => {
   var id = usuarios[0]._id.toHexString();
   var user = {
     password: Usuario.encrypt("124568")
   };
-    console.log(user);
 
   it('Desbloquea usario y cambia la contraseña', (done) => {
     Usuario.findByIdAndUpdate(id, {
@@ -356,15 +382,11 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
         intentos: 5
       }
     }, {new: true}).then((usuario) => console.log());
-    console.log(user);
     request(app)
     .patch(`/usuarios/me/${id}`)
     .send(user)
     .expect(200)
-    .expect({
-      codigo: "0",
-      mensaje: "Correcto"
-    })
+    .expect(Errores.correcto)
     .end((res)=> {
       Usuario.findOne().then((usuario) => {
         expect(usuario.password).toBe(Usuario.encrypt(user.password));
@@ -389,3 +411,104 @@ describe('PATCH de usuarios(desbloquear cuenta)', () => {
   })
 
 });
+
+describe('PATCH usuarios/me/pass(cambiar contraseña)', () => {
+  it('Retorna 401 si usuario no tiene sesión iniciada o el token es incorrecto', (done) => {
+    var user ={
+      passwordViejo: "12345678",
+      password: "amdiwbdywebdwbdw"
+    };
+    request(app)
+      .patch('/usuarios/me/pass')
+      .send(user)
+      .set("x-auth", '14142212')
+      .expect(401)
+      .expect(Errores.tokenInvalido)
+      .end((err, res) => {
+        if(err) return done(err);
+        Usuario.findOne().then((usuario) => {
+          expect(usuario.password).toBe(usuarios[0].password);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+  it('Retorna 404 si el password anterior no es el de la cuenta', (done) => {
+    var user={
+      passwordViejo: "adueudneueu",
+      password: "deuind4eun"
+    };
+    cambiaPassWrong(done, 404, user, Errores.passwordIncorrecta);
+  });
+12345678
+  it('Retorna 400 si falta algun dato', (done) => {
+    var user= {
+      passwordViejo: "12345678"
+    };
+    cambiaPassWrong(done,400, user, Errores.faltanDatos);
+  });
+
+  it('Retorna 400 si el password nuevo tiene más de 50 caracteres', (done) => {
+    var user= {
+      passwordViejo: "12345678",
+      password: '12345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890' +
+      '1234567890123456789012345678901234567890123456789012345678901234567890'
+    };
+    cambiaPassWrong(done, 400, user, Errores.pwdMuyLarga);
+  });
+
+  it('Retorna 400 si el password nuevo tiene menos de 8 caracteres', (done) => {
+    var user = {
+      passwordViejo: "12345678",
+      password: "124"
+    };
+    cambiaPassWrong(done, 400, user, Errores.pwdMuyCorta);
+  })
+
+  it('Cambia el pasword correctamente', (done) => {
+    var user ={
+      passwordViejo: "12345678",
+      password: "amdiwbdywebdwbdw"
+    };
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token)=> {
+        request(app)
+          .patch('/usuarios/me/pass')
+          .send(user)
+          .set("x-auth", token, null)
+          .expect(200)
+          .expect(Errores.correcto)
+          .end((err,res) => {
+            if (err) return done(err);
+            Usuario.findOne().then((usuario) => {
+              expect(usuario.password).toBe(Usuario.encrypt(user.password));
+              done();
+            }).catch((e) => done(e));
+          });
+      });
+    });
+  })
+
+});
+
+var cambiaPassWrong = function(done, status, user, error){
+  Usuario.findOne().then((usuario) => {
+    usuario.generarTokenDeAutenticidad().then((token)=> {
+      request(app)
+        .patch('/usuarios/me/pass')
+        .send(user)
+        .set("x-auth", token, null)
+        .expect(status)
+        .expect(error)
+        .end((err,res) => {
+          if (err) return done(err);
+          Usuario.findOne().then((usuario) => {
+            expect(usuario.password).toBe(usuarios[0].password);
+            done();
+          }).catch((e) => done(e));
+        });
+    });
+  });
+}
