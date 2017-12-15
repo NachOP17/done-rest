@@ -18,10 +18,10 @@ const usuarios = [{
   nombre: "Prueba",
   apellido: "Demail",
   fechaDeNacimiento: "08/09/1997",
-  tokens: [{
-    access: 'auth',
-    token: jwt.sign({_id: idUsuarioUno, access: 'auth'}, 'abc123').toString()
-  }]
+  // tokens: [{
+  //   access: 'auth',
+  //   token: jwt.sign({_id: idUsuarioUno, access: 'auth'}, 'abc123').toString()
+  // }]
 }];
 
 const tareas = [{
@@ -45,76 +45,48 @@ describe('POST /tarea', () => {
   it('Debería crear una nueva tarea', (done) => {
     var titulo = 'Prueba';
     var descripcion = 'Esto es una prueba';
-    console.log(usuarios[0].tokens[0].token);
+    //console.log(usuarios[0].tokens[0].token);
 
-    request(app)
-      .post('/tareas')
-      .set('x-auth', usuarios[0].tokens[0].token)
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(200)
-      .expect((res) => {
-        expect(res.body.titulo).toBe(titulo)
-      })
-      .end((err, res) => {
-        if (err) {
-          return done(err)
-        }
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .post('/tareas')
+          .set('x-auth', token)
+          .send({
+            titulo,
+            descripcion
+          })
+          .expect(200)
+          .expect((res) => {
+            expect(res.body.titulo).toBe(titulo)
+          })
+          .end((err, res) => {
+            if (err) {
+              return done(err)
+            }
 
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(1);
-          expect(tareas[0].titulo).toBe(titulo);
-          done();
-        }).catch((e) => done(e));
-      });
+            Tarea.find().then((tareas) => {
+              expect(tareas.length).toBe(2);
+              expect(tareas[0].titulo).toBe(titulo);
+              done();
+            }).catch((e) => done(e));
+          });
+      })
+    })
   });
 
   it('El título solo debe contener caracteres Alfanuméricos', (done) => {
     var titulo = 'Otra prueba';
     var descripcion = 'Esto es una prueba';
 
-    request(app)
-      .post('/tareas')
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(400)
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(0);
-          done();
-        }).catch((e) => done(e));
-      });
+    tareasError(done, titulo, descripcion);
   });
 
   it('El título no puede estar vacío', (done) => {
     var titulo = '';
     var descripcion = 'Esto es una prueba';
 
-    request(app)
-      .post('/tareas')
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(400)
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(0);
-          done();
-        }).catch((e) => done(e));
-      });
+  tareasError(done, titulo, descripcion);
   });
 
   it('El título no puede contener más de 255 caracteres', (done) => {
@@ -124,25 +96,33 @@ describe('POST /tarea', () => {
     '1234567890123456789012345678901234567890123456789012345678901234567890';
     var descripcion = 'Esto es una prueba';
 
-    request(app)
-      .post('/tareas')
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(400)
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(0);
-          done();
-        }).catch((e) => done(e));
-      });
+    tareasError(done, titulo, descripcion);
   });
 });
+
+var tareasError = function(done, titulo, descripcion){
+  Usuario.findOne().then((usuario) => {
+    usuario.generarTokenDeAutenticidad().then((token) => {
+      request(app)
+        .post('/tareas')
+        .set('x-auth', token)
+        .send({
+          titulo,
+          descripcion
+        })
+        .expect(400)
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          }
+          Tarea.find().then((tareas) => {
+            expect(tareas.length).toBe(1);
+            done();
+          }).catch((e) => done(e));
+        });
+    })
+  })
+}
 
 describe('ENVIAR /usuario', () => {
 
@@ -302,7 +282,7 @@ describe('Iniciar Sesión', () => {
         if (err) return done (err);
         Usuario.findOne().then((usuario) => {
           expect(usuario.intentos).toBe(5);
-          expect(usuario.tokens.length).toBe(1);
+          expect(usuario.tokens.length).toBe(0);
           done();
         }).catch((e) => done(e));
       });
@@ -322,7 +302,7 @@ describe('Iniciar Sesión', () => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {
           expect(usuario.intentos).toBe(1);
-          expect(usuario.tokens.length).toBe(1);
+          expect(usuario.tokens.length).toBe(0);
           done();
         }).catch((e) => done(e));
       });
@@ -342,7 +322,7 @@ describe('Iniciar Sesión', () => {
       .post('/usuarios/login')
       .send(user)
       .expect(200)
-      .expect(Usuario.findOne())
+      .expect(Errores.correcto)
       .end((err, res) => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {

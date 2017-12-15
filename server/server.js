@@ -75,7 +75,7 @@ app.post('/usuarios/login', (req, res) => {
         // No se que es este user
       }, {new: true}).then((user) => {
         usuario.generarTokenDeAutenticidad().then((token) => {
-          res.header('x-auth', token).send(usuario);
+          res.header('x-auth', token).send(Errores.correcto);
       })});
   }
   }).catch((e) => {
