@@ -125,8 +125,9 @@ var Errores = {
     codigo: 26,
     mensaje: 'Faltan datos en el body'
   },
-  
+
   validarErroresRegistro
+
 }
 
 function validarErroresRegistro(e) {
@@ -186,5 +187,6 @@ function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, mu
     case 'maxlength': errores.push(muyLargo);
   }
 }
+
 
 module.exports = {Errores};
