@@ -1,99 +1,88 @@
 const expect = require('expect');
 const request = require('supertest');
 const {ObjectId} = require('mongodb');
+const jwt = require('jsonwebtoken');
 
 const {Errores} = require('./../modelos/errores');
 const {app} = require('./../server');
 const {Tarea} = require('./../modelos/tarea');
 const {Usuario} = require('./../modelos/usuario');
 
+const idUsuarioUno = new ObjectId();
 
 const usuarios = [{
-  _id: new ObjectId(),
+  _id: idUsuarioUno,
   email: "prueba@gmail.com",
   username: "pruebas",
   password: Usuario.encrypt("12345678"),
   nombre: "Prueba",
   apellido: "Demail",
-  fechaDeNacimiento: "08/09/1997"
+  fechaDeNacimiento: "08/09/1997",
+}];
+
+const tareas = [{
+  _id: new ObjectId(),
+  titulo: 'Prueba',
+  descripcion: 'Esto es una prueba',
+  _creador: idUsuarioUno
 }];
 
 beforeEach((done) => {
-  Tarea.remove({}).then(() => done());
-})
+  Usuario.remove({}).then(() =>
+  Usuario.insertMany(usuarios)).then(() => done());
+});
 
-describe('ENVIAR /tarea', () => {
+beforeEach((done) => {
+  Tarea.remove({}).then(() =>
+  Tarea.insertMany(tareas)).then(() => done());
+});
+
+describe('POST /tarea', () => {
   it('Debería crear una nueva tarea', (done) => {
     var titulo = 'Prueba';
     var descripcion = 'Esto es una prueba';
+    //console.log(usuarios[0].tokens[0].token);
 
-    request(app)
-      .post('/tareas')
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(200)
-      .expect((res) => {
-        expect(res.body.titulo).toBe(titulo)
-      })
-      .end((err, res) => {
-        if (err) {
-          return done(err)
-        }
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .post('/tareas')
+          .set('x-auth', token)
+          .send({
+            titulo,
+            descripcion
+          })
+          .expect(200)
+          .expect((res) => {
+            expect(res.body.titulo).toBe(titulo)
+          })
+          .end((err, res) => {
+            if (err) {
+              return done(err)
+            }
 
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(1);
-          expect(tareas[0].titulo).toBe(titulo);
-          done();
-        }).catch((e) => done(e));
-      });
+            Tarea.find().then((tareas) => {
+              expect(tareas.length).toBe(2);
+              expect(tareas[0].titulo).toBe(titulo);
+              done();
+            }).catch((e) => done(e));
+          });
+      })
+    })
   });
 
   it('El título solo debe contener caracteres Alfanuméricos', (done) => {
     var titulo = 'Otra prueba';
     var descripcion = 'Esto es una prueba';
 
-    request(app)
-      .post('/tareas')
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(400)
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(0);
-          done();
-        }).catch((e) => done(e));
-      });
+    tareasError(done, titulo, descripcion);
   });
 
   it('El título no puede estar vacío', (done) => {
     var titulo = '';
     var descripcion = 'Esto es una prueba';
 
-    request(app)
-      .post('/tareas')
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(400)
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(0);
-          done();
-        }).catch((e) => done(e));
-      });
+  tareasError(done, titulo, descripcion);
   });
 
   it('El título no puede contener más de 255 caracteres', (done) => {
@@ -103,31 +92,33 @@ describe('ENVIAR /tarea', () => {
     '1234567890123456789012345678901234567890123456789012345678901234567890';
     var descripcion = 'Esto es una prueba';
 
-    request(app)
-      .post('/tareas')
-      .send({
-        titulo,
-        descripcion
-      })
-      .expect(400)
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-
-        Tarea.find().then((tareas) => {
-          expect(tareas.length).toBe(0);
-          done();
-        }).catch((e) => done(e));
-      });
+    tareasError(done, titulo, descripcion);
   });
 });
 
-
-beforeEach((done) => {
-  Usuario.remove({}).then(() =>
-  Usuario.insertMany(usuarios)).then(() => done());
-});
+var tareasError = function(done, titulo, descripcion){
+  Usuario.findOne().then((usuario) => {
+    usuario.generarTokenDeAutenticidad().then((token) => {
+      request(app)
+        .post('/tareas')
+        .set('x-auth', token)
+        .send({
+          titulo,
+          descripcion
+        })
+        .expect(400)
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          }
+          Tarea.find().then((tareas) => {
+            expect(tareas.length).toBe(1);
+            done();
+          }).catch((e) => done(e));
+        });
+    })
+  })
+}
 
 describe('ENVIAR /usuario', () => {
 
@@ -152,8 +143,6 @@ describe('ENVIAR /usuario', () => {
       apellido: "Demail",
       fechaDeNacimiento: "08/09/1997"
     };
-    // usuario = new Usuario(user);
-    // usuario.save();
 
     metodoRequestPostUsuario(done, user, Errores.correoExistente, 400)
   });
@@ -380,14 +369,6 @@ describe('POST usuarios/login (Iniciar Sesión)', () => {
   });
 });
 
-
-
-
-
- // beforeEach((done) => {
- //   Usuario.remove({}).then(() =>
- //   Usuario.insertMany(usuarios)).then(() ).then(() => done());
- // });
 
 describe('PATCH de usuarios(desbloquear cuenta)', () => {
   var id = usuarios[0]._id.toHexString();
