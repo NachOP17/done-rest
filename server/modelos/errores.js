@@ -125,7 +125,32 @@ var Errores = {
     codigo: 26,
     mensaje: 'Faltan datos en el body'
   },
-  
+
+  //                    Errores de las tareas
+  // Errores del Titulo
+  tituloVacio: {
+    codigo: 27,
+    mensaje: 'El título no puede estar vacío'
+  },
+  tituloNoValido: {
+    codigo: 28,
+    mensaje: 'Título Inválico. El título debe estar compuesto solo por caracteres alfanuméricos'
+  },
+  tituloMuyLargo: {
+    codigo: 29,
+    mensaje: 'El título no puede contener más de 255 caracteres'
+  }
+
+  // Errores de la descripcion
+  descripcionVacia: {
+    codigo: 30,
+    mensaje: 'La descripción no puede estar vacío'
+  },
+  descripcionMuyLarga: {
+    codigo: 31,
+    mensaje: 'La descripción no puede contener más de 250 caracteres'
+  }
+
   validarErroresRegistro
 }
 
@@ -186,5 +211,7 @@ function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, mu
     case 'maxlength': errores.push(muyLargo);
   }
 }
+
+
 
 module.exports = {Errores};
