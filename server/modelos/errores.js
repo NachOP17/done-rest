@@ -151,7 +151,9 @@ var Errores = {
     mensaje: 'La descripción no puede contener más de 250 caracteres'
   },
 
-  validarErroresRegistro
+  // Funciones
+  validarErroresRegistro,
+  validarErroresDeTareas
 }
 
 function validarErroresRegistro(e) {
@@ -212,6 +214,30 @@ function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, mu
   }
 }
 
+function validarErroresDeTareas(e) {
+  var errores = [];
+  var jsonDelError = JSON.stringify(e.errors);
 
+  if (jsonDelError) {
+    if (validator.contains(jsonDelError, 'titulo')) {
+      validadorDeErroresDeTareas(e.errors.titulo.kind, Errores.tituloVacio, Errores.tituloNoValido, Errores.tituloMuyLargo, errores);
+    }
+
+    if (validator.contains(jsonDelError, 'descripcion')) {
+      validadorDeErroresDeTareas(e.errors.descripcion.kind, Errores.descripcionVacia, null, Errores.descripcionMuyLarga, errores);
+    }
+  }
+  return errores;
+}
+
+function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, errores) {
+  switch(kind) {
+    case 'required': errores.push(noIngresado);
+      break;
+    case 'maxlength': errores.push(muyLargo);
+      break;
+    case 'user defined': errores.push(noValido);
+  }
+}
 
 module.exports = {Errores};

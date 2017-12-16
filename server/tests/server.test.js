@@ -79,15 +79,17 @@ describe('POST /tareas', () => {
   it('El título solo debe contener caracteres Alfanuméricos', (done) => {
     var titulo = 'Otra prueba';
     var descripcion = 'Esto es una prueba';
+    var codigo = 28;
 
-    tareasError(done, titulo, descripcion);
+    tareasError(done, titulo, descripcion, codigo);
   });
 
   it('El título no puede estar vacío', (done) => {
     var titulo = '';
     var descripcion = 'Esto es una prueba';
+    var codigo = 27;
 
-  tareasError(done, titulo, descripcion);
+  tareasError(done, titulo, descripcion, codigo);
   });
 
   it('El título no puede contener más de 255 caracteres', (done) => {
@@ -96,12 +98,13 @@ describe('POST /tareas', () => {
     '1234567890123456789012345678901234567890123456789012345678901234567890' +
     '1234567890123456789012345678901234567890123456789012345678901234567890';
     var descripcion = 'Esto es una prueba';
+    var codigo = 29;
 
-    tareasError(done, titulo, descripcion);
+    tareasError(done, titulo, descripcion, codigo);
   });
 });
 
-var tareasError = function(done, titulo, descripcion){
+var tareasError = function(done, titulo, descripcion, codigo){
   Usuario.findOne().then((usuario) => {
     usuario.generarTokenDeAutenticidad().then((token) => {
       request(app)
@@ -116,6 +119,7 @@ var tareasError = function(done, titulo, descripcion){
           if (err) {
             done(err);
           }
+          expect(res.body[0].codigo).toBe(codigo);
           Tarea.find().then((tareas) => {
             expect(tareas.length).toBe(2);
             done();
@@ -150,7 +154,12 @@ describe('GET /tareas', () => {
       .get('/tareas')
       .set('x-auth', 'hola')
       .expect(401)
-      .end(done);
+      .end((err, res) => {
+        if (err)
+          return done(err);
+        expect(res.body.codigo).toBe(25);
+        done();
+      });
   });
 });
 

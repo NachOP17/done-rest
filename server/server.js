@@ -30,7 +30,7 @@ app.post('/tareas', autenticar, (req, res) => {
   tarea.save().then((doc) => {
     res.send(doc);
   }).catch((e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.validarErroresDeTareas(e));
   });
 });
 
@@ -40,7 +40,7 @@ app.get('/tareas', autenticar, (req, res) =>{
   }).then((tarea) => {
     res.send({tarea});
   }, (e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.validarErroresDeTareas(e));
   })
 });
 
