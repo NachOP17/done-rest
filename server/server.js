@@ -109,26 +109,20 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var body= _.pick(req.body, camposPermitidos);
   var user = req.usuario;
   try{
-    if (user.password == Usuario.encrypt(body.passwordViejo)){
-      if (body.password.length < 8)
-        res.status(400).send(Errores.pwdMuyCorta);
-      else if (body.password.length > 50)
-        res.status(400).send(Errores.pwdMuyLarga);
-      else{
+     if (user.password == Usuario.encrypt(body.passwordViejo)){
+        Errores.validarErroresCambiaPass(body);
         Usuario.findByIdAndUpdate(user.id, {
           $set: {
             password: Usuario.encrypt(body.password)
           }
         }, {new:true}).then((usuario) => {
           res.status(200).send(Errores.correcto);
-        }).catch((e) => {res.status(400).send(e)});
-      }
+        }).catch((e) => res.status(400).send(e));
     }
     else
       res.status(404).send(Errores.passwordIncorrecta);
   }catch(e){
-    res.status(400).send(Errores.faltanDatos)
-    //console.log(e);
+    res.status(400).send(e);
   }
 });
 
