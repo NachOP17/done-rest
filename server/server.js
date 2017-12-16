@@ -34,8 +34,10 @@ app.post('/tareas', autenticar, (req, res) => {
   });
 });
 
-app.get('/tareas', (req, res) =>{
-  Tarea.find().then((tarea) => {
+app.get('/tareas', autenticar, (req, res) =>{
+  Tarea.find({
+    _creador: req.usuario._id
+  }).then((tarea) => {
     res.send({tarea});
   }, (e) => {
     res.status(400).send(e);
