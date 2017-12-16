@@ -139,7 +139,7 @@ var Errores = {
   tituloMuyLargo: {
     codigo: 29,
     mensaje: 'El título no puede contener más de 255 caracteres'
-  }
+  },
 
   // Errores de la descripcion
   descripcionVacia: {
@@ -149,7 +149,7 @@ var Errores = {
   descripcionMuyLarga: {
     codigo: 31,
     mensaje: 'La descripción no puede contener más de 250 caracteres'
-  }
+  },
 
   validarErroresRegistro
 }
