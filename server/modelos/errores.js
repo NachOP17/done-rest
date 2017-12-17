@@ -126,10 +126,36 @@ var Errores = {
     mensaje: 'Faltan datos en el body'
   },
 
+
+  //                    Errores de las tareas
+  // Errores del Titulo
+  tituloVacio: {
+    codigo: 27,
+    mensaje: 'El título no puede estar vacío'
+  },
+  tituloNoValido: {
+    codigo: 28,
+    mensaje: 'Título Inválico. El título debe estar compuesto solo por caracteres alfanuméricos'
+  },
+  tituloMuyLargo: {
+    codigo: 29,
+    mensaje: 'El título no puede contener más de 255 caracteres'
+  },
+
+  // Errores de la descripcion
+  descripcionVacia: {
+    codigo: 30,
+    mensaje: 'La descripción no puede estar vacío'
+  },
+  descripcionMuyLarga: {
+    codigo: 31,
+    mensaje: 'La descripción no puede contener más de 250 caracteres'
+  },
+
+  // Funciones
   validarErroresRegistro,
-
+  validarErroresDeTareas,
   validarErroresCambiaPass
-
 }
 
 function validarErroresRegistro(e) {
@@ -197,6 +223,32 @@ function validarErroresCambiaPass(body){
     throw(Errores.pwdMuyLarga);
   else if((body.password == undefined) || (body.passwordViejo == undefined))
     throw(Errores.faltanDatos);
+}
+
+function validarErroresDeTareas(e) {
+  var errores = [];
+  var jsonDelError = JSON.stringify(e.errors);
+
+  if (jsonDelError) {
+    if (validator.contains(jsonDelError, 'titulo')) {
+      validadorDeErroresDeTareas(e.errors.titulo.kind, Errores.tituloVacio, Errores.tituloNoValido, Errores.tituloMuyLargo, errores);
+    }
+
+    if (validator.contains(jsonDelError, 'descripcion')) {
+      validadorDeErroresDeTareas(e.errors.descripcion.kind, Errores.descripcionVacia, null, Errores.descripcionMuyLarga, errores);
+    }
+  }
+  return errores;
+}
+
+function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, errores) {
+  switch(kind) {
+    case 'required': errores.push(noIngresado);
+      break;
+    case 'maxlength': errores.push(muyLargo);
+      break;
+    case 'user defined': errores.push(noValido);
+  }
 }
 
 module.exports = {Errores};

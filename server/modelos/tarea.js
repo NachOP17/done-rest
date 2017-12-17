@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-var Tarea = mongoose.model('Todo', {
+var Tarea = mongoose.model('Tarea', {
   titulo: {
     type: String,
     required: true,
     minlength: 1,
     maxlength: 255,
+    trim: true,
     validate: {
       isAsync: false,
       validator: validator.isAlphanumeric
@@ -16,7 +17,8 @@ var Tarea = mongoose.model('Todo', {
   descripcion: {
     type: String,
     maxlength: 250,
-    required: true
+    required: true,
+    trim: true
   },
 
   completado: {
