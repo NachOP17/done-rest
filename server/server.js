@@ -167,6 +167,7 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
     }
     else
       res.status(404).send(Errores.passwordIncorrecta);
+      logger.error(Errores.passwordIncorrecta);
   }catch(e){
     res.status(400).send(e);
     logger.error("Error: ", e);
