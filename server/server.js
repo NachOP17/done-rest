@@ -71,9 +71,7 @@ app.post('/usuarios', (req, res) => {
   var error = [];
 
   usuario.save().then(() => {
-    return usuario.generarTokenDeAutenticidad();
-  }).then((token) => {
-    res.header('x-auth', token).send(Errores.correcto);
+    res.status(200).send(Errores.correcto);
     logger.info(Errores.correcto);
   }).catch((e) => {
     res.status(400).send(Errores.validarErroresRegistro(e));
