@@ -11,10 +11,35 @@ var {Usuario} = require('./modelos/usuario');
 var {autenticar} = require('./middleware/autenticar');
 var {Errores} = require('./modelos/errores');
 var {Mailer} = require('./mailer');
+var winston = require('winston');
+
 
 var app = express();
 
 var port = process.env.PORT;
+
+const tsFormat = () => (new Date()).toLocaleTimeString();
+
+
+const logger = new (winston.Logger)({
+  transports: [
+    // colorize the output to the console
+    new (winston.transports.Console)({
+      timestamp: tsFormat,
+      colorize: true,
+      //level: 'info'
+    }),
+    new (require('winston-daily-rotate-file'))({
+      filename: `_server.log`,
+      timestamp: tsFormat,
+      datePattern: 'yyyy-MM-dd',
+      prepend: true,
+      handleExceptions: true,
+      humanReadableUnhandledException: true
+      //level: env === 'development' ? 'verbose' : 'info'
+    })
+  ]
+});
 
 
 app.use(bodyParser.json());
@@ -34,19 +59,10 @@ app.post('/tareas', autenticar, (req, res) => {
   });
 });
 
-app.get('/tareas', autenticar, (req, res) =>{
-  Tarea.find({
-    _creador: req.usuario._id
-  }).then((tarea) => {
-    res.send({tarea});
-  }, (e) => {
-    res.status(400).send(Errores.validarErroresDeTareas(e));
-  })
-});
-
 // POST guarda el usuario en la base de datos
 // Crear Usuario
 app.post('/usuarios', (req, res) => {
+  logger.info('POST /usuarios');
   var camposPermitidos = ['email', 'password', 'username', 'nombre', 'apellido', 'fechaDeNacimiento'];
   // camposPermitidos es utilizada para incrementar la seguridad de la aplicación
   // de esta manera los datos como token o _id no son visibles en la parte de cliente.
@@ -56,8 +72,10 @@ app.post('/usuarios', (req, res) => {
 
   usuario.save().then(() => {
     res.status(200).send(Errores.correcto);
+    logger.info(Errores.correcto);
   }).catch((e) => {
     res.status(400).send(Errores.validarErroresRegistro(e));
+    logger.error(Errores.validarErroresRegistro(e));
   });
 });
 
@@ -65,12 +83,14 @@ app.post('/usuarios', (req, res) => {
 //GET busca un usuario
 // Busca los datos del usuario
 app.get('/usuarios/me', autenticar, (req, res) => {
+  logger.info('GET /usuarios/me');
   res.send(req.usuario);
 });
 
 
 // Iniciar sesión
 app.post('/usuarios/login', (req, res) => {
+  logger.info('POST /usuarios/login');
   var camposPermitidos = ['username', 'password'];
   var body = _.pick(req.body, camposPermitidos);
   Usuario.findByCredentials(body.username, body.password).then((usuario) => {
@@ -81,11 +101,13 @@ app.post('/usuarios/login', (req, res) => {
     }, {new: true}).then((user) => {
       usuario.generarTokenDeAutenticidad().then((token) => {
         res.header('x-auth', token).send(Errores.correcto);
+        logger.info(Errores.correcto);
       })
     });
   }).catch((e) => {
     switch(e.code){
       case 1: res.status(404).send(Errores.usuarioIncorrecto);
+              logger.error(Errores.usuarioIncorrecto);
               break;
       case 2: Usuario.findByIdAndUpdate(e.user.id, {
         $inc: {
@@ -98,11 +120,14 @@ app.post('/usuarios/login', (req, res) => {
             Mailer.enviarCorreo(usuario.email, e.user.id);
           }
           res.status(401).send(Errores.usuarioBloqueado);
+          logger.error(Errores.usuarioBloqueado);
         } else
           res.status(401).send(Errores.passwordIncorrecta);
+          logger.error(Errores.passwordIncorrecta);
       })
       break;
-      default: res.status(400).send(Errores.validarErroresRegistro);
+      default: res.status(400).send(Errores.validarErroresRegistro(e));
+               logger.error(Errores.validarErroresRegistro(e));
               break;
 
     }
@@ -117,25 +142,25 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
   var user = req.usuario;
-  if ((body.password == undefined) || (body.passwordViejo == undefined))
-      res.status(400).send(Errores.faltanDatos);
-  else if (body.password.length < 8)
-    res.status(400).send(Errores.pwdMuyCorta);
-  else if (body.password.length > 50)
-    res.status(400).send(Errores.pwdMuyLarga);
-  else if (user.password == Usuario.encrypt(body.passwordViejo)){
-      Usuario.findByIdAndUpdate(user.id, {
-        $set: {
-          password: Usuario.encrypt(body.password)
-        }
-      }, {new:true}).then((usuario) => {
-        res.status(200).send(Errores.correcto);
-      }).catch((e) => res.status(400).send(Errores.validarErroresRegistro));
+  logger.info('PATCH /usuarios/me/pass');
+  try{
+     if (user.password == Usuario.encrypt(body.passwordViejo)){
+        Errores.validarErroresCambiaPass(body);
+        Usuario.findByIdAndUpdate(user.id, {
+          $set: {
+            password: Usuario.encrypt(body.password)
+          }
+        }, {new:true}).then((usuario) => {
+          res.status(200).send(Errores.correcto);
+          logger.info(Errores.correcto)
+        }).catch((e) => res.status(400).send(e));
     }
-    else if(user.password != Usuario.encrypt(body.passwordViejo))
-      res.status(404).send(Errores.passwordIncorrecta);
     else
-      res.status(400).send();
+      res.status(404).send(Errores.passwordIncorrecta);
+  }catch(e){
+    res.status(400).send(e);
+    logger.error("Error: ", e);
+  }
 });
 
 //desbloquear usuario por id
@@ -143,6 +168,7 @@ app.patch('/usuarios/me/:id', (req,res) => {
   var id = req.params.id;
   var camposPermitidos = ['password'];
   var body = _.pick(req.body, camposPermitidos);
+  logger.log(`PATCH /usuarios/me/${id}`);
   if (!ObjectId.isValid(id)) return res.status(404).send();
   Usuario.findByIdAndUpdate(id, {
     $set:{
@@ -150,18 +176,26 @@ app.patch('/usuarios/me/:id', (req,res) => {
       password: Usuario.encrypt(body.password)
     }
   }, {new: true}).then((usuario) => {
-    if (!usuario) res.status(404).send();
-    else res.status(200).send(Errores.correcto);
+    if (!usuario) {
+      res.status(404).send(Errores.usuarioIncorrecto);
+      logger.error(Errores.usuarioIncorrecto);
+    }
+    else {
+      res.status(200).send(Errores.correcto);
+      logger.info(Errores.correcto);
+    }
   }).catch((e) => {
-    res.status(400).send(Errores.validarErroresRegistro);
+    res.status(400).send(Errores.validarErroresRegistro(e));
+    logger.error(Errores.validarErroresRegistro(e));
   });
 });
 
 // Cerrar Sesión
 app.delete('/usuarios/me/token', autenticar, (req, res) => {
-
+  logger.log('DELETE /usuarios/me/token');
   req.usuario.eliminarToken(req.token).then(() => {
-    res.status(200).send();
+    res.status(200).send(Errores.correcto);
+    logger.info(Errores.correcto);
   }, () => {
     res.status(400).send();
   });
