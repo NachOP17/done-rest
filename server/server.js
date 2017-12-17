@@ -153,6 +153,7 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var body= _.pick(req.body, camposPermitidos);
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
+  logger.info('Body: \n',body);
   try{
      Errores.validarErroresCambiaPass(body);
      if (user.password == Usuario.encrypt(body.passwordViejo)){
