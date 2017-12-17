@@ -126,6 +126,7 @@ var Errores = {
     mensaje: 'Faltan datos en el body'
   },
 
+
   //                    Errores de las tareas
   // Errores del Titulo
   tituloVacio: {
@@ -153,7 +154,8 @@ var Errores = {
 
   // Funciones
   validarErroresRegistro,
-  validarErroresDeTareas
+  validarErroresDeTareas,
+  validarErroresCambiaPass
 }
 
 function validarErroresRegistro(e) {
@@ -212,6 +214,15 @@ function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, mu
       break;
     case 'maxlength': errores.push(muyLargo);
   }
+}
+
+function validarErroresCambiaPass(body){
+  if (body.password.length < 8)
+    throw(Errores.pwdMuyCorta)
+  else if (body.password.length > 50)
+    throw(Errores.pwdMuyLarga);
+  else if((body.password == undefined) || (body.passwordViejo == undefined))
+    throw(Errores.faltanDatos);
 }
 
 function validarErroresDeTareas(e) {
