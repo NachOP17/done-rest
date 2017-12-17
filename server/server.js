@@ -27,8 +27,8 @@ app.post('/tareas', autenticar, (req, res) => {
     _creador: req.usuario.id
   });
 
-  tarea.save().then((doc) => {
-    res.send(doc);
+  tarea.save().then(() => {
+    res.send(Errores.correcto);
   }).catch((e) => {
     res.status(400).send(Errores.validarErroresDeTareas(e));
   });
@@ -55,9 +55,7 @@ app.post('/usuarios', (req, res) => {
   var error = [];
 
   usuario.save().then(() => {
-    return usuario.generarTokenDeAutenticidad();
-  }).then((token) => {
-    res.header('x-auth', token).send(Errores.correcto);
+    res.status(200).send(Errores.correcto);
   }).catch((e) => {
     res.status(400).send(Errores.validarErroresRegistro(e));
   });
