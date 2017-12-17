@@ -249,5 +249,6 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
       break;
     case 'user defined': errores.push(noValido);
   }
+}
 
 module.exports = {Errores};
