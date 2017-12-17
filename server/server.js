@@ -27,13 +27,12 @@ app.post('/tareas', autenticar, (req, res) => {
     _creador: req.usuario.id
   });
 
-  tarea.save().then((doc) => {
-    res.send(doc);
+  tarea.save().then(() => {
+    res.send(Errores.correcto);
   }).catch((e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.validarErroresDeTareas(e));
   });
 });
-
 
 // POST guarda el usuario en la base de datos
 // Crear Usuario
