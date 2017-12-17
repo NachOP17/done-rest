@@ -40,7 +40,7 @@ var Tarea = mongoose.model('Tarea', {
 
   _creador: {
     type: mongoose.Schema.Types.ObjectId,
-    required: false
+    required: true
   },
 
   _categoria: {
