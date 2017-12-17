@@ -154,8 +154,8 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
   try{
+     Errores.validarErroresCambiaPass(body);
      if (user.password == Usuario.encrypt(body.passwordViejo)){
-        Errores.validarErroresCambiaPass(body);
         Usuario.findByIdAndUpdate(user.id, {
           $set: {
             password: Usuario.encrypt(body.password)
