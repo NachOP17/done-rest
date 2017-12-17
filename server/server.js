@@ -19,19 +19,20 @@ var port = process.env.PORT;
 
 app.use(bodyParser.json());
 
-app.post('/tareas', (req, res) => {
+app.post('/tareas', autenticar, (req, res) => {
   var tarea = new Tarea({
     titulo: req.body.titulo,
-    descripcion: req.body.descripcion
+    descripcion: req.body.descripcion,
+    fechaParaSerCompletada: req.body.fechaParaSerCompletada,
+    _creador: req.usuario.id
   });
 
-  tarea.save().then((doc) => {
-    res.send(doc)
-  }, (e) => {
-    res.status(400).send(e);
+  tarea.save().then(() => {
+    res.send(Errores.correcto);
+  }).catch((e) => {
+    res.status(400).send(Errores.validarErroresDeTareas(e));
   });
 });
-
 
 // POST guarda el usuario en la base de datos
 // Crear Usuario
