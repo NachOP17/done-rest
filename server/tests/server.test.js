@@ -25,6 +25,11 @@ const tareas = [{
   titulo: 'Prueba',
   descripcion: 'Esto es una prueba',
   _creador: idUsuarioUno
+}, {
+  _id: new ObjectId(),
+  titulo: 'Prueba2',
+  descripcion: 'Esta es la segunda prueba',
+  _creador: idUsuarioUno
 }];
 
 beforeEach((done) => {
@@ -37,7 +42,7 @@ beforeEach((done) => {
   Tarea.insertMany(tareas)).then(() => done());
 });
 
-describe('POST /tarea', () => {
+describe('POST /tareas', () => {
   it('Debería crear una nueva tarea', (done) => {
     var titulo = 'Prueba';
     var descripcion = 'Esto es una prueba';
@@ -62,7 +67,7 @@ describe('POST /tarea', () => {
             }
 
             Tarea.find().then((tareas) => {
-              expect(tareas.length).toBe(2);
+              expect(tareas.length).toBe(3);
               expect(tareas[0].titulo).toBe(titulo);
               done();
             }).catch((e) => done(e));
@@ -74,15 +79,17 @@ describe('POST /tarea', () => {
   it('El título solo debe contener caracteres Alfanuméricos', (done) => {
     var titulo = 'Otra prueba';
     var descripcion = 'Esto es una prueba';
+    var codigo = 28;
 
-    tareasError(done, titulo, descripcion);
+    tareasError(done, titulo, descripcion, codigo);
   });
 
   it('El título no puede estar vacío', (done) => {
     var titulo = '';
     var descripcion = 'Esto es una prueba';
+    var codigo = 27;
 
-  tareasError(done, titulo, descripcion);
+  tareasError(done, titulo, descripcion, codigo);
   });
 
   it('El título no puede contener más de 255 caracteres', (done) => {
@@ -91,12 +98,13 @@ describe('POST /tarea', () => {
     '1234567890123456789012345678901234567890123456789012345678901234567890' +
     '1234567890123456789012345678901234567890123456789012345678901234567890';
     var descripcion = 'Esto es una prueba';
+    var codigo = 29;
 
-    tareasError(done, titulo, descripcion);
+    tareasError(done, titulo, descripcion, codigo);
   });
 });
 
-var tareasError = function(done, titulo, descripcion){
+var tareasError = function(done, titulo, descripcion, codigo){
   Usuario.findOne().then((usuario) => {
     usuario.generarTokenDeAutenticidad().then((token) => {
       request(app)
@@ -111,14 +119,49 @@ var tareasError = function(done, titulo, descripcion){
           if (err) {
             done(err);
           }
+          expect(res.body[0].codigo).toBe(codigo);
           Tarea.find().then((tareas) => {
-            expect(tareas.length).toBe(1);
+            expect(tareas.length).toBe(2);
             done();
           }).catch((e) => done(e));
         });
     })
   })
 }
+
+describe('GET /tareas', () => {
+  it('Debería buscar todas las tareas de un usuario', (done) => {
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .get('/tareas')
+          .set('x-auth', token)
+          .expect(200)
+          .end((err, res) => {
+            if (err)
+              return done(err)
+            Tarea.find().then((tareas) => {
+              expect(tareas.length).toBe(2);
+              done();
+            }).catch((e) => done(e));
+          });
+      });
+    });
+  });
+
+  it('No debería devolver las tareas si un usuario no está autorizado', (done) => {
+    request(app)
+      .get('/tareas')
+      .set('x-auth', 'hola')
+      .expect(401)
+      .end((err, res) => {
+        if (err)
+          return done(err);
+        expect(res.body.codigo).toBe(25);
+        done();
+      });
+  });
+});
 
 describe('ENVIAR /usuario', () => {
 
@@ -217,7 +260,6 @@ describe('ENVIAR /usuario', () => {
 
   it('El usuario no es mayor de edad por el año', (done) => {
     var year = new Date().getFullYear() - 17;
-    console.log(year);
     var user = {
       email: 'prueba1@example.com',
       username: 'prueba1',
@@ -231,7 +273,6 @@ describe('ENVIAR /usuario', () => {
 
   it('El usuario no es mayor de edad por el mes', (done) => {
     var mes = new Date().getMonth();
-    console.log(mes);
     var user = {
       email: 'prueba1@example.com',
       username: 'prueba1',
@@ -368,6 +409,7 @@ describe('POST usuarios/login (Iniciar Sesión)', () => {
       });
   });
 });
+
 
 
 describe('PATCH de usuarios(desbloquear cuenta)', () => {

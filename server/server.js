@@ -34,6 +34,15 @@ app.post('/tareas', autenticar, (req, res) => {
   });
 });
 
+app.get('/tareas', autenticar, (req, res) =>{
+  Tarea.find({
+    _creador: req.usuario._id
+  }).then((tarea) => {
+    res.send({tarea});
+  }, (e) => {
+    res.status(400).send(Errores.validarErroresDeTareas(e));
+  })
+});
 
 // POST guarda el usuario en la base de datos
 // Crear Usuario
