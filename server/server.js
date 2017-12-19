@@ -59,6 +59,16 @@ app.post('/tareas', autenticar, (req, res) => {
   });
 });
 
+app.get('/tareas', autenticar, (req, res) =>{
+  Tarea.find({
+    _creador: req.usuario._id
+  }).then((tarea) => {
+    res.send({tarea});
+  }, (e) => {
+    res.status(400).send(e);
+  })
+});
+
 // POST guarda el usuario en la base de datos
 // Crear Usuario
 app.post('/usuarios', (req, res) => {
@@ -144,8 +154,8 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
   try{
+     Errores.validarErroresCambiaPass(body);
      if (user.password == Usuario.encrypt(body.passwordViejo)){
-        Errores.validarErroresCambiaPass(body);
         Usuario.findByIdAndUpdate(user.id, {
           $set: {
             password: Usuario.encrypt(body.password)
@@ -157,6 +167,7 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
     }
     else
       res.status(404).send(Errores.passwordIncorrecta);
+      logger.error(Errores.passwordIncorrecta);
   }catch(e){
     res.status(400).send(e);
     logger.error("Error: ", e);

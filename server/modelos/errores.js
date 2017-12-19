@@ -217,12 +217,12 @@ function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, mu
 }
 
 function validarErroresCambiaPass(body){
+  if((body.password == undefined) || (body.passwordViejo == undefined))
+    throw(Errores.faltanDatos);
   if (body.password.length < 8)
     throw(Errores.pwdMuyCorta)
   else if (body.password.length > 50)
     throw(Errores.pwdMuyLarga);
-  else if((body.password == undefined) || (body.passwordViejo == undefined))
-    throw(Errores.faltanDatos);
 }
 
 function validarErroresDeTareas(e) {
