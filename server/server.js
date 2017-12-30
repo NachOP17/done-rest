@@ -69,15 +69,17 @@ app.get('/tareas', autenticar, (req, res) =>{
   })
 });
 
-app.patch('/tareas/completado', autenticar, (req, res) => {
+app.patch('/tareas/completado/:id', autenticar, (req, res) => {
   Tarea.findOneAndUpdate({
-    _creador: req.usuario._id
+    _creador: req.usuario._id,
+    _id: req.params.id
   }, {
     $set:{
       completado: true
     }
-  }).then((tarea) => {
-    res.send(tarea)
+  }, {new: true}).then((tarea) => {
+    console.log(tarea);
+    res.status(200).send(tarea);
   }), (e) => {
     res.status(400).send(e)
   }
