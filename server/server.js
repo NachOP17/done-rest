@@ -69,6 +69,19 @@ app.get('/tareas', autenticar, (req, res) =>{
   })
 });
 
+app.patch('/tareas/completado', autenticar, (req, res) => {
+  Tarea.findOneAndUpdate({
+    _creador: req.usuario._id
+  }, {
+    $set:{
+      completado: true
+    }
+  }).then((tarea) => {
+    res.send(tarea)
+  }), (e) => {
+    res.status(400).send(e)
+  }
+});
 // POST guarda el usuario en la base de datos
 // Crear Usuario
 app.post('/usuarios', (req, res) => {
