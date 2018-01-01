@@ -110,7 +110,12 @@ app.post('/usuarios/login', (req, res) => {
       }
     }, {new: true}).then((user) => {
       usuario.generarTokenDeAutenticidad().then((token) => {
-        res.header('x-auth', token).send(Errores.correcto);
+        var enviar = {
+          codigo : Errores.correcto.codigo,
+          mensaje : Errores.correcto.mensaje,
+          token : token
+        }
+        res.header('x-auth', token).send(enviar);
         logger.info(Errores.correcto);
       })
     });
