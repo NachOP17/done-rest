@@ -1,4 +1,5 @@
 const validator = require('validator');
+const {ObjectId} = require('mongodb');
 
 var Errores = {
   correcto: {
@@ -152,10 +153,21 @@ var Errores = {
     mensaje: 'La descripción no puede contener más de 250 caracteres'
   },
 
+  //Errores del id
+  idInvalido: {
+    codigo: 32,
+    mensaje: 'EL id ingresado no es válido'
+  },
+  idNoEncontrado:{
+    codigo: 33,
+    mensaje: 'El id ingresado no existe en este usuario'
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
-  validarErroresCambiaPass
+  validarErroresCambiaPass,
+  validarErroresUpdateTarea
 }
 
 function validarErroresRegistro(e) {
@@ -249,6 +261,13 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
       break;
     case 'user defined': errores.push(noValido);
   }
+}
+
+function validarErroresUpdateTarea(body, id){
+  if(!ObjectId.isValid(id))
+    throw(Errores.idInvalido);
+  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
+    throw(Errores.faltanDatos);
 }
 
 module.exports = {Errores};

@@ -69,6 +69,27 @@ app.get('/tareas', autenticar, (req, res) =>{
   })
 });
 
+app.patch('/tareas/:id', autenticar, (req, res) => {
+  var id = req.params.id
+  var camposPermitidos = ['titulo', 'descripcion', 'fechaParaSerCompletada', 'completado'];
+  var body = _.pick(req.body, camposPermitidos);
+  try{
+    Errores.validarErroresUpdateTarea(body, id);
+    Tarea.findOneAndUpdate({
+      _creador: req.usuario._id,
+      _id: id
+    }, {
+      $set: body
+    }, {new: true}).then((tarea) => {
+      if (tarea == null)  return res.status(404).send(Errores.idNoEncontrado)
+      res.status(200).send(tarea);
+    }), (e) => {
+      res.status(400).send(e)
+    }
+  } catch(e){
+    res.status(400).send(e);
+  }
+});
 // POST guarda el usuario en la base de datos
 // Crear Usuario
 app.post('/usuarios', (req, res) => {
@@ -158,6 +179,7 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var body= _.pick(req.body, camposPermitidos);
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
+  logger.info('Body: \n',body);
   try{
      Errores.validarErroresCambiaPass(body);
      if (user.password == Usuario.encrypt(body.passwordViejo)){
