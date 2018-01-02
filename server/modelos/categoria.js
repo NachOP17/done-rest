@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var Categoria = mongoose.model('Categoria', {
+var ModeloCategoria = new mongoose.Schema({
   categoria: {
     type: String,
     required: true,
@@ -13,5 +13,14 @@ var Categoria = mongoose.model('Categoria', {
     default: true
   }
 });
+
+ModeloCategoria.statics.findByCategory = function(categoria) {
+  var Categoria = this;
+  var categoryToBeFound = {categoria};
+
+  return Categoria.findOne(categoryToBeFound);
+};
+
+var Categoria = mongoose.model('Categoria', ModeloCategoria);
 
 module.exports = {Categoria};

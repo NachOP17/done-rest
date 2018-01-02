@@ -46,11 +46,25 @@ const logger = new (winston.Logger)({
 app.use(bodyParser.json());
 
 app.post('/tareas', autenticar, (req, res) => {
+  var idCategoria;
+  if (req.body.categoria) {
+    console.log(req.body.categoria);
+    Categoria.findByCategory(req.body.categoria).then((categoria) => {
+      console.log("Categoria: " + categoria);
+      idCategoria = categoria.id;
+    }).catch((e) => {
+      res.status(400).send("Error buscando la categoría");
+    })
+  }
+
+  console.log(idCategoria);
+
   var tarea = new Tarea({
     titulo: req.body.titulo,
     descripcion: req.body.descripcion,
     fechaParaSerCompletada: req.body.fechaParaSerCompletada,
-    _creador: req.usuario.id
+    _creador: req.usuario.id,
+    _categoria: idCategoria
   });
 
   tarea.save().then(() => {
@@ -108,6 +122,8 @@ app.post('/categorias', (req, res) => {
     logger.error("Error al crear la categoría");
   })
 });
+
+
 
 
 // POST guarda el usuario en la base de datos
