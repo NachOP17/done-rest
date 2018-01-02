@@ -8,6 +8,7 @@ const {ObjectId} = require('mongodb');
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
+var {Categoria} = require('./modelos/categoria');
 var {autenticar} = require('./middleware/autenticar');
 var {Errores} = require('./modelos/errores');
 var {Mailer} = require('./mailer');
@@ -90,6 +91,25 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
     res.status(400).send(e);
   }
 });
+
+
+app.post('/categorias', (req, res) => {
+  logger.info('POST /categorias');
+  var camposPermitidos = ['categoria', 'activo'];
+  var body = _.pick(req.body, camposPermitidos);
+  var categoria = new Categoria(body);
+  var error = [];
+
+  categoria.save().then(() => {
+    res.status(200).send(Errores.correcto);
+    logger.info(Errores.correcto);
+  }).catch((e) => {
+    res.status(400).send("Error al crear la categoría");
+    logger.error("Error al crear la categoría");
+  })
+});
+
+
 // POST guarda el usuario en la base de datos
 // Crear Usuario
 app.post('/usuarios', (req, res) => {

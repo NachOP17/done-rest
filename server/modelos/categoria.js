@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 var Categoria = mongoose.model('Categoria', {
   categoria: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
 
   activo: {
     type: Boolean,
     required: true,
-    default: false
+    default: true
   }
 });
 
