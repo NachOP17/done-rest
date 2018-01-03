@@ -65,6 +65,11 @@ var ModeloDeUsuario = new mongoose.Schema({
       isAsync: false,
       validator: esMayorDeEdad,
       message: 'No es mayor de edad'
+    },
+    validate: {
+      isAsync:  false,
+      validator: isValidDate,
+      type: "isNotValidDate"
     }
   },
 
@@ -131,6 +136,11 @@ function esMayorDeEdad(v) {
 function isAlphanumeric(v) {
   var regex = /^[-@.$*#&+_\w]*$/;
   return regex.test(v);
+}
+
+function isValidDate(v) {
+  var year = v.getFullYear();
+  return year > 1910;
 }
 
 ModeloDeUsuario.methods.toJSON = function() {
