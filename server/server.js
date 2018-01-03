@@ -46,32 +46,39 @@ const logger = new (winston.Logger)({
 app.use(bodyParser.json());
 
 app.post('/tareas', autenticar, (req, res) => {
-  var idCategoria;
   if (req.body.categoria) {
     console.log(req.body.categoria);
     Categoria.findByCategory(req.body.categoria).then((categoria) => {
-      console.log("Categoria: " + categoria);
-      idCategoria = categoria.id;
+      var tarea = new Tarea({
+        titulo: req.body.titulo,
+        descripcion: req.body.descripcion,
+        fechaParaSerCompletada: req.body.fechaParaSerCompletada,
+        _creador: req.usuario.id,
+        _categoria: categoria.id
+      });
+
+      tarea.save().then(() => {
+        res.send(Errores.correcto);
+      }).catch((e) => {
+        res.status(400).send(Errores.validarErroresDeTareas(e));
+      });
     }).catch((e) => {
       res.status(400).send("Error buscando la categoría");
     })
+  } else {
+    var tarea = new Tarea({
+      titulo: req.body.titulo,
+      descripcion: req.body.descripcion,
+      fechaParaSerCompletada: req.body.fechaParaSerCompletada,
+      _creador: req.usuario.id,
+    });
+
+    tarea.save().then(() => {
+      res.send(Errores.correcto);
+    }).catch((e) => {
+      res.status(400).send(Errores.validarErroresDeTareas(e));
+    });
   }
-
-  console.log(idCategoria);
-
-  var tarea = new Tarea({
-    titulo: req.body.titulo,
-    descripcion: req.body.descripcion,
-    fechaParaSerCompletada: req.body.fechaParaSerCompletada,
-    _creador: req.usuario.id,
-    _categoria: idCategoria
-  });
-
-  tarea.save().then(() => {
-    res.send(Errores.correcto);
-  }).catch((e) => {
-    res.status(400).send(Errores.validarErroresDeTareas(e));
-  });
 });
 
 app.get('/tareas', autenticar, (req, res) =>{
