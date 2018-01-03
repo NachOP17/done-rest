@@ -114,6 +114,10 @@ var Errores = {
     codigo: 24,
     mensaje: 'Para crearte una cuenta debes ser mayor de edad'
   },
+  noEsDate: {
+    codigo: 36,
+    mensaje: 'Fecha no válida. La fecha no puede contener letras'
+  },
 
   //Errores del token
   tokenInvalido: {
@@ -163,6 +167,16 @@ var Errores = {
     mensaje: 'El id ingresado no existe en este usuario'
   },
 
+  // Errores de la categoría
+  categoriaNoExiste: {
+    codigo: 34,
+    mensaje: "La categoría ingresada no existe"
+  },
+  noHayTareas: {
+    codigo: 35,
+    mensaje: "No hay tareas en esta categoría"
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
@@ -210,7 +224,7 @@ function validarErroresRegistro(e) {
 
     if (validator.contains(jsonDelError, 'fechaDeNacimiento')) {
       validadorDeErroresDelRegistro(e.errors.fechaDeNacimiento.kind, Errores.fechaDeNacimientoNoIngresada,
-        Errores.noEsMayorDeEdad, null, null, errores);
+        Errores.noEsMayorDeEdad, Errores.noEsDate, null, errores);
     }
   }
   return errores;
@@ -225,6 +239,8 @@ function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, mu
     case 'minlength': errores.push(muyCorto);
       break;
     case 'maxlength': errores.push(muyLargo);
+      break;
+    case 'Date': errores.push(muyCorto);
   }
 }
 
@@ -249,6 +265,10 @@ function validarErroresDeTareas(e) {
     if (validator.contains(jsonDelError, 'descripcion')) {
       validadorDeErroresDeTareas(e.errors.descripcion.kind, Errores.descripcionVacia, null, Errores.descripcionMuyLarga, errores);
     }
+
+    if (validator.contains(jsonDelError, 'fechaParaSerCompletada')) {
+      validadorDeErroresDeTareas(e.errors.fechaParaSerCompletada.kind, null, Errores.noEsDate, null, errores);
+    }
   }
   return errores;
 }
@@ -260,6 +280,8 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
     case 'maxlength': errores.push(muyLargo);
       break;
     case 'user defined': errores.push(noValido);
+      break;
+    case 'Date': errores.push(noValido);
   }
 }
 
