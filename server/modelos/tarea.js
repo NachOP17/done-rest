@@ -10,8 +10,9 @@ var Tarea = mongoose.model('Tarea', {
     trim: true,
     validate: {
       isAsync: false,
-      validator: validator.isAlphanumeric
-    }
+      validator: isAlphanumeric
+    },
+
   },
 
   descripcion: {
@@ -48,5 +49,10 @@ var Tarea = mongoose.model('Tarea', {
     required: false
   }
 });
+
+function isAlphanumeric(v) {
+  var regex = /^[\w\s]+$/;
+  return regex.test(v);
+}
 
 module.exports = {Tarea};

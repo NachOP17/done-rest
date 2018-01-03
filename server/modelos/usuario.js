@@ -40,7 +40,7 @@ var ModeloDeUsuario = new mongoose.Schema({
     required: true,
     validate: {
       isAsync: false,
-      validator: validator.isAlphanumeric,
+      validator: isAlphanumeric,
     }
   },
 
@@ -127,6 +127,11 @@ function esMayorDeEdad(v) {
   }
   return true;
 };
+
+function isAlphanumeric(v) {
+  var regex = /^[-@.$*#&+_\w]*$/;
+  return regex.test(v);
+}
 
 ModeloDeUsuario.methods.toJSON = function() {
   var usuario = this;

@@ -66,7 +66,7 @@ var Errores = {
   },
   pwdNoValida: {
     codigo: 14,
-    mensaje: 'La contraseña solo puede contener caracteres alfanuméricos'
+    mensaje: 'La contraseña solo puede contener caracteres alfanuméricos y los caracteres especiales: - @ . $ * # & + _'
   },
   pwdMuyCorta: {
     codigo: 15,
@@ -116,7 +116,7 @@ var Errores = {
   },
   noEsDate: {
     codigo: 36,
-    mensaje: 'Fecha no válida. La fecha no puede contener letras'
+    mensaje: 'Fecha no válida'
   },
 
   //Errores del token
