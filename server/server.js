@@ -91,6 +91,22 @@ app.get('/tareas', autenticar, (req, res) =>{
   })
 });
 
+app.get('/tareas/:categoria', autenticar, (req, res) => {
+  Categoria.find({
+    categoria: req.params.categoria
+  }).then((categoria) => {
+    Tarea.find({
+      _categoria: categoria[0]._id
+    }).then((tarea) => {
+      res.send({tarea});
+    }, (e) => {
+      res.status(400).send(e);
+    });
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
 app.patch('/tareas/:id', autenticar, (req, res) => {
   var id = req.params.id
   var camposPermitidos = ['titulo', 'descripcion', 'fechaParaSerCompletada', 'completado'];
@@ -114,11 +130,13 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
 });
 
 
-app.post('/categorias', (req, res) => {
+app.post('/categorias', autenticar, (req, res) => {
   logger.info('POST /categorias');
-  var camposPermitidos = ['categoria', 'activo'];
-  var body = _.pick(req.body, camposPermitidos);
-  var categoria = new Categoria(body);
+  var categoria = new Categoria({
+    categoria: req.body.categoria,
+    activo: req.body.activo,
+    _creador: req.usuario.id
+  });
   var error = [];
 
   categoria.save().then(() => {
@@ -131,6 +149,15 @@ app.post('/categorias', (req, res) => {
 });
 
 
+app.get('/categorias', autenticar, (req, res) => {
+  Categoria.find({
+    _creador: req.usuario.id
+  }).then((categorias) => {
+    res.send(categorias);
+  }, (e) => {
+    res.status(400);
+  });
+});
 
 
 // POST guarda el usuario en la base de datos
