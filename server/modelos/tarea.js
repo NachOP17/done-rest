@@ -19,7 +19,13 @@ var Tarea = mongoose.model('Tarea', {
     type: String,
     maxlength: 250,
     required: true,
-    trim: true
+    trim: true,
+    validate: {
+      isAsync: false,
+      validator: isCode,
+      kind: "isCode",
+      type: "isCode"
+    }
   },
 
   completado: {
@@ -53,6 +59,11 @@ var Tarea = mongoose.model('Tarea', {
 function isAlphanumeric(v) {
   var regex = /^[\w\s]+$/;
   return regex.test(v);
+}
+
+function isCode(v) {
+  var regex= /<\/?[\w\s="/.':;#-\/\?]+>/gi;
+  return !regex.test(v);
 }
 
 module.exports = {Tarea};

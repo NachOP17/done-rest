@@ -156,6 +156,10 @@ var Errores = {
     codigo: 31,
     mensaje: 'La descripción no puede contener más de 250 caracteres'
   },
+  isCode: {
+    codigo: 37,
+    mensaje: 'La descripción no puede tener código'
+  },
 
   //Errores del id
   idInvalido: {
@@ -263,7 +267,7 @@ function validarErroresDeTareas(e) {
     }
 
     if (validator.contains(jsonDelError, 'descripcion')) {
-      validadorDeErroresDeTareas(e.errors.descripcion.kind, Errores.descripcionVacia, null, Errores.descripcionMuyLarga, errores);
+      validadorDeErroresDeTareas(e.errors.descripcion.kind, Errores.descripcionVacia, Errores.isCode, Errores.descripcionMuyLarga, errores);
     }
 
     if (validator.contains(jsonDelError, 'fechaParaSerCompletada')) {
@@ -282,6 +286,8 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
     case 'user defined': errores.push(noValido);
       break;
     case 'Date': errores.push(noValido);
+      break;
+    case 'isCode': errores.push(noValido);
   }
 }
 
