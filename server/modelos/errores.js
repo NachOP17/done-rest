@@ -3,7 +3,7 @@ const {ObjectId} = require('mongodb');
 
 var Errores = {
   correcto: {
-    codigo: '0',
+    codigo: 0,
     mensaje: 'Correcto'
   },
 

@@ -1,0 +1,1558 @@
+{"level":"info","message":"Autenticando","timestamp":"16:08:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:08:04"}
+{"date":"Wed Jan 03 2018 16:08:04 GMT-0400 (-04)","process":{"pid":4753,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":74248192,"heapTotal":62287872,"heapUsed":27753680,"external":17955647}},"os":{"loadavg":[0.75146484375,1.015625,1.51025390625],"uptime":1671},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":124,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:124:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:08:04"}
+{"date":"Wed Jan 03 2018 16:08:04 GMT-0400 (-04)","process":{"pid":4753,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":74248192,"heapTotal":62287872,"heapUsed":27895344,"external":17955671}},"os":{"loadavg":[0.75146484375,1.015625,1.51025390625],"uptime":1671},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":124,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:124:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:08:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:09:09"}
+{"level":"info","message":"Autenticando","timestamp":"16:09:09"}
+{"date":"Wed Jan 03 2018 16:09:09 GMT-0400 (-04)","process":{"pid":4836,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":72708096,"heapTotal":62287872,"heapUsed":27950112,"external":17955647}},"os":{"loadavg":[1.16357421875,1.10888671875,1.5087890625],"uptime":1736},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":124,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:124:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:09:09"}
+{"date":"Wed Jan 03 2018 16:09:09 GMT-0400 (-04)","process":{"pid":4836,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":72708096,"heapTotal":62287872,"heapUsed":28091416,"external":17955671}},"os":{"loadavg":[1.16357421875,1.10888671875,1.5087890625],"uptime":1736},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":124,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:124:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:09:09"}
+{"level":"info","message":"Autenticando","timestamp":"16:10:40"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:11:26"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:11:26"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:11:26"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:11:27"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:11:27"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:11:27"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:11:27"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:11:27"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:11:27"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:11:27"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:11:27"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:11:27"}
+{"level":"info","message":"Autenticando","timestamp":"16:11:27"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:11:27"}
+{"level":"info","message":"Autenticando","timestamp":"16:11:27"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:11:27"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:11:27"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:11:27"}
+{"level":"info","message":"Autenticando","timestamp":"16:11:27"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:11:27"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:11:27"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:11:27"}
+{"level":"info","message":"Autenticando","timestamp":"16:11:27"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:11:27"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:11:27"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:11:27"}
+{"level":"info","message":"Autenticando","timestamp":"16:11:27"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:11:27"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:11:27"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:11:27"}
+{"level":"info","message":"Autenticando","timestamp":"16:11:28"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:11:28"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:11:28"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:11:28"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:11:28"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:21"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:21"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:21"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:14:22"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:14:22"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:14:22"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:14:22"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:14:22"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:14:22"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:14:22"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:14:22"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:14:22"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:14:22"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:14:22"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:14:22"}
+{"level":"info","message":"Autenticando","timestamp":"16:14:22"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:14:22"}
+{"level":"info","message":"Autenticando","timestamp":"16:14:22"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:14:22"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:14:22"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:14:22"}
+{"level":"info","message":"Autenticando","timestamp":"16:14:22"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:14:22"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:14:22"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:14:22"}
+{"level":"info","message":"Autenticando","timestamp":"16:14:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:14:23"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:14:23"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:14:23"}
+{"level":"info","message":"Autenticando","timestamp":"16:14:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:14:23"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:14:23"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:14:23"}
+{"level":"info","message":"Autenticando","timestamp":"16:14:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:14:23"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:14:23"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:14:23"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:14:23"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:58"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:16:59"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:16:59"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:16:59"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:16:59"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:16:59"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:16:59"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:16:59"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:16:59"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:16:59"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:16:59"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:16:59"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:17:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:00"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:17:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:00"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:17:00"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:17:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:00"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:17:00"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:17:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:00"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:17:00"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:17:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:00"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:17:00"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:17:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:00"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:17:00"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:17:00"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:17:00"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:17:47"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:17:47"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:17:47"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:17:47"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:17:47"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:17:47"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:17:48"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:17:48"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:17:48"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:17:48"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:17:48"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:17:48"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:48"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:17:48"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:48"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:48"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:17:48"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:17:48"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:48"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:48"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:17:48"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:17:48"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:48"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:48"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:17:48"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:17:48"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:48"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:48"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:17:48"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:17:48"}
+{"level":"info","message":"Autenticando","timestamp":"16:17:48"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:17:48"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:17:48"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:17:48"}
+{"codigo":"0","mensaje":"Correcto","level":"info","message":"","timestamp":"16:17:48"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:18:49"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:18:49"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:18:49"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:18:50"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:18:50"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:18:50"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:18:50"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:18:50"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:18:50"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:18:50"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:18:50"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:18:50"}
+{"level":"info","message":"Autenticando","timestamp":"16:18:50"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:18:50"}
+{"level":"info","message":"Autenticando","timestamp":"16:18:50"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:18:50"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:18:50"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:18:50"}
+{"level":"info","message":"Autenticando","timestamp":"16:18:50"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:18:50"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:18:50"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:18:50"}
+{"level":"info","message":"Autenticando","timestamp":"16:18:50"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:18:50"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:18:50"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:18:50"}
+{"level":"info","message":"Autenticando","timestamp":"16:18:50"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:18:50"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:18:50"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:18:50"}
+{"level":"info","message":"Autenticando","timestamp":"16:18:50"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:18:50"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:18:50"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:18:50"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:18:50"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:06"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:07"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:07"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:07"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:19:07"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:19:07"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:07"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:19:07"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:07"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:19:07"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:07"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:07"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:19:07"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:07"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:19:07"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:07"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:07"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:19:07"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:07"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:08"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:08"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:19:08"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:19:08"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:08"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:08"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:19:08"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:19:08"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:08"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:08"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:19:08"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:19:08"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:08"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:08"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:19:08"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:08"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:08"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:28"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:28"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:29"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:19:29"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:29"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:19:29"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:19:29"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:29"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:19:29"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:29"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:19:29"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:29"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:29"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:19:29"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:29"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:19:29"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:29"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:29"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:19:29"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:29"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:29"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:29"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:19:29"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:19:29"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:29"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:30"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:19:30"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:19:30"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:30"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:30"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:19:30"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:19:30"}
+{"level":"info","message":"Autenticando","timestamp":"16:19:30"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:19:30"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:19:30"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:19:30"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:19:30"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:20:23"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:20:23"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:20:23"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:20:23"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:20:23"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:20:23"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:20:23"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:20:23"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:20:24"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:20:24"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:20:24"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:20:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:20:24"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:20:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:20:24"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:20:24"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:20:24"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:20:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:20:24"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:20:24"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:20:24"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:20:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:20:24"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:20:24"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:20:24"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:20:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:20:24"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:20:24"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:20:24"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:20:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:20:24"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:20:24"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:20:24"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:20:24"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:20:24"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:23:04"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:23:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:23:04"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:23:05"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:23:05"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:23:05"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:23:05"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:23:05"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:23:05"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:23:05"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:23:05"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:23:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:23:05"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:23:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:23:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:23:05"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:23:05"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:23:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:23:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:23:05"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:23:05"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:23:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:23:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:23:05"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:23:05"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:23:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:23:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:23:05"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:23:05"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:23:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:23:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:23:05"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:23:05"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:23:05"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:23:05"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:12"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:13"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:13"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:13"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:24:13"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:24:13"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:13"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:24:13"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:13"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:24:13"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:13"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:13"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:24:13"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:13"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:24:13"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:13"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:13"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:24:13"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:13"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:14"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:14"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:24:14"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:24:14"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:14"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:14"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:24:14"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:24:14"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:14"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:14"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:24:14"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:24:14"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:14"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:14"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:24:14"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:14"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:14"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:35"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:36"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:36"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:24:36"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:24:36"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:24:36"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:24:36"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:36"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:36"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:36"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:36"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:36"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:24:36"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:36"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:36"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:24:36"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:24:36"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:36"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:36"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:24:36"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:24:36"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:36"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:36"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:24:36"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:24:36"}
+{"level":"info","message":"Autenticando","timestamp":"16:24:36"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:24:36"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:24:36"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:24:36"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:24:36"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:24:59"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:25:00"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:25:00"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:25:00"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:25:01"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:25:01"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:25:01"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:25:01"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:25:01"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:25:01"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:25:01"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:25:01"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:25:01"}
+{"level":"info","message":"Autenticando","timestamp":"16:25:01"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:25:01"}
+{"level":"info","message":"Autenticando","timestamp":"16:25:01"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:25:01"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:25:01"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:25:01"}
+{"level":"info","message":"Autenticando","timestamp":"16:25:01"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:25:01"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:25:01"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:25:01"}
+{"level":"info","message":"Autenticando","timestamp":"16:25:01"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:25:01"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:25:01"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:25:01"}
+{"level":"info","message":"Autenticando","timestamp":"16:25:02"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:25:02"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:25:02"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:25:02"}
+{"level":"info","message":"Autenticando","timestamp":"16:25:02"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:25:02"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:25:02"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:25:02"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:25:02"}
+{"level":"info","message":"Autenticando","timestamp":"16:25:30"}
+{"level":"info","message":"Autenticando","timestamp":"16:26:47"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:26:48"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:26:48"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:26:48"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:26:48"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:26:48"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:26:48"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:26:48"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:26:48"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:26:48"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:26:48"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:26:48"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:26:48"}
+{"level":"info","message":"Autenticando","timestamp":"16:26:49"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:26:49"}
+{"level":"info","message":"Autenticando","timestamp":"16:26:49"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:26:49"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:26:49"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:26:49"}
+{"level":"info","message":"Autenticando","timestamp":"16:26:49"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:26:49"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:26:49"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:26:49"}
+{"level":"info","message":"Autenticando","timestamp":"16:26:49"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:26:49"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:26:49"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:26:49"}
+{"level":"info","message":"Autenticando","timestamp":"16:26:49"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:26:49"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:26:49"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:26:49"}
+{"level":"info","message":"Autenticando","timestamp":"16:26:49"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:26:49"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:26:49"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:26:49"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:26:49"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:27:45"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:27:45"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:27:45"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:27:45"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:27:45"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:27:45"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:27:45"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:27:45"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:27:45"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:27:45"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:27:45"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:27:46"}
+{"level":"info","message":"Autenticando","timestamp":"16:27:46"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:27:46"}
+{"level":"info","message":"Autenticando","timestamp":"16:27:46"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:27:46"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:27:46"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:27:46"}
+{"level":"info","message":"Autenticando","timestamp":"16:27:46"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:27:46"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:27:46"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:27:46"}
+{"level":"info","message":"Autenticando","timestamp":"16:27:46"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:27:46"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:27:46"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:27:46"}
+{"level":"info","message":"Autenticando","timestamp":"16:27:46"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:27:46"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:27:46"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:27:46"}
+{"level":"info","message":"Autenticando","timestamp":"16:27:46"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:27:46"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:27:46"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:27:46"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:27:46"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:27"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:27"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:27"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:27"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:27"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:27"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:28"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:28"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:28"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:28"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:29:28"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:29:28"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:29:28"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:29:28"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:29:28"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:29:28"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:29:28"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:29:28"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:29:28"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:29:28"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:29:28"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:29:28"}
+{"level":"info","message":"Autenticando","timestamp":"16:29:28"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:29:28"}
+{"level":"info","message":"Autenticando","timestamp":"16:29:28"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:29:28"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:29:28"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:29:28"}
+{"level":"info","message":"Autenticando","timestamp":"16:29:28"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:29:28"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:29:28"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:29:28"}
+{"level":"info","message":"Autenticando","timestamp":"16:29:28"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:29:28"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:29:28"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:29:28"}
+{"level":"info","message":"Autenticando","timestamp":"16:29:28"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:29:28"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:29:28"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:29:28"}
+{"level":"info","message":"Autenticando","timestamp":"16:29:28"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:29:29"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:29:29"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:29:29"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:29:29"}
+{"level":"info","message":"Autenticando","timestamp":"16:31:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:32:20"}
+{"level":"info","message":"Autenticando","timestamp":"16:32:37"}
+{"level":"info","message":"Autenticando","timestamp":"16:33:10"}
+{"level":"info","message":"Autenticando","timestamp":"16:33:54"}
+{"level":"info","message":"Autenticando","timestamp":"16:35:30"}
+{"level":"info","message":"Autenticando","timestamp":"16:36:58"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:36:58"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:36:59"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:36:59"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:36:59"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:36:59"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:36:59"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:36:59"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:36:59"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:36:59"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:36:59"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:36:59"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:36:59"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:36:59"}
+{"level":"info","message":"Autenticando","timestamp":"16:36:59"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:36:59"}
+{"level":"info","message":"Autenticando","timestamp":"16:36:59"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:36:59"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:36:59"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:36:59"}
+{"level":"info","message":"Autenticando","timestamp":"16:36:59"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:36:59"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:37:00"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:37:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:37:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:37:00"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:37:00"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:37:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:37:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:37:00"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:37:00"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:37:00"}
+{"level":"info","message":"Autenticando","timestamp":"16:37:00"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:37:00"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:37:00"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:37:00"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:37:00"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:40:54"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:40:54"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:40:54"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:40:54"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:40:54"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:40:54"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:40:54"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:40:54"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:40:54"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:40:54"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:40:54"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:40:55"}
+{"level":"info","message":"Autenticando","timestamp":"16:40:55"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:40:55"}
+{"level":"info","message":"Autenticando","timestamp":"16:40:55"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:40:55"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:40:55"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:40:55"}
+{"level":"info","message":"Autenticando","timestamp":"16:40:55"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:40:55"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:40:55"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:40:55"}
+{"level":"info","message":"Autenticando","timestamp":"16:40:55"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:40:55"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:40:55"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:40:55"}
+{"level":"info","message":"Autenticando","timestamp":"16:40:55"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:40:55"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:40:55"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:40:55"}
+{"level":"info","message":"Autenticando","timestamp":"16:40:55"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:40:55"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:40:55"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:40:55"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:40:55"}
+{"level":"info","message":"Autenticando","timestamp":"16:41:13"}
+{"level":"info","message":"Autenticando","timestamp":"16:41:36"}
+{"level":"info","message":"Autenticando","timestamp":"16:41:47"}
+{"level":"info","message":"Autenticando","timestamp":"16:43:03"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:43:03"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:03"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:04"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:43:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:43:04"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:43:04"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:43:04"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:43:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:43:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:43:04"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:43:04"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:43:04"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:43:04"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:43:04"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:43:04"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:43:04"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:43:04"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:43:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:43:04"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:43:04"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:43:04"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:43:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:43:04"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:43:04"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:43:04"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:43:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:43:04"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:43:04"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:43:04"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:43:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:43:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:44:37"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:44:37"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:44:37"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:44:37"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:44:37"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:44:37"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:44:37"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:44:37"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:44:37"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:44:38"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:44:38"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:44:38"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:44:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:44:38"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:44:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:44:38"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:44:38"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:44:38"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:44:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:44:38"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:44:38"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:44:38"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:44:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:44:38"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:44:38"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:44:38"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:44:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:44:38"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:44:38"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:44:38"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:44:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:44:38"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:44:38"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:44:38"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:44:38"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:44:38"}
+{"level":"info","message":"Autenticando","timestamp":"16:45:32"}
+{"date":"Wed Jan 03 2018 16:45:32 GMT-0400 (-04)","process":{"pid":6965,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":72912896,"heapTotal":62287872,"heapUsed":26720376,"external":17949987}},"os":{"loadavg":[1.78076171875,1.19189453125,1.22509765625],"uptime":3919},"trace":[{"column":19,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.patch.send.set.expect.expect.end","line":184,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Tarea.findbyId is not a function","    at Test.request.patch.send.set.expect.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:184:19)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Tarea.findbyId is not a function","timestamp":"16:45:32"}
+{"level":"info","message":"Autenticando","timestamp":"16:47:17"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:03"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:03"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:48:04"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:48:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:48:04"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:48:04"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:48:04"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:48:04"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:48:04"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:48:04"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:48:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:48:04"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:48:04"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:48:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:04"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:48:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:04"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:48:04"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:48:04"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:48:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:04"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:48:04"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:48:04"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:48:04"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:48:05"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:48:05"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:48:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:48:05"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:48:05"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:48:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:05"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:48:05"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:48:05"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:48:05"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:48:05"}
+{"level":"info","message":"Autenticando","timestamp":"16:48:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:49:15"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:49:15"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:49:15"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:49:15"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:49:15"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:49:15"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:49:15"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:49:15"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:49:15"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:49:15"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:49:15"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:49:15"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:49:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:49:16"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:49:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:49:16"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:49:16"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:49:16"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:49:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:49:16"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:49:16"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:49:16"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:49:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:49:16"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:49:16"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:49:16"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:49:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:49:16"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:49:16"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:49:16"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:49:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:49:16"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:49:16"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:49:16"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:49:16"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:49:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:52:16"}
+{"date":"Wed Jan 03 2018 16:52:16 GMT-0400 (-04)","process":{"pid":7283,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":71442432,"heapTotal":42889216,"heapUsed":30998928,"external":18391370}},"os":{"loadavg":[0.9296875,1.31396484375,1.31103515625],"uptime":4323},"trace":[{"column":37,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":67,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).toBe(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m","","Expected value to be (using ===):","  \u001b[32m\"Prueba\"\u001b[39m","Received:","  \u001b[31mundefined\u001b[39m","","Difference:","","  Comparing two different types of values. Expected \u001b[32mstring\u001b[39m but received \u001b[31mundefined\u001b[39m.","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:67:37)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).toBe(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected value to be (using ===):\n  \u001b[32m\"Prueba\"\u001b[39m\nReceived:\n  \u001b[31mundefined\u001b[39m\n\nDifference:\n\n  Comparing two different types of values. Expected \u001b[32mstring\u001b[39m but received \u001b[31mundefined\u001b[39m.","timestamp":"16:52:16"}
+{"level":"info","message":"Autenticando","timestamp":"16:52:51"}
+{"level":"info","message":"Autenticando","timestamp":"16:52:52"}
+{"date":"Wed Jan 03 2018 16:52:52 GMT-0400 (-04)","process":{"pid":7323,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":72556544,"heapTotal":43413504,"heapUsed":31895176,"external":18396698}},"os":{"loadavg":[0.59716796875,1.18359375,1.265625],"uptime":4358},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:52:52"}
+{"date":"Wed Jan 03 2018 16:52:52 GMT-0400 (-04)","process":{"pid":7323,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":72556544,"heapTotal":43413504,"heapUsed":32036184,"external":18396722}},"os":{"loadavg":[0.59716796875,1.18359375,1.265625],"uptime":4358},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:52:52"}
+{"level":"info","message":"Autenticando","timestamp":"16:53:40"}
+{"level":"info","message":"Autenticando","timestamp":"16:53:40"}
+{"date":"Wed Jan 03 2018 16:53:40 GMT-0400 (-04)","process":{"pid":7366,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":76005376,"heapTotal":63336448,"heapUsed":26001536,"external":17861464}},"os":{"loadavg":[0.94140625,1.18798828125,1.263671875],"uptime":4407},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:53:40"}
+{"date":"Wed Jan 03 2018 16:53:40 GMT-0400 (-04)","process":{"pid":7366,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":76275712,"heapTotal":63336448,"heapUsed":26145040,"external":17861488}},"os":{"loadavg":[0.94140625,1.18798828125,1.263671875],"uptime":4407},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:53:40"}
+{"level":"info","message":"Autenticando","timestamp":"16:53:47"}
+{"level":"info","message":"Autenticando","timestamp":"16:53:47"}
+{"date":"Wed Jan 03 2018 16:53:47 GMT-0400 (-04)","process":{"pid":7404,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":74235904,"heapTotal":43413504,"heapUsed":31957256,"external":18396698}},"os":{"loadavg":[1.09765625,1.21435546875,1.271484375],"uptime":4414},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:53:47"}
+{"date":"Wed Jan 03 2018 16:53:47 GMT-0400 (-04)","process":{"pid":7404,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":74235904,"heapTotal":43413504,"heapUsed":32098280,"external":18396722}},"os":{"loadavg":[1.09765625,1.21435546875,1.271484375],"uptime":4414},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:53:47"}
+{"level":"info","message":"Autenticando","timestamp":"16:54:14"}
+{"level":"info","message":"Autenticando","timestamp":"16:54:15"}
+{"date":"Wed Jan 03 2018 16:54:15 GMT-0400 (-04)","process":{"pid":7456,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":75751424,"heapTotal":63336448,"heapUsed":26345560,"external":17862978}},"os":{"loadavg":[1.3115234375,1.259765625,1.28515625],"uptime":4441},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":122,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:122:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:54:15"}
+{"date":"Wed Jan 03 2018 16:54:15 GMT-0400 (-04)","process":{"pid":7456,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":76021760,"heapTotal":63336448,"heapUsed":26487432,"external":17863002}},"os":{"loadavg":[1.3115234375,1.259765625,1.28515625],"uptime":4441},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":122,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:122:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:54:15"}
+{"level":"info","message":"Autenticando","timestamp":"16:54:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:54:24"}
+{"date":"Wed Jan 03 2018 16:54:24 GMT-0400 (-04)","process":{"pid":7497,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":77684736,"heapTotal":63336448,"heapUsed":26986176,"external":17865476}},"os":{"loadavg":[1.56494140625,1.3173828125,1.3037109375],"uptime":4451},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":122,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:122:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:54:24"}
+{"date":"Wed Jan 03 2018 16:54:24 GMT-0400 (-04)","process":{"pid":7497,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":77684736,"heapTotal":63336448,"heapUsed":27127856,"external":17865500}},"os":{"loadavg":[1.56494140625,1.3173828125,1.3037109375],"uptime":4451},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":122,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:122:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:54:24"}
+{"level":"info","message":"Autenticando","timestamp":"16:54:56"}
+{"level":"info","message":"Autenticando","timestamp":"16:54:57"}
+{"date":"Wed Jan 03 2018 16:54:57 GMT-0400 (-04)","process":{"pid":7536,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":72429568,"heapTotal":42889216,"heapUsed":31927824,"external":18396698}},"os":{"loadavg":[1.20068359375,1.25,1.27978515625],"uptime":4483},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:54:57"}
+{"date":"Wed Jan 03 2018 16:54:57 GMT-0400 (-04)","process":{"pid":7536,"uid":1000,"gid":1000,"cwd":"/home/fercon997/done-rest","execPath":"/usr/bin/node","version":"v8.7.0","argv":["/usr/bin/node","/home/fercon997/done-rest/node_modules/mocha/bin/_mocha","server/tests/server.test.js"],"memoryUsage":{"rss":72429568,"heapTotal":42889216,"heapUsed":32068808,"external":18396722}},"os":{"loadavg":[1.20068359375,1.25,1.27978515625],"uptime":4483},"trace":[{"column":30,"file":"/home/fercon997/done-rest/server/tests/server.test.js","function":"Test.request.post.set.send.expect.end","line":121,"method":"end","native":false},{"column":6,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Test.assert","line":179,"method":"assert","native":false},{"column":12,"file":"/home/fercon997/done-rest/node_modules/supertest/lib/test.js","function":"Server.assert","line":131,"method":"assert","native":false},{"column":30,"file":"events.js","function":"Object.onceWrapper","line":314,"method":"onceWrapper","native":false},{"column":13,"file":"events.js","function":"emitNone","line":105,"method":null,"native":false},{"column":7,"file":"events.js","function":"Server.emit","line":207,"method":"emit","native":false},{"column":8,"file":"net.js","function":"emitCloseNT","line":1648,"method":null,"native":false},{"column":11,"file":"internal/process/next_tick.js","function":"_combinedTickCallback","line":135,"method":null,"native":false},{"column":9,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":180,"method":"_tickCallback","native":false}],"stack":["TypeError: Cannot read property 'codigo' of undefined","    at Test.request.post.set.send.expect.end (/home/fercon997/done-rest/server/tests/server.test.js:121:30)","    at Test.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:179:6)","    at Server.assert (/home/fercon997/done-rest/node_modules/supertest/lib/test.js:131:12)","    at Object.onceWrapper (events.js:314:30)","    at emitNone (events.js:105:13)","    at Server.emit (events.js:207:7)","    at emitCloseNT (net.js:1648:8)","    at _combinedTickCallback (internal/process/next_tick.js:135:11)","    at process._tickCallback (internal/process/next_tick.js:180:9)"],"level":"error","message":"uncaughtException: Cannot read property 'codigo' of undefined","timestamp":"16:54:57"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:19"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:19"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:19"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:19"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:19"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:55:19"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:19"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:19"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:19"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:19"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:19"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:19"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:19"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:19"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:20"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:20"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:20"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:55:20"}
+{"level":"info","message":"POST /usuarios","timestamp":"16:55:20"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:55:20"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:55:20"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"16:55:20"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:55:20"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:55:20"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:55:20"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"16:55:20"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:55:20"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:55:20"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"16:55:20"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:20"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"16:55:20"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:20"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:55:20"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"16:55:20"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:55:20"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:20"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:55:20"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"16:55:20"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"16:55:20"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:20"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:55:20"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"16:55:20"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"16:55:20"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:20"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:55:20"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"16:55:20"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"16:55:20"}
+{"level":"info","message":"Autenticando","timestamp":"16:55:20"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"16:55:21"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"16:55:21"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"16:55:21"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"16:55:21"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:20"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:20"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:20"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:20"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:20"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:02:20"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:22"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:22"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:22"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:22"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:22"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:22"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:22"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:23"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:23"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:23"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:23"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:02:23"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"17:02:23"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:02:23"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:02:23"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:23"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:23"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:23"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:23"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"17:02:23"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:23"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"17:02:23"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"17:02:23"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:23"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"17:02:23"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"17:02:23"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:23"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"17:02:23"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"17:02:23"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:23"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:23"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"17:02:23"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:23"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:23"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:55"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:55"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:55"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:55"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:55"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:02:55"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:55"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:57"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:02:57"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:57"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:02:58"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"17:02:58"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:58"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:02:58"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:58"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:02:58"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:58"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:58"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"17:02:58"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:58"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:02:58"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:58"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:58"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"17:02:58"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:58"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:58"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:58"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"17:02:58"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"17:02:58"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:58"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:58"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"17:02:58"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"17:02:58"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:58"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:58"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"17:02:58"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"17:02:58"}
+{"level":"info","message":"Autenticando","timestamp":"17:02:58"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:02:58"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"17:02:58"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:02:58"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:02:58"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:31"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:31"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:32"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:32"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:32"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:03:32"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:32"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:03:32"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:03:32"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:03:32"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:03:32"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"17:03:32"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:03:32"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:03:32"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:03:32"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:03:32"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:03:32"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:03:32"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"17:03:33"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:33"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:03:33"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:33"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:03:33"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"17:03:33"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:03:33"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:33"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:03:33"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"17:03:33"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"17:03:33"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:33"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:03:33"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"17:03:33"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"17:03:33"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:33"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:03:33"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"17:03:33"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"17:03:33"}
+{"level":"info","message":"Autenticando","timestamp":"17:03:33"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:03:33"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"17:03:33"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:03:33"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:03:33"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:17"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:17"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:17"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:17"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:17"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:08:17"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:17"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:17"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:17"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:17"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:17"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:08:17"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"17:08:17"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:17"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:08:17"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:17"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:08:18"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:18"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:18"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"17:08:18"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:18"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:08:18"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:18"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:18"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"17:08:18"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:18"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:18"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:18"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"17:08:18"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"17:08:18"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:18"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:18"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"17:08:18"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"17:08:18"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:18"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:18"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"17:08:18"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"17:08:18"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:18"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:18"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"17:08:18"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:18"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:18"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:40"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:40"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:40"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:40"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:40"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:08:40"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:40"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:40"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:40"}
+[{"codigo":4,"mensaje":"Este usuario ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:40"}
+[{"codigo":5,"mensaje":"Este correo ya está en uso"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:40"}
+[{"codigo":12,"mensaje":"El nombre de usuario es muy largo (Máximo 20 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+[{"codigo":9,"mensaje":"El correo es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+[{"codigo":19,"mensaje":"El nombre es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+[{"codigo":22,"mensaje":"El apellido es muy largo (Máximo 50 caracteres)"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+[{"codigo":7,"mensaje":"El correo no es válido"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+[{"codigo":24,"mensaje":"Para crearte una cuenta debes ser mayor de edad"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+[{"codigo":36,"mensaje":"Fecha no válida"}]
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:41"}
+{"level":"info","message":"POST /usuarios","timestamp":"17:08:41"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:41"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:08:41"}
+{"codigo":3,"mensaje":"Su usuario se encuentra bloqueado, hemos enviado una nueva contraseña a su correo para que pueda iniciar sesión","level":"error","message":"","timestamp":"17:08:41"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:41"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:08:41"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:41"}
+{"level":"info","message":"POST /usuarios/login","timestamp":"17:08:41"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:41"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:41"}
+{"codigo":1,"mensaje":"Usuario Incorrecto","level":"error","message":"","timestamp":"17:08:41"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:41"}
+{"codigo":25,"mensaje":"El token no es correcto o el usuario no tiene una sesión abierta","level":"error","message":"","timestamp":"17:08:41"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:41"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:41"}
+{"passwordViejo":"adueudneueu","password":"deuind4eun","level":"info","message":"Body: \n","timestamp":"17:08:41"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:41"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:41"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:41"}
+{"passwordViejo":"12345678","level":"info","message":"Body: \n","timestamp":"17:08:41"}
+{"codigo":26,"mensaje":"Faltan datos en el body","level":"error","message":"Error: ","timestamp":"17:08:41"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:41"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:41"}
+{"passwordViejo":"12345678","password":"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890","level":"info","message":"Body: \n","timestamp":"17:08:41"}
+{"codigo":16,"mensaje":"La contraseña es muy larga (Máximo 50 caracteres)","level":"error","message":"Error: ","timestamp":"17:08:41"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:41"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:41"}
+{"passwordViejo":"12345678","password":"124","level":"info","message":"Body: \n","timestamp":"17:08:41"}
+{"codigo":15,"mensaje":"La contraseña es muy corta (Mínimo 8 caracteres)","level":"error","message":"Error: ","timestamp":"17:08:41"}
+{"level":"info","message":"Autenticando","timestamp":"17:08:41"}
+{"level":"info","message":"PATCH /usuarios/me/pass","timestamp":"17:08:41"}
+{"passwordViejo":"12345678","password":"amdiwbdywebdwbdw","level":"info","message":"Body: \n","timestamp":"17:08:41"}
+{"codigo":2,"mensaje":"Contraseña Incorrecta","level":"error","message":"","timestamp":"17:08:41"}
+{"codigo":0,"mensaje":"Correcto","level":"info","message":"","timestamp":"17:08:41"}
