@@ -48,7 +48,7 @@ app.use(bodyParser.json());
 app.post('/tareas', autenticar, (req, res) => {
   if (req.body.categoria) {
     console.log(req.body.categoria);
-    Categoria.findByCategory(req.body.categoria).then((categoria) => {
+    Categoria.findByCategory(req.body.categoria, req.usuario.id).then((categoria) => {
       var tarea = new Tarea({
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
@@ -63,7 +63,7 @@ app.post('/tareas', autenticar, (req, res) => {
         res.status(400).send(Errores.validarErroresDeTareas(e));
       });
     }).catch((e) => {
-      res.status(400).send("Error buscando la categoría");
+      res.status(404).send("Error buscando la categoría");
     })
   } else {
     var tarea = new Tarea({
@@ -93,15 +93,20 @@ app.get('/tareas', autenticar, (req, res) =>{
 
 app.get('/tareas/:categoria', autenticar, (req, res) => {
   Categoria.find({
-    categoria: req.params.categoria
+    categoria: req.params.categoria,
+    _creador: req.usuario.id
   }).then((categoria) => {
-    Tarea.find({
-      _categoria: categoria[0]._id
-    }).then((tarea) => {
-      res.send({tarea});
-    }, (e) => {
-      res.status(400).send(e);
-    });
+    if (!(categoria[0] == undefined)) {
+      Tarea.find({
+        _categoria: categoria[0]._id
+      }).then((tarea) => {
+        res.send({tarea});
+      }, (e) => {
+        res.status(400).send(e);
+      });
+    } else {
+      res.status(404).send("La categoría no existe");
+    }
   }, (e) => {
     res.status(400).send(e);
   });
@@ -143,7 +148,7 @@ app.post('/categorias', autenticar, (req, res) => {
     res.status(200).send(Errores.correcto);
     logger.info(Errores.correcto);
   }).catch((e) => {
-    res.status(400).send("Error al crear la categoría");
+    res.status(400).send(e);
     logger.error("Error al crear la categoría");
   })
 });

@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 var ModeloCategoria = new mongoose.Schema({
   categoria: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
 
   activo: {
@@ -19,11 +18,12 @@ var ModeloCategoria = new mongoose.Schema({
   }
 });
 
-ModeloCategoria.statics.findByCategory = function(categoria) {
+ModeloCategoria.statics.findByCategory = function(categoria, idUsuario) {
   var Categoria = this;
-  var categoryToBeFound = {categoria};
-
-  return Categoria.findOne(categoryToBeFound);
+  return Categoria.findOne({
+    categoria: categoria,
+    _creador: idUsuario
+  });
 };
 
 var Categoria = mongoose.model('Categoria', ModeloCategoria);
