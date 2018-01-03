@@ -44,13 +44,4 @@ var autenticar = (req, res, next) => {
   });
 };
 
-var buscarCategoria = (categoriaReq) => {
-    Categoria.findByCategory(categoriaReq).then((categoria) => {
-      console.log(caregoria);
-      return categoria;
-    }).catch((e) => {
-      res.status(400).send("Error buscando la categoría");
-    })
-}
-
 module.exports = {autenticar};
