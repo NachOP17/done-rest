@@ -46,18 +46,39 @@ const logger = new (winston.Logger)({
 app.use(bodyParser.json());
 
 app.post('/tareas', autenticar, (req, res) => {
-  var tarea = new Tarea({
-    titulo: req.body.titulo,
-    descripcion: req.body.descripcion,
-    fechaParaSerCompletada: req.body.fechaParaSerCompletada,
-    _creador: req.usuario.id
-  });
+  if (req.body.categoria) {
+    console.log(req.body.categoria);
+    Categoria.findByCategory(req.body.categoria).then((categoria) => {
+      var tarea = new Tarea({
+        titulo: req.body.titulo,
+        descripcion: req.body.descripcion,
+        fechaParaSerCompletada: req.body.fechaParaSerCompletada,
+        _creador: req.usuario.id,
+        _categoria: categoria.id
+      });
 
-  tarea.save().then(() => {
-    res.send(Errores.correcto);
-  }).catch((e) => {
-    res.status(400).send(Errores.validarErroresDeTareas(e));
-  });
+      tarea.save().then(() => {
+        res.send(Errores.correcto);
+      }).catch((e) => {
+        res.status(400).send(Errores.validarErroresDeTareas(e));
+      });
+    }).catch((e) => {
+      res.status(400).send("Error buscando la categoría");
+    })
+  } else {
+    var tarea = new Tarea({
+      titulo: req.body.titulo,
+      descripcion: req.body.descripcion,
+      fechaParaSerCompletada: req.body.fechaParaSerCompletada,
+      _creador: req.usuario.id,
+    });
+
+    tarea.save().then(() => {
+      res.send(Errores.correcto);
+    }).catch((e) => {
+      res.status(400).send(Errores.validarErroresDeTareas(e));
+    });
+  }
 });
 
 app.get('/tareas', autenticar, (req, res) =>{
@@ -108,6 +129,8 @@ app.post('/categorias', (req, res) => {
     logger.error("Error al crear la categoría");
   })
 });
+
+
 
 
 // POST guarda el usuario en la base de datos
