@@ -11,6 +11,11 @@ var ModeloCategoria = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: true
+  },
+
+  _creador: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
   }
 });
 
