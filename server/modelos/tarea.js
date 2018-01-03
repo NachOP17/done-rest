@@ -23,7 +23,6 @@ var Tarea = mongoose.model('Tarea', {
     validate: {
       isAsync: false,
       validator: isCode,
-      kind: "isCode",
       type: "isCode"
     }
   },
@@ -42,7 +41,12 @@ var Tarea = mongoose.model('Tarea', {
 
   fechaParaSerCompletada: {
     type: Date,
-    required: false
+    required: false,
+    validate: {
+      isAsync: false,
+      validator: isValidDate,
+      type: "fechaEnPasado"
+    }
   },
 
   _creador: {
@@ -64,6 +68,27 @@ function isAlphanumeric(v) {
 function isCode(v) {
   var regex= /<\/?[\w\s="/.':;#-\/\?]+>/gi;
   return !regex.test(v);
+}
+
+function isValidDate(v) {
+  var day = v.getDate() + 1;
+  var month = v.getMonth();
+  var year = v.getFullYear();
+  var currentDay = new Date().getDate();
+  var currentMonth = new Date().getMonth();
+  var currentYear = new Date().getFullYear();
+
+  console.log(`Date: ${day}/${month}/${year}`);
+  console.log(`Current date: ${currentDay}/${currentMonth}/${currentYear}`);
+
+  if (year < currentYear) {
+    return false;
+  } else if ((year == currentYear) && (month < currentMonth)) {
+    return false;
+  } else if ((month == currentMonth) && (day < currentDay)) {
+    return false;
+  }
+  return true;
 }
 
 module.exports = {Tarea};
