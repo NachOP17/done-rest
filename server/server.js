@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const _ = require('lodash');
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
+const db = require('mongodb');
 
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');

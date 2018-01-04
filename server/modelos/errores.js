@@ -120,7 +120,7 @@ var Errores = {
   },
   yearInvalido: {
     codigo: 38,
-    mensaje: 'Año inválido. Debe ingresar un año mayor a 1910'
+    mensaje: `Año inválido. Debe ingresar un año mayor a ${minimumYear()}`
   },
   fechaEnPasado: {
     codigo: 39,
@@ -194,6 +194,10 @@ var Errores = {
   validarErroresDeTareas,
   validarErroresCambiaPass,
   validarErroresUpdateTarea
+}
+
+function minimumYear() {
+  return new Date().getFullYear() - 100;
 }
 
 function validarErroresRegistro(e) {
