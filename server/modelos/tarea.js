@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-var Tarea = mongoose.model('Tarea', {
+var ModeloDeTarea = new mongoose.Schema({
   titulo: {
     type: String,
     required: true,
@@ -90,5 +90,21 @@ function isValidDate(v) {
   }
   return true;
 }
+
+function noEsElUsuario() {
+  return {codigo: 41};
+}
+
+ModeloDeTarea.statics.eliminarTarea = function(id) {
+  var tarea = this;
+  return tarea.findByIdAndRemove({_id: id});
+}
+
+ModeloDeTarea.statics.buscarCreador = function(id) {
+  var tarea = this;
+  return tarea.findById({_id: id});
+}
+
+var Tarea = mongoose.model('Tarea', ModeloDeTarea);
 
 module.exports = {Tarea};

@@ -189,6 +189,16 @@ var Errores = {
     mensaje: "No hay tareas en esta categoría"
   },
 
+  idNoExiste: {
+    codigo: 40,
+    mensaje: "No existe una tarea con el id enviado"
+  },
+
+  usuarioNoAutorizado: {
+    codigo: 41,
+    mensaje: "Este usuario no está autorizado a eliminar la tarea que desea eliminar"
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
