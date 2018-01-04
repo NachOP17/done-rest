@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const P = mongoose.Promise = require('bluebird');
 
 var ModeloCategoria = new mongoose.Schema({
   categoria: {
@@ -10,22 +11,33 @@ var ModeloCategoria = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: true
-  },
-
-  _creador: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true
   }
 });
 
-ModeloCategoria.statics.findByCategory = function(categoria, idUsuario) {
+ModeloCategoria.statics.findByCategory = function(categoria) {
   var Categoria = this;
   return Categoria.findOne({
-    categoria: categoria,
-    _creador: idUsuario
+    categoria: categoria
   });
 };
 
 var Categoria = mongoose.model('Categoria', ModeloCategoria);
+
+var sampleData = [
+  {categoria: "Peronal"},
+  {categoria: "Trabajo"},
+  {categoria: "Hogar"},
+  {categoria: "Estudios"}
+]
+
+Categoria.find({
+  categoria: "Trabajo"
+}).then((categoria) => {
+  if ((categoria[0] == undefined)) {
+      P.all(sampleData.map(i => new Categoria(i).save()))
+        .then(() => console.log('Categorías guardadas'))
+        .catch((err) => console.log('Error: ' + err));
+  }
+});
 
 module.exports = {Categoria};

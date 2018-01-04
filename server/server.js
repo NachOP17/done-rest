@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const _ = require('lodash');
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
-const db = require('mongodb');
 
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
@@ -48,7 +47,7 @@ app.use(bodyParser.json());
 
 app.post('/tareas', autenticar, (req, res) => {
   if (req.body.categoria) {
-    Categoria.findByCategory(req.body.categoria, req.usuario.id).then((categoria) => {
+    Categoria.findByCategory(req.body.categoria).then((categoria) => {
       var tarea = new Tarea({
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
@@ -93,17 +92,17 @@ app.get('/tareas', autenticar, (req, res) =>{
 
 app.get('/tareas/:categoria', autenticar, (req, res) => {
   Categoria.find({
-    categoria: req.params.categoria,
-    _creador: req.usuario.id
+    categoria: req.params.categoria
   }).then((categoria) => {
     if (!(categoria[0] == undefined)) {
       Tarea.find({
-        _categoria: categoria[0]._id
+        _categoria: categoria[0]._id,
+        _creador: req.usuario.id
       }).then((tarea) => {
         if (tarea[0] == undefined) {
           res.send(Errores.noHayTareas);
         } else {
-          res.send({tarea});
+          res.send(tarea);
         }
       }, (e) => {
         res.status(400).send(e);
@@ -143,8 +142,7 @@ app.post('/categorias', autenticar, (req, res) => {
   logger.info('POST /categorias');
   var categoria = new Categoria({
     categoria: req.body.categoria,
-    activo: req.body.activo,
-    _creador: req.usuario.id
+    activo: req.body.activo
   });
   var error = [];
 
@@ -158,9 +156,9 @@ app.post('/categorias', autenticar, (req, res) => {
 });
 
 
-app.get('/categorias', autenticar, (req, res) => {
+app.get('/categorias', (req, res) => {
   Categoria.find({
-    _creador: req.usuario.id
+    activo: true
   }).then((categorias) => {
     res.send(categorias);
   }, (e) => {
