@@ -149,7 +149,7 @@ var minimumYear = function() {
 ModeloDeUsuario.methods.toJSON = function() {
   var usuario = this;
   var objetoUsuario = usuario.toObject();
-  var camposPermitidos = ['_id', 'email', 'username', 'nombre', 'apellido', 'fechaDeNacimiento', 'intentos'];
+  var camposPermitidos = ['_id', 'email', 'username', 'nombre', 'apellido', 'fechaDeNacimiento'];
 
   return _.pick(objetoUsuario, camposPermitidos);
 };

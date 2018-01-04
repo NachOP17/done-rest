@@ -311,8 +311,34 @@ app.delete('/usuarios/me/token', autenticar, (req, res) => {
   req.usuario.eliminarToken(req.token).then(() => {
     res.status(200).send(Errores.correcto);
     logger.info(Errores.correcto);
-  }, () => {
-    res.status(400).send();
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+app.delete('/tareas/:id', autenticar, (req, res) => {
+  logger.log('DELETE /tareas/:id');
+  Tarea.buscarCreador(req.params.id).then((tarea) => {
+    if (tarea == null) {
+      res.status(400).send(Errores.idNoExiste);
+    } else {
+      if (tarea._creador == req.usuario.id) {
+        Tarea.eliminarTarea(req.params.id).then((resultado) => {
+          console.log(resultado);
+          if (resultado == null) {
+            res.status(404).send(Errores.idNoExiste);
+          } else {
+            res.status(200).send(Errores.correcto);
+          }
+        }, (e) => {
+          res.status(400).send(e);
+        });
+      } else {
+        res.status(401).send(Errores.usuarioNoAutorizado);
+      }
+    }
+  }, (e) => {
+    res.status(400).send(e);
   });
 });
 
