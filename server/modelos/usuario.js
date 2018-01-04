@@ -61,16 +61,15 @@ var ModeloDeUsuario = new mongoose.Schema({
   fechaDeNacimiento: {
     type: Date,
     required: false,
-    validate: {
+    validate: [{
       isAsync: false,
       validator: esMayorDeEdad,
       message: 'No es mayor de edad'
-    },
-    validate: {
+    }, {
       isAsync:  false,
       validator: isValidDate,
       type: "isNotValidDate"
-    }
+    }]
   },
 
   activo: {
@@ -140,7 +139,11 @@ function isAlphanumeric(v) {
 
 function isValidDate(v) {
   var year = v.getFullYear();
-  return year > 1910;
+  return year > minimumYear();
+}
+
+var minimumYear = function() {
+  return new Date().getFullYear() - 100;
 }
 
 ModeloDeUsuario.methods.toJSON = function() {
