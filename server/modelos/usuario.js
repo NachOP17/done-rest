@@ -61,11 +61,15 @@ var ModeloDeUsuario = new mongoose.Schema({
   fechaDeNacimiento: {
     type: Date,
     required: false,
-    validate: {
+    validate: [{
       isAsync: false,
       validator: esMayorDeEdad,
       message: 'No es mayor de edad'
-    }
+    }, {
+      isAsync:  false,
+      validator: isValidDate,
+      type: "isNotValidDate"
+    }]
   },
 
   activo: {
@@ -133,10 +137,19 @@ function isAlphanumeric(v) {
   return regex.test(v);
 }
 
+function isValidDate(v) {
+  var year = v.getFullYear();
+  return year > minimumYear();
+}
+
+var minimumYear = function() {
+  return new Date().getFullYear() - 100;
+}
+
 ModeloDeUsuario.methods.toJSON = function() {
   var usuario = this;
   var objetoUsuario = usuario.toObject();
-  var camposPermitidos = ['_id', 'email', 'username', 'nombre', 'apellido', 'fechaDeNacimiento', 'intentos'];
+  var camposPermitidos = ['_id', 'email', 'username', 'nombre', 'apellido', 'fechaDeNacimiento'];
 
   return _.pick(objetoUsuario, camposPermitidos);
 };

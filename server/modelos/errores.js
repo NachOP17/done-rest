@@ -105,7 +105,7 @@ var Errores = {
     mensaje: 'El apellido es muy largo (Máximo 50 caracteres)'
   },
 
-  // Errores de la fecha de nacimiento
+  // Errores de la fecha
   fechaDeNacimientoNoIngresada: {
     codigo: 23,
     mensaje: 'La fecha de Nacimiento no puede estar vacía'
@@ -117,6 +117,14 @@ var Errores = {
   noEsDate: {
     codigo: 36,
     mensaje: 'Fecha no válida'
+  },
+  yearInvalido: {
+    codigo: 38,
+    mensaje: `Año inválido. Debe ingresar un año mayor a ${minimumYear()}`
+  },
+  fechaEnPasado: {
+    codigo: 39,
+    mensaje: 'Fecha no válida. No puede ingresar una fecha que ya pasó'
   },
 
   //Errores del token
@@ -181,11 +189,25 @@ var Errores = {
     mensaje: "No hay tareas en esta categoría"
   },
 
+  idNoExiste: {
+    codigo: 40,
+    mensaje: "No existe una tarea con el id enviado"
+  },
+
+  usuarioNoAutorizado: {
+    codigo: 41,
+    mensaje: "Este usuario no está autorizado a eliminar la tarea que desea eliminar"
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
   validarErroresCambiaPass,
   validarErroresUpdateTarea
+}
+
+function minimumYear() {
+  return new Date().getFullYear() - 100;
 }
 
 function validarErroresRegistro(e) {
@@ -228,7 +250,7 @@ function validarErroresRegistro(e) {
 
     if (validator.contains(jsonDelError, 'fechaDeNacimiento')) {
       validadorDeErroresDelRegistro(e.errors.fechaDeNacimiento.kind, Errores.fechaDeNacimientoNoIngresada,
-        Errores.noEsMayorDeEdad, Errores.noEsDate, null, errores);
+        Errores.noEsMayorDeEdad, Errores.yearInvalido, Errores.noEsDate, errores);
     }
   }
   return errores;
@@ -244,7 +266,9 @@ function validadorDeErroresDelRegistro(kind, noIngresado, noValido, muyCorto, mu
       break;
     case 'maxlength': errores.push(muyLargo);
       break;
-    case 'Date': errores.push(muyCorto);
+    case 'Date': errores.push(muyLargo);
+      break;
+    case 'isNotValidDate': errores.push(muyCorto);
   }
 }
 
@@ -271,7 +295,7 @@ function validarErroresDeTareas(e) {
     }
 
     if (validator.contains(jsonDelError, 'fechaParaSerCompletada')) {
-      validadorDeErroresDeTareas(e.errors.fechaParaSerCompletada.kind, null, Errores.noEsDate, null, errores);
+      validadorDeErroresDeTareas(e.errors.fechaParaSerCompletada.kind, null, Errores.noEsDate, Errores.fechaEnPasado, errores);
     }
   }
   return errores;
@@ -288,6 +312,8 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
     case 'Date': errores.push(noValido);
       break;
     case 'isCode': errores.push(noValido);
+      break;
+    case 'fechaEnPasado': errores.push(muyLargo);
   }
 }
 
