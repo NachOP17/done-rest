@@ -84,7 +84,7 @@ app.get('/tareas', autenticar, (req, res) =>{
   Tarea.find({
     _creador: req.usuario._id
   }).then((tarea) => {
-    res.send(tarea);
+    res.send({tarea});
   }, (e) => {
     res.status(400).send(e);
   })
@@ -160,7 +160,7 @@ app.get('/categorias', (req, res) => {
   Categoria.find({
     activo: true
   }).then((categorias) => {
-    res.send({categorias});
+    res.send(categorias);
   }, (e) => {
     res.status(400);
   });
