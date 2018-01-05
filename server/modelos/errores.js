@@ -296,6 +296,8 @@ function validarErroresUpdateTarea(body, id){
     throw(Errores.idInvalido);
   if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
     throw(Errores.faltanDatos);
+  if(body.titulo.length>50)
+    throw(Errores.tituloMuyLargo);
 }
 
 module.exports = {Errores};

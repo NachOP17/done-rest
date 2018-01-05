@@ -184,6 +184,43 @@ describe('PATCH tareas/:id', () => {
         metodoPatchTareas(tarea, idUsuarioUno, token, 404, Errores.idNoEncontrado, done)
       })
     })
+  });
+
+  it('Retorna 400 si el id es invalido', (done) => {
+    var tarea = {
+      titulo: "Nuevo titulo",
+      descripcion: "Nueva descripcion"
+    }
+    Usuario.findOne().then( (usuario) => {
+      usuario.generarTokenDeAutenticidad().then( (token) => {
+        metodoPatchTareas(tarea, "y28ed2y8eg4", token, 400, Errores.idInvalido, done);
+      })
+    })
+  });
+
+  it('Actualiza los datos de la tarea correctamente', (done) => {
+    var tarea = {
+      titulo: "Nuevo titulo",
+      descripcion: "Nueva descripcion",
+      completado: true
+    }
+    Usuario.findOne().then( (usuario) => {
+      usuario.generarTokenDeAutenticidad().then( (token) => {
+        request(app)
+          .patch(`/tareas/${idTarea1}`)
+          .send(tarea)
+          .set('x-auth', token)
+          .expect(200)
+          .end( (res) => {
+            Tarea.findOne({_id: idTarea1}).then( (todo) => {
+              expect(todo.titulo).toBe(tarea.titulo);
+              expect(todo.descripcion).toBe(tarea.descripcion);
+              expect(todo.completado).toBe(true);
+              done();
+            })
+          })
+      })
+    })
   })
 
 });
@@ -198,9 +235,9 @@ var metodoPatchTareas = function(tarea, id, token, status, error, done){
     .end((err,res) => {
       if (err)
         return done(err);
-      Tarea.findOne({_id: idTarea1}).then((tarea) => {
-        expect(tarea.titulo).toBe("Prueba");
-        expect(tarea.descripcion).toBe("Esto es una prueba");
+      Tarea.findOne({_id: idTarea1}).then((todo) => {
+        expect(todo.titulo).toBe("Prueba");
+        expect(todo.descripcion).toBe("Esto es una prueba");
         done();
       }).catch((e) => done(e));
     })
@@ -335,7 +372,7 @@ describe('ENVIAR /usuario', () => {
       password: '12345678',
       nombre: 'Prueba',
       apellido: 'kjhsfsf',
-      fechaDeNacimiento: '12/' + dia-1 + '/1999'
+      fechaDeNacimiento: '12/' + dia-1 + '/2000'
     };
     metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
   });
