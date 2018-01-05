@@ -203,7 +203,8 @@ var Errores = {
   validarErroresRegistro,
   validarErroresDeTareas,
   validarErroresCambiaPass,
-  validarErroresUpdateTarea
+  validarErroresUpdateTarea,
+  validarErroresForgotPass
 }
 
 function minimumYear() {
@@ -331,6 +332,13 @@ function validarErroresUpdateTarea(body, id){
     throw(Errores.tituloNoValido);
   if(!isCode(body.descripcion))
     throw(Errores.isCode);
+}
+
+function validarErroresForgotPass(body){
+  if(!body.email)
+    throw(Errores.faltanDatos);
+  if(!validator.isEmail(body.email))
+    throw (Errores.correoNoValido);
 }
 
 function isAlphanumeric(v) {

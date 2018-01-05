@@ -2,7 +2,8 @@ const nodemailer = require('nodemailer');
 var {Usuario} = require('./modelos/usuario');
 
 var Mailer = {
-  enviarCorreo
+  enviarCorreo,
+  generateRandomPassword
 }
 
 function enviarCorreo(to, id) {
@@ -37,7 +38,7 @@ function enviarCorreo(to, id) {
 
 function generateRandomPassword(id) {
   var pass = Math.random().toString(36).slice(-8);
-  console.log(pass);
+  // console.log(pass);
   Usuario.findByIdAndUpdate(id, {
     $set: {
       password: Usuario.encrypt(pass)

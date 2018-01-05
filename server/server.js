@@ -251,6 +251,21 @@ app.post('/usuarios/login', (req, res) => {
 //
 // Cambiar contraseña
 
+app.patch('/usuarios/pass', (req,res) => {
+  var body = _.pick(req.body, 'email');
+  logger.info('PATCH /usuarios/pass');
+  try{
+    Errores.validarErroresForgotPass(body);
+    Usuario.findOne({email: body.email}).then((usuario) => {
+      if(usuario==null) return res.status(404).send();
+      res.status(200).send(Mailer.generateRandomPassword(usuario.id))
+    })
+  } catch(e){
+    logger.error(e)
+    res.status(400).send(e)
+  }
+});
+
 app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
