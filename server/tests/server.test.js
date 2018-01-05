@@ -9,6 +9,8 @@ const {Tarea} = require('./../modelos/tarea');
 const {Usuario} = require('./../modelos/usuario');
 
 const idUsuarioUno = new ObjectId();
+const idTarea1= new ObjectId();
+const idTarea2 = new ObjectId();
 
 const usuarios = [{
   _id: idUsuarioUno,
@@ -21,12 +23,12 @@ const usuarios = [{
 }];
 
 const tareas = [{
-  _id: new ObjectId(),
+  _id: idTarea1,
   titulo: 'Prueba',
   descripcion: 'Esto es una prueba',
   _creador: idUsuarioUno
 }, {
-  _id: new ObjectId(),
+  _id: idTarea2,
   titulo: 'Prueba2',
   descripcion: 'Esta es la segunda prueba',
   _creador: idUsuarioUno
@@ -58,14 +60,11 @@ describe('POST /tareas', () => {
             descripcion
           })
           .expect(200)
-          .expect((res) => {
-            expect(res.body.titulo).toBe(titulo)
-          })
+          .expect(Errores.correcto)
           .end((err, res) => {
             if (err) {
               return done(err)
             }
-
             Tarea.find().then((tareas) => {
               expect(tareas.length).toBe(3);
               expect(tareas[0].titulo).toBe(titulo);
@@ -76,13 +75,13 @@ describe('POST /tareas', () => {
     })
   });
 
-  it('El título solo debe contener caracteres Alfanuméricos', (done) => {
-    var titulo = 'Otra prueba';
-    var descripcion = 'Esto es una prueba';
-    var codigo = 28;
-
-    tareasError(done, titulo, descripcion, codigo);
-  });
+  // it('El título solo debe contener caracteres Alfanuméricos', (done) => {
+  //   var titulo = 'Otra prueba';
+  //   var descripcion = 'Esto es una prueba';
+  //   var codigo = 28;
+  //
+  //   tareasError(done, titulo, descripcion, codigo);
+  // });
 
   it('El título no puede estar vacío', (done) => {
     var titulo = '';
@@ -162,6 +161,87 @@ describe('GET /tareas', () => {
       });
   });
 });
+
+describe('PATCH tareas/:id', () => {
+
+  it('Retorna 400 si el json está vacío', (done) => {
+    var id = tareas[0]._id.toHexString();
+    var tarea = {};
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        metodoPatchTareas(tarea, idTarea1, token, 400, Errores.faltanDatos, done)
+      })
+    })
+  });
+
+  it('Retorna 404 si el id no se encuentra', (done) => {
+    var tarea = {
+      titulo: "Nuevo titulo",
+      descripcion: "Nueva descripcion"
+    }
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        metodoPatchTareas(tarea, idUsuarioUno, token, 404, Errores.idNoEncontrado, done)
+      })
+    })
+  });
+
+  it('Retorna 400 si el id es invalido', (done) => {
+    var tarea = {
+      titulo: "Nuevo titulo",
+      descripcion: "Nueva descripcion"
+    }
+    Usuario.findOne().then( (usuario) => {
+      usuario.generarTokenDeAutenticidad().then( (token) => {
+        metodoPatchTareas(tarea, "y28ed2y8eg4", token, 400, Errores.idInvalido, done);
+      })
+    })
+  });
+
+  it('Actualiza los datos de la tarea correctamente', (done) => {
+    var tarea = {
+      titulo: "Nuevo titulo",
+      descripcion: "Nueva descripcion",
+      completado: true
+    }
+    Usuario.findOne().then( (usuario) => {
+      usuario.generarTokenDeAutenticidad().then( (token) => {
+        request(app)
+          .patch(`/tareas/${idTarea1}`)
+          .send(tarea)
+          .set('x-auth', token)
+          .expect(200)
+          .end( (res) => {
+            Tarea.findOne({_id: idTarea1}).then( (todo) => {
+              expect(todo.titulo).toBe(tarea.titulo);
+              expect(todo.descripcion).toBe(tarea.descripcion);
+              expect(todo.completado).toBe(true);
+              done();
+            })
+          })
+      })
+    })
+  })
+
+});
+
+var metodoPatchTareas = function(tarea, id, token, status, error, done){
+  request(app)
+    .patch(`/tareas/${id}`)
+    .send(tarea)
+    .set("x-auth", token)
+    .expect(status)
+    .expect(error)
+    .end((err,res) => {
+      if (err)
+        return done(err);
+      Tarea.findOne({_id: idTarea1}).then((todo) => {
+        expect(todo.titulo).toBe("Prueba");
+        expect(todo.descripcion).toBe("Esto es una prueba");
+        done();
+      }).catch((e) => done(e));
+    })
+}
 
 describe('ENVIAR /usuario', () => {
 
@@ -281,7 +361,7 @@ describe('ENVIAR /usuario', () => {
       apellido: 'kjhsfsf',
       fechaDeNacimiento: mes + '/01/1999'
     };
-    metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
+    metodoRequestPostUsuario(done, user, Errores.noEsDate, 400);
   });
 
   it('El usuario no es mayor de edad por el dia', (done) => {
@@ -292,7 +372,7 @@ describe('ENVIAR /usuario', () => {
       password: '12345678',
       nombre: 'Prueba',
       apellido: 'kjhsfsf',
-      fechaDeNacimiento: '12/' + dia-1 + '/1999'
+      fechaDeNacimiento: '12/' + dia-1 + '/2000'
     };
     metodoRequestPostUsuario(done, user, Errores.noEsMayorDeEdad, 400);
   });
@@ -320,6 +400,8 @@ describe('ENVIAR /usuario', () => {
   });
 
  });
+
+
 
  var metodoRequestPostUsuario = function(done, user, error, codigo_error){
    request(app)
@@ -398,7 +480,6 @@ describe('POST usuarios/login (Iniciar Sesión)', () => {
       .post('/usuarios/login')
       .send(user)
       .expect(200)
-      .expect(Errores.correcto)
       .end((err, res) => {
         if (err) return done(err);
         Usuario.findOne().then((usuario) => {

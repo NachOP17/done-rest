@@ -3,7 +3,7 @@ const {ObjectId} = require('mongodb');
 
 var Errores = {
   correcto: {
-    codigo: '0',
+    codigo: 0,
     mensaje: 'Correcto'
   },
 
@@ -318,10 +318,30 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
 }
 
 function validarErroresUpdateTarea(body, id){
+  var errores = []
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
   if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
     throw(Errores.faltanDatos);
+  if(body.titulo.length>50)
+    throw(Errores.tituloMuyLargo);
+  if (body.titulo.length > 250)
+    throw(Errores.descripcionMuyLarga);
+  if( !isAlphanumeric(body.titulo))
+    throw(Errores.tituloNoValido);
+  if(!isCode(body.descripcion))
+    throw(Errores.isCode);
 }
+
+function isAlphanumeric(v) {
+  var regex = /^[\w\s]+$/;
+  return regex.test(v);
+}
+
+function isCode(v) {
+  var regex= /<\/?[\w\s="/.':;#-\/\?]+>/gi;
+  return !regex.test(v);
+}
+
 
 module.exports = {Errores};
