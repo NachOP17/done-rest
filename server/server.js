@@ -102,7 +102,7 @@ app.get('/tareas/:categoria', autenticar, (req, res) => {
         if (tarea[0] == undefined) {
           res.send(Errores.noHayTareas);
         } else {
-          res.send(tarea);
+          res.send({tarea});
         }
       }, (e) => {
         res.status(400).send(e);
@@ -128,7 +128,7 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
       $set: body
     }, {new: true}).then((tarea) => {
       if (tarea == null)  return res.status(404).send(Errores.idNoEncontrado)
-      res.status(200).send(tarea);
+      res.status(200).send({tarea});
     }), (e) => {
       res.status(400).send(e)
     }
@@ -160,7 +160,7 @@ app.get('/categorias', (req, res) => {
   Categoria.find({
     activo: true
   }).then((categorias) => {
-    res.send(categorias);
+    res.send({categorias});
   }, (e) => {
     res.status(400);
   });
