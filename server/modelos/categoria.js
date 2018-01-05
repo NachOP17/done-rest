@@ -24,7 +24,7 @@ ModeloCategoria.statics.findByCategory = function(categoria) {
 var Categoria = mongoose.model('Categoria', ModeloCategoria);
 
 var sampleData = [
-  {categoria: "Peronal"},
+  {categoria: "Personal"},
   {categoria: "Trabajo"},
   {categoria: "Hogar"},
   {categoria: "Estudios"}
