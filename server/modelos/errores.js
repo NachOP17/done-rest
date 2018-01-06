@@ -339,7 +339,7 @@ function validarErroresUpdateTarea(body, id){
 }
 
 function validarErroresForgotPass(body){
-  if((!body.email) ||| (body.email == ""))
+  if((!body.email) || (body.email == ""))
     throw(Errores.faltanDatos);
   if(!validator.isEmail(body.email))
     throw (Errores.correoNoValido);
