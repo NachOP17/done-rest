@@ -257,7 +257,7 @@ app.patch('/usuarios/pass', (req,res) => {
   try{
     Errores.validarErroresForgotPass(body);
     Usuario.findOne({email: body.email}).then((usuario) => {
-      if(usuario==null) return res.status(404).send();
+      if(usuario==null) return res.status(404).send(Errores.correoNoExiste);
       res.status(200).send(Mailer.generateRandomPassword(usuario.id))
     })
   } catch(e){
