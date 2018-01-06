@@ -28,6 +28,10 @@ var Errores = {
     codigo: 9,
     mensaje: 'El correo es muy largo (Máximo 50 caracteres)'
   },
+  correoNoExiste{
+    codigo: 42,
+    mensaje: 'EL correo ingresado no se encuentra registrado'
+  },
 
   // Errores del Usuario
   usuarioIncorrecto: {
