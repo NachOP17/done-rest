@@ -203,6 +203,12 @@ var Errores = {
     mensaje: "Este usuario no está autorizado a eliminar la tarea que desea eliminar"
   },
 
+  //errores de completado
+  yaCompletada: {
+    codigo: 43,
+    mensaje: "Esta tarea ya fue completada"
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
@@ -325,7 +331,7 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
 function validarErroresUpdateTarea(body, id){
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
-  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
+  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (body.completado == undefined))
     throw(Errores.faltanDatos);
   if (body.titulo){
   if(body.titulo.length>50)
