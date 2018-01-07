@@ -128,9 +128,9 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
       $set: body
     }, {new: true}).then((tarea) => {
       if (tarea == null)  return res.status(404).send(Errores.idNoEncontrado)
-      if(body.completado){
-        if((body.completado == true) && (tarea.completado == true))
-          return res.status(400).send(Errores.yaCompletada)
+      // if(body.completado){
+      //   if((body.completado == true) && (tarea.completado == true))
+      //     return res.status(400).send(Errores.yaCompletada)
       }
       res.status(200).send({tarea});
     }), (e) => {
