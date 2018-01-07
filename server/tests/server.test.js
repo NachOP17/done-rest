@@ -11,6 +11,7 @@ const {Usuario} = require('./../modelos/usuario');
 const idUsuarioUno = new ObjectId();
 const idTarea1= new ObjectId();
 const idTarea2 = new ObjectId();
+const idTarea3 = new ObjectId();
 
 const usuarios = [{
   _id: idUsuarioUno,
@@ -29,9 +30,15 @@ const tareas = [{
   _creador: idUsuarioUno
 }, {
   _id: idTarea2,
-  titulo: 'Prueba2',
+  titulo: 'Prueba 2',
   descripcion: 'Esta es la segunda prueba',
   _creador: idUsuarioUno
+}, {
+  _id: idTarea3,
+  titulo: 'Prueba 3',
+  descripcion: 'Esta es la tercera prueba',
+  _creador: idUsuarioUno,
+  categoria: 'Personal'
 }];
 
 beforeEach((done) => {
@@ -66,7 +73,7 @@ describe('POST /tareas', () => {
               return done(err)
             }
             Tarea.find().then((tareas) => {
-              expect(tareas.length).toBe(3);
+              expect(tareas.length).toBe(4);
               expect(tareas[0].titulo).toBe(titulo);
               done();
             }).catch((e) => done(e));
@@ -75,13 +82,13 @@ describe('POST /tareas', () => {
     })
   });
 
-  // it('El título solo debe contener caracteres Alfanuméricos', (done) => {
-  //   var titulo = 'Otra prueba';
-  //   var descripcion = 'Esto es una prueba';
-  //   var codigo = 28;
-  //
-  //   tareasError(done, titulo, descripcion, codigo);
-  // });
+  it('El título solo debe contener caracteres Alfanuméricos', (done) => {
+    var titulo = 'Otra_*prueba';
+    var descripcion = 'Esto es una prueba';
+    var codigo = 28;
+
+    tareasError(done, titulo, descripcion, codigo);
+  });
 
   it('El título no puede estar vacío', (done) => {
     var titulo = '';
@@ -100,6 +107,86 @@ describe('POST /tareas', () => {
     var codigo = 29;
 
     tareasError(done, titulo, descripcion, codigo);
+  });
+
+  it('La descripción no puede contener tags de html', (done) => {
+    var titulo = 'Prueba';
+    var descripcion = '<script>alert("Esto es una prueba");</script>'
+    var codigo = 37;
+
+    tareasError(done, titulo, descripcion, codigo);
+  });
+
+  it('La descripción no puede contener más de 255 caracteres', (done) => {
+    var titulo = 'Prueba';
+    var descripcion = '12345678901234567890123456789012345678901234567890' +
+    '1234567890123456789012345678901234567890123456789012345678901234567890' +
+    '1234567890123456789012345678901234567890123456789012345678901234567890' +
+    '1234567890123456789012345678901234567890123456789012345678901234567890';
+    var codigo = 31;
+
+    tareasError(done, titulo, descripcion, codigo);
+  });
+
+  it('La descripción no puede estar vacía', (done) => {
+    var titulo = 'Prueba';
+    var descripcion = '';
+    var codigo = 30;
+
+  tareasError(done, titulo, descripcion, codigo);
+  });
+
+  it('No se puede agregar una categoría que no existe', (done) => {
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .post('/tareas')
+          .set('x-auth', token)
+          .send({
+            titulo: 'Prueba',
+            descripcion: 'Descripcion',
+            categoria: 'Universidad'
+          })
+          .expect(404)
+          .end((err, res) => {
+            if (err) {
+              done(err);
+            }
+            expect(res.body.codigo).toBe(34);
+            Tarea.find().then((tareas) => {
+              expect(tareas.length).toBe(3);
+              done();
+            }).catch((e) => done(e));
+          });
+      })
+    })
+  });
+
+  it('La fecha debe ser de tipo Date', (done) => {
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .post('/tareas')
+          .set('x-auth', token)
+          .send({
+            titulo: 'Prueba',
+            descripcion: 'Descripcion',
+            categoria: 'Trabajo',
+            fechaParaSerCompletada: 'Hola'
+          })
+          .expect(400)
+          .end((err, res) => {
+            if (err) {
+              done(err);
+            }
+            expect(res.body[0].codigo).toBe(36);
+            Tarea.find().then((tareas) => {
+              expect(tareas.length).toBe(3);
+              done();
+            }).catch((e) => done(e));
+          });
+      })
+    })
   });
 });
 
@@ -120,7 +207,7 @@ var tareasError = function(done, titulo, descripcion, codigo){
           }
           expect(res.body[0].codigo).toBe(codigo);
           Tarea.find().then((tareas) => {
-            expect(tareas.length).toBe(2);
+            expect(tareas.length).toBe(3);
             done();
           }).catch((e) => done(e));
         });
@@ -140,7 +227,7 @@ describe('GET /tareas', () => {
             if (err)
               return done(err)
             Tarea.find().then((tareas) => {
-              expect(tareas.length).toBe(2);
+              expect(tareas.length).toBe(3);
               done();
             }).catch((e) => done(e));
           });
@@ -159,6 +246,22 @@ describe('GET /tareas', () => {
         expect(res.body.codigo).toBe(25);
         done();
       });
+  });
+
+  it('Debería buscar todas las tareas pertenecientes a una categoría de un usuario', (done) => {
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .get('/tareas/Personal')
+          .set('x-auth', token)
+          .expect(200)
+          .end((err, res) => {
+            if (err)
+              return done(err)
+            done()
+          });
+      });
+    });
   });
 });
 

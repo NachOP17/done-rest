@@ -162,7 +162,7 @@ var Errores = {
   // Errores de la descripcion
   descripcionVacia: {
     codigo: 30,
-    mensaje: 'La descripción no puede estar vacío'
+    mensaje: 'La descripción no puede estar vacía'
   },
   descripcionMuyLarga: {
     codigo: 31,
@@ -302,6 +302,10 @@ function validarErroresDeTareas(e) {
     if (validator.contains(jsonDelError, 'fechaParaSerCompletada')) {
       validadorDeErroresDeTareas(e.errors.fechaParaSerCompletada.kind, null, Errores.noEsDate, Errores.fechaEnPasado, errores);
     }
+
+    if (validator.contains(jsonDelError, 'completado')) {
+      validadorDeErroresDeTareas(e.errors.completado.kind, null, "Prueba", null, errores);
+    }
   }
   return errores;
 }
@@ -319,6 +323,8 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
     case 'isCode': errores.push(noValido);
       break;
     case 'fechaEnPasado': errores.push(muyLargo);
+      break;
+    case 'isBoolean': errores.push(noValido);
   }
 }
 
