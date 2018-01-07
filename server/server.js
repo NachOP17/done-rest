@@ -138,22 +138,22 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
 });
 
 
-app.post('/categorias', autenticar, (req, res) => {
-  logger.info('POST /categorias');
-  var categoria = new Categoria({
-    categoria: req.body.categoria,
-    activo: req.body.activo
-  });
-  var error = [];
-
-  categoria.save().then(() => {
-    res.status(200).send(Errores.correcto);
-    logger.info(Errores.correcto);
-  }).catch((e) => {
-    res.status(404).send(Errores.categoriaNoExiste);
-    logger.error(Errores.categoriaNoExiste);
-  })
-});
+// app.post('/categorias', autenticar, (req, res) => {
+//   logger.info('POST /categorias');
+//   var categoria = new Categoria({
+//     categoria: req.body.categoria,
+//     activo: req.body.activo
+//   });
+//   var error = [];
+//
+//   categoria.save().then(() => {
+//     res.status(200).send(Errores.correcto);
+//     logger.info(Errores.correcto);
+//   }).catch((e) => {
+//     res.status(404).send(Errores.categoriaNoExiste);
+//     logger.error(Errores.categoriaNoExiste);
+//   })
+// });
 
 
 app.get('/categorias', (req, res) => {
