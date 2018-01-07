@@ -130,7 +130,7 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
       if (tarea == null)  return res.status(404).send(Errores.idNoEncontrado)
       res.status(200).send({tarea});
     }), (e) => {
-      res.status(400).send(e)
+      res.status(400).send(AAAAAAAA)
     }
   } catch(e){
     res.status(400).send(e);
@@ -269,6 +269,7 @@ app.patch('/usuarios/pass', (req,res) => {
 app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
+  // console.log(body);
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
   logger.info('Body: \n',body);

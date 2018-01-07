@@ -323,19 +323,22 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
 }
 
 function validarErroresUpdateTarea(body, id){
-  var errores = []
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
   if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
     throw(Errores.faltanDatos);
+  if (body.titulo){
   if(body.titulo.length>50)
-    throw(Errores.tituloMuyLargo);
-  if (body.titulo.length > 250)
-    throw(Errores.descripcionMuyLarga);
+      throw(Errores.tituloMuyLargo);
   if( !isAlphanumeric(body.titulo))
     throw(Errores.tituloNoValido);
-  if(!isCode(body.descripcion))
-    throw(Errores.isCode);
+  }
+  if (body.descripcion){
+    if (body.descripcion.length > 250)
+        throw(Errores.descripcionMuyLarga);
+    if(!isCode(body.descripcion))
+          throw(Errores.isCode);
+  }
 }
 
 function validarErroresForgotPass(body){
