@@ -29,6 +29,11 @@ var ModeloDeTarea = new mongoose.Schema({
 
   completado: {
     type: Boolean,
+    validate: {
+      isAsync: false,
+      validator: isBoolean,
+      type: "isBoolean"
+    },
     default: false,
     required: true
   },
@@ -59,6 +64,10 @@ var ModeloDeTarea = new mongoose.Schema({
     required: false
   }
 });
+
+function isBoolean(v) {
+  return (v == false || v == true)
+}
 
 function isAlphanumeric(v) {
   var regex = /^[\w\s]+$/;
