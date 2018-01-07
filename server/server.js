@@ -269,6 +269,7 @@ app.patch('/usuarios/pass', (req,res) => {
 app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
+  // console.log(body);
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
   logger.info('Body: \n',body);
