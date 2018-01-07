@@ -30,7 +30,7 @@ var Errores = {
   },
   correoNoExiste: {
     codigo: 42,
-    mensaje: 'EL correo ingresado no se encuentra registrado'
+    mensaje: 'El correo ingresado no se encuentra registrado'
   },
 
   // Errores del Usuario
@@ -201,6 +201,11 @@ var Errores = {
   usuarioNoAutorizado: {
     codigo: 41,
     mensaje: "Este usuario no está autorizado a eliminar la tarea que desea eliminar"
+  },
+
+  usuarioNoRegistrado: {
+    codigo: 42,
+    mensaje: "El usuario ingresado no se encuentra registrado"
   },
 
   // Funciones
