@@ -255,7 +255,10 @@ app.post('/usuarios/changepass', (req, res) => {
   var body = _.pick(req.body, 'email');
   var email = req.body.email;
   var id = "";
-  if (!validator.isEmail(email)) {
+
+  if (email == "") {
+    res.status(400).send(Errores.correoNoIngresado);
+  } else if (!validator.isEmail(email)) {
     Usuario.findOne({username: email}).then((usuario) => {
       email = usuario.email,
       id = usuario._id;
@@ -301,6 +304,7 @@ app.patch('/usuarios/pass', (req,res) => {
 app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
+  // console.log(body);
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
   logger.info('Body: \n',body);

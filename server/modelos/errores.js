@@ -203,8 +203,13 @@ var Errores = {
     mensaje: "Este usuario no está autorizado a eliminar la tarea que desea eliminar"
   },
 
+  yaCompletada: {
+    codigo: 43,
+    mensaje: "Esta tarea ya fue completada"
+  },
+
   usuarioNoRegistrado: {
-    codigo: 42,
+    codigo: 44,
     mensaje: "El usuario ingresado no se encuentra registrado"
   },
 
@@ -334,23 +339,26 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
 }
 
 function validarErroresUpdateTarea(body, id){
-  var errores = []
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
-  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
+  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (body.completado == undefined))
     throw(Errores.faltanDatos);
+  if (body.titulo){
   if(body.titulo.length>50)
-    throw(Errores.tituloMuyLargo);
-  if (body.titulo.length > 250)
-    throw(Errores.descripcionMuyLarga);
+      throw(Errores.tituloMuyLargo);
   if( !isAlphanumeric(body.titulo))
     throw(Errores.tituloNoValido);
-  if(!isCode(body.descripcion))
-    throw(Errores.isCode);
+  }
+  if (body.descripcion){
+    if (body.descripcion.length > 250)
+        throw(Errores.descripcionMuyLarga);
+    if(!isCode(body.descripcion))
+          throw(Errores.isCode);
+  }
 }
 
 function validarErroresForgotPass(body){
-  if(body.email == undefined)
+  if((!body.email) || (body.email == ""))
     throw(Errores.faltanDatos);
   if(!validator.isEmail(body.email))
     throw (Errores.correoNoValido);
