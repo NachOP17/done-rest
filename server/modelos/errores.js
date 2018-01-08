@@ -30,7 +30,7 @@ var Errores = {
   },
   correoNoExiste: {
     codigo: 42,
-    mensaje: 'EL correo ingresado no se encuentra registrado'
+    mensaje: 'El correo ingresado no se encuentra registrado'
   },
 
   // Errores del Usuario
@@ -203,6 +203,21 @@ var Errores = {
     mensaje: "Este usuario no está autorizado a eliminar la tarea que desea eliminar"
   },
 
+  yaCompletada: {
+    codigo: 43,
+    mensaje: "Esta tarea ya fue completada"
+  },
+
+  usuarioNoRegistrado: {
+    codigo: 44,
+    mensaje: "El usuario ingresado no se encuentra registrado"
+  },
+
+  idTareaNoEncontrado: {
+    codigo: 45,
+    mensaje: "La tarea que busca no le pertenece a este usuario o el usuario no está autorizado a buscar esta tarea"
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
@@ -330,19 +345,22 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
 }
 
 function validarErroresUpdateTarea(body, id){
-  var errores = []
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
-  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
+  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (body.completado == undefined))
     throw(Errores.faltanDatos);
+  if (body.titulo){
   if(body.titulo.length>50)
-    throw(Errores.tituloMuyLargo);
-  if (body.titulo.length > 250)
-    throw(Errores.descripcionMuyLarga);
+      throw(Errores.tituloMuyLargo);
   if( !isAlphanumeric(body.titulo))
     throw(Errores.tituloNoValido);
-  if(!isNotCode(body.descripcion))
-    throw(Errores.isCode);
+  }
+  if (body.descripcion){
+    if (body.descripcion.length > 250)
+        throw(Errores.descripcionMuyLarga);
+    if(!isNotCode(body.descripcion))
+          throw(Errores.isCode);
+  }
 }
 
 function validarErroresUpdateUsuario(body, id) {
@@ -357,7 +375,7 @@ function validarErroresUpdateUsuario(body, id) {
 }
 
 function validarErroresForgotPass(body){
-  if(body.email == undefined)
+  if((!body.email) || (body.email == ""))
     throw(Errores.faltanDatos);
   if(!validator.isEmail(body.email))
     throw (Errores.correoNoValido);
