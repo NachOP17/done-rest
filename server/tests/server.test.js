@@ -263,6 +263,41 @@ describe('GET /tareas', () => {
       });
     });
   });
+
+  it('Debería buscar una tarea por su id', (done) => {
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .get(`/tareas/id/${idTarea1}`)
+          .set('x-auth', token)
+          .expect(200)
+          .end((err, res) => {
+            if (err)
+              return done(err)
+            done();
+          });
+      });
+    });
+  });
+
+  it('Debería retornar 404 si el id de la tarea no existe', (done) => {
+    Usuario.findOne().then((usuario) => {
+      usuario.generarTokenDeAutenticidad().then((token) => {
+        request(app)
+          .get(`/tareas/id/hjhjgjad12`)
+          .set('x-auth', token)
+          .expect(404)
+          .end((err, res) => {
+            if (err)
+              return done(err)
+            else {
+              expect(res.body.codigo).toBe(45);
+              done();
+            }
+          });
+      });
+    });
+  });
 });
 
 describe('PATCH tareas/:id', () => {
