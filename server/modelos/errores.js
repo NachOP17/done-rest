@@ -1,5 +1,6 @@
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
+const {Tarea} = require('./tarea')
 
 var Errores = {
   correcto: {
@@ -342,6 +343,8 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
     case 'isBoolean': errores.push(noValido);
   }
 }
+
+
 
 function validarErroresUpdateTarea(body, id){
   if(!ObjectId.isValid(id))
