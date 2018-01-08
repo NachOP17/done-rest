@@ -187,7 +187,7 @@ var Errores = {
   // Errores de la categoría
   categoriaNoExiste: {
     codigo: 34,
-    mensaje: "La categoría ingresada no existe"
+    mensaje: "La categoría ingresada está desactivada o no existe"
   },
   noHayTareas: {
     codigo: 35,
@@ -351,11 +351,11 @@ function validarErroresUpdateTarea(body, id){
     throw(Errores.idInvalido);
   if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (body.completado == undefined))
     throw(Errores.faltanDatos);
-  if (body.titulo){
-  if(body.titulo.length>50)
-      throw(Errores.tituloMuyLargo);
-  if( !isAlphanumeric(body.titulo))
-    throw(Errores.tituloNoValido);
+  if (body.titulo) {
+    if(body.titulo.length>50)
+        throw(Errores.tituloMuyLargo);
+    if( !isAlphanumeric(body.titulo))
+      throw(Errores.tituloNoValido);
   }
   if (body.descripcion){
     if (body.descripcion.length > 250)
