@@ -116,6 +116,17 @@ app.get('/tareas/:categoria', autenticar, (req, res) => {
   });
 });
 
+app.get('/tareas/id/:id', autenticar, (req, res) => {
+  Tarea.findOne({
+    _id: req.params.id,
+    _creador: req.usuario.id
+  }).then((tarea) => {
+    res.status(200).send(tarea);
+  }).catch((e) => {
+    res.status(404).send(Errores.idTareaNoEncontrado);
+  })
+});
+
 app.patch('/tareas/:id', autenticar, (req, res) => {
   var id = req.params.id
   var camposPermitidos = ['titulo', 'descripcion', 'fechaParaSerCompletada', 'completado'];

@@ -213,6 +213,11 @@ var Errores = {
     mensaje: "El usuario ingresado no se encuentra registrado"
   },
 
+  idTareaNoEncontrado: {
+    codigo: 45,
+    mensaje: "La tarea que busca no le pertenece a este usuario o el usuario no está autorizado a buscar esta tarea"
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
