@@ -139,21 +139,22 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
 
 //Actualiza los datos del usuario
 
-app.patch('/usuario/:id', autenticar, (req,res) =>{
+app.patch('/usuarios/:id', autenticar, (req,res) => {
   var id = req.params.id;
   var camposPermitidos = ['email','username','nombre','apellido']
-  var body = ._pick(req.body, camposPermitidos);
+  var body = _.pick(req.body, camposPermitidos);
   try{
     Errores.validarErroresUpdateUsuario(body, id);
     Usuario.findByIdAndUpdate(id,{$set: body}, {new: true}).then((usuario) => {
       if(!usuario){
         return res.status(404).send();
       }
-      res.send({usuario});
+      res.send(Errores.correcto);
     })
   } catch(e){
     res.status(400).send(e);
   }
+});
 
 
 
@@ -212,7 +213,7 @@ app.post('/usuarios', (req, res) => {
 app.patch('/usuario/:id', autenticar, (req, res) =>{
   var id = req.params.id;
   var camposPermitidos = ['email','username','nombre','apellido']
-  var body = ._pick(req.body, camposPermitidos)
+  var body = _.pick(req.body, camposPermitidos)
   try{
     //Errores.validarErroresUpdateUsuario(body, id);
     Usuario.findByIdAndUpdate(id,{$set: body}, {new: true}).then((usuario) => {

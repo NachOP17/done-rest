@@ -208,6 +208,7 @@ var Errores = {
   validarErroresDeTareas,
   validarErroresCambiaPass,
   validarErroresUpdateTarea,
+  validarErroresUpdateUsuario,
   validarErroresForgotPass
 }
 
@@ -344,15 +345,16 @@ function validarErroresUpdateTarea(body, id){
     throw(Errores.isCode);
 }
 
-//function validarErroresUpdateUsuario(body, id) {
-  //var errores = []
-  //if(!ObjectId.isValid(id))
-  //  throw(Errores,idInvalido);
-  //if((!body.email) && (!body.username) && (!body.nombre) && (!body.apellido))
-    //throw(Errores.faltanDatos)
+function validarErroresUpdateUsuario(body, id) {
+
+  console.log("entro en la validacion");
+  var errores = []
+  if(!ObjectId.isValid(id))
+   throw(Errores.idInvalido);
+  if((body.email == "") || (body.username == "") || (body.nombre == "") || (body.apellido == ""))
+    throw(Errores.faltanDatos)
   //if(body.username)
-//
-//}
+}
 
 function validarErroresForgotPass(body){
   if(body.email == undefined)
