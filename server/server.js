@@ -5,6 +5,7 @@ const _ = require('lodash');
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
 
+var {tareaCompletada} = require('./middleware/tareaCompletada');
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
@@ -127,7 +128,7 @@ app.get('/tareas/id/:id', autenticar, (req, res) => {
   })
 });
 
-app.patch('/tareas/:id', autenticar, (req, res) => {
+app.patch('/tareas/:id', autenticar, tareaCompletada, (req, res) => {
   var id = req.params.id
   var camposPermitidos = ['titulo', 'descripcion', 'fechaParaSerCompletada', 'completado'];
   var body = _.pick(req.body, camposPermitidos);
