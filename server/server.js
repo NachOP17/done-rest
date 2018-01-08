@@ -186,7 +186,14 @@ app.post('/usuarios', (req, res) => {
     logger.error(Errores.validarErroresRegistro(e));
   });
 });
+//Actualiza los datos del usuario
 
+app.patch('/usuario/:id', autenticar, (req,res) =>{
+  var id = req.params.id;
+  var camposPermitidos = ['email','username','nombre','apellido']
+  var body = ._pick(req.body, camposPermitidos)
+
+});
 
 //GET busca un usuario
 // Busca los datos del usuario

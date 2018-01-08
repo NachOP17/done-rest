@@ -334,6 +334,12 @@ function validarErroresUpdateTarea(body, id){
     throw(Errores.isCode);
 }
 
+function validarErroresUpdateUsuario(body, id) {
+  var errores = []
+  if(!obje)
+
+}
+
 function validarErroresForgotPass(body){
   if(!body.email)
     throw(Errores.faltanDatos);
