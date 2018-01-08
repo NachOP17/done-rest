@@ -92,7 +92,8 @@ app.get('/tareas', autenticar, (req, res) =>{
 
 app.get('/tareas/:categoria', autenticar, (req, res) => {
   Categoria.find({
-    categoria: req.params.categoria
+    categoria: req.params.categoria,
+    activo: true
   }).then((categoria) => {
     if (!(categoria[0] == undefined)) {
       Tarea.find({
@@ -138,22 +139,22 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
 });
 
 
-app.post('/categorias', autenticar, (req, res) => {
-  logger.info('POST /categorias');
-  var categoria = new Categoria({
-    categoria: req.body.categoria,
-    activo: req.body.activo
-  });
-  var error = [];
-
-  categoria.save().then(() => {
-    res.status(200).send(Errores.correcto);
-    logger.info(Errores.correcto);
-  }).catch((e) => {
-    res.status(404).send(Errores.categoriaNoExiste);
-    logger.error(Errores.categoriaNoExiste);
-  })
-});
+// app.post('/categorias', autenticar, (req, res) => {
+//   logger.info('POST /categorias');
+//   var categoria = new Categoria({
+//     categoria: req.body.categoria,
+//     activo: req.body.activo
+//   });
+//   var error = [];
+//
+//   categoria.save().then(() => {
+//     res.status(200).send(Errores.correcto);
+//     logger.info(Errores.correcto);
+//   }).catch((e) => {
+//     res.status(404).send(Errores.categoriaNoExiste);
+//     logger.error(Errores.categoriaNoExiste);
+//   })
+// });
 
 
 app.get('/categorias', (req, res) => {
@@ -246,6 +247,40 @@ app.post('/usuarios/login', (req, res) => {
     }
     //res.status(401).send(e);
   });
+});
+
+
+app.post('/usuarios/changepass', (req, res) => {
+  logger.info('POST /usuarios/changepass');
+  var body = _.pick(req.body, 'email');
+  var email = req.body.email;
+  var id = "";
+
+  if (email == "") {
+    res.status(400).send(Errores.correoNoIngresado);
+  } else if (!validator.isEmail(email)) {
+    Usuario.findOne({username: email}).then((usuario) => {
+      email = usuario.email,
+      id = usuario._id;
+      logger.info(Errores.correcto);
+      res.status(200).send(Errores.correcto);
+      Mailer.passwordOlvidada(email, id);
+    }).catch((e) => {
+      logger.error(Errores.usuarioNoRegistrado);
+      res.status(404).send(Errores.usuarioNoRegistrado);
+    });
+  }
+  else {
+    Usuario.findOne({email}).then((usuario) => {
+      id = usuario._id;
+      logger.info(Errores.correcto);
+      res.status(200).send(Errores.correcto);
+      Mailer.passwordOlvidada(email, id);
+    }).catch((e) => {
+      logger.error(Errores.correoNoExiste);
+      res.status(404).send(Errores.correoNoExiste);
+    });
+  }
 });
 
 //

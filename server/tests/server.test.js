@@ -505,6 +505,20 @@ describe('ENVIAR /usuario', () => {
  });
 
 
+ // Categorías
+ describe('GET Categorias', () => {
+   it('Debería devolver todas las categorías', (done) => {
+     request(app)
+       .get('/categorias')
+       .expect(200)
+       .end((err, res) => {
+         if(err) return done(err);
+         expect(res.body.length).toBe(4);
+         done();
+       });
+   });
+ })
+
 
  var metodoRequestPostUsuario = function(done, user, error, codigo_error){
    request(app)
