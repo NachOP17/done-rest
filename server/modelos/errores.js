@@ -340,7 +340,7 @@ function validarErroresUpdateTarea(body, id){
     throw(Errores.descripcionMuyLarga);
   if( !isAlphanumeric(body.titulo))
     throw(Errores.tituloNoValido);
-  if(!isCode(body.descripcion))
+  if(!isNotCode(body.descripcion))
     throw(Errores.isCode);
 }
 
@@ -356,7 +356,7 @@ function isAlphanumeric(v) {
   return regex.test(v);
 }
 
-function isCode(v) {
+function isNotCode(v) {
   var regex= /<\/?[\w\s="/.':;#-\/\?]+>/gi;
   return !regex.test(v);
 }

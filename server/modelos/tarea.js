@@ -22,7 +22,7 @@ var ModeloDeTarea = new mongoose.Schema({
     trim: true,
     validate: {
       isAsync: false,
-      validator: isCode,
+      validator: isNotCode,
       type: "isCode"
     }
   },
@@ -74,7 +74,7 @@ function isAlphanumeric(v) {
   return regex.test(v);
 }
 
-function isCode(v) {
+function isNotCode(v) {
   var regex= /<\/?[\w\s="/.':;#-\/\?]+>/gi;
   return !regex.test(v);
 }
