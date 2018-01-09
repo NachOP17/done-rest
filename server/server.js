@@ -113,7 +113,7 @@ app.get('/tareas/:categoria', autenticar, (req, res) => {
       res.status(404).send(Errores.categoriaNoExiste);
     }
   }, (e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.categoriaNoExiste);
   });
 });
 
@@ -180,7 +180,7 @@ app.get('/categorias', (req, res) => {
   }).then((categorias) => {
     res.send(categorias);
   }, (e) => {
-    res.status(400);
+    res.status(400).send(Errores.categoriaNoExiste);
   });
 });
 

@@ -17,7 +17,8 @@ var ModeloCategoria = new mongoose.Schema({
 ModeloCategoria.statics.findByCategory = function(categoria) {
   var Categoria = this;
   return Categoria.findOne({
-    categoria: categoria
+    categoria: categoria,
+    activo: true
   });
 };
 

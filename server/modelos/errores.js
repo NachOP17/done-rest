@@ -187,7 +187,7 @@ var Errores = {
   // Errores de la categoría
   categoriaNoExiste: {
     codigo: 34,
-    mensaje: "La categoría ingresada no existe"
+    mensaje: "La categoría ingresada está desactivada o no existe"
   },
   noHayTareas: {
     codigo: 35,
