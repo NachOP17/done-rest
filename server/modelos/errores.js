@@ -334,15 +334,44 @@ function validarErroresUpdateTarea(body, id){
     throw(Errores.isCode);
 }
 
-//function validarErroresUpdateUsuario(body, id) {
-  //var errores = []
-  //if(!ObjectId.isValid(id))
-  //  throw(Errores,idInvalido);
-  //if((!body.email) && (!body.username) && (!body.nombre) && (!body.apellido))
-    //throw(Errores.faltanDatos)
-  //if(body.username)
-//
-//}
+function validarErroresUpdateUsuario(body, id) {
+var errores = []
+  if(!ObjectId.isValid(id))
+    throw(Errores,idInvalido);
+  if((body.email == "") && (body.username == "") && (body.nombre == "") && (body.apellido ==""))
+    throw(Errores.faltanDatos);
+
+//valiaciones de Email
+  if(!validator.isEmail(body.email))
+    throw (Errores.correoNoValido);
+  if(findOne({email: body.email}))
+    throw(Errores.correoExistente);
+  if(body.email.length <= 1)
+    throw(err.correoMuyCorto);
+  if(body.email.length > 50)
+    throw(err.correoMuyCorto);
+
+//validaciones de usuario
+  if(findOne({usuario: body.usuario}))
+    throw(Errores.usuarioExistente);
+  if(body.usuario <= 1)
+    throw(Errores.usuarioMuyCorto);
+  if(body.usuario >20)
+    throw(Errores.usuarioMuyLargo);
+
+//validaciones de nombre
+  if(body.nombre.length <= 1)
+    throw(Errores.nombreMuyCorto);
+  if(body.nombre.length > 50)
+    throw(Errores.nombreMuyLargo),
+
+//validaciones de apellido
+  if(body.apellido.length <= 1)
+    throw(Errores.apellidoMuyCorto);
+  if(body.apellido.length <= 1)
+    throw(Errores.apellidoMuyCorto);
+
+}
 
 function validarErroresForgotPass(body){
   if(!body.email)

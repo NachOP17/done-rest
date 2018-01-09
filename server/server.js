@@ -214,7 +214,7 @@ app.patch('/usuario/:id', autenticar, (req, res) =>{
   var camposPermitidos = ['email','username','nombre','apellido']
   var body = ._pick(req.body, camposPermitidos)
   try{
-    //Errores.validarErroresUpdateUsuario(body, id);
+    Errores.validarErroresUpdateUsuario(body, id);
     Usuario.findByIdAndUpdate(id,{$set: body}, {new: true}).then((usuario) => {
       if(!usuario){
         return res.status(404).send();
