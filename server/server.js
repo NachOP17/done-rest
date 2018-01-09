@@ -5,6 +5,7 @@ const _ = require('lodash');
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
 
+var {tareaCompletada} = require('./middleware/tareaCompletada');
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
@@ -112,7 +113,7 @@ app.get('/tareas/:categoria', autenticar, (req, res) => {
       res.status(404).send(Errores.categoriaNoExiste);
     }
   }, (e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.categoriaNoExiste);
   });
 });
 
@@ -127,12 +128,12 @@ app.get('/tareas/id/:id', autenticar, (req, res) => {
   })
 });
 
-app.patch('/tareas/:id', autenticar, (req, res) => {
+app.patch('/tareas/:id', autenticar, tareaCompletada, (req, res) => {
   var id = req.params.id
   var camposPermitidos = ['titulo', 'descripcion', 'fechaParaSerCompletada', 'completado'];
   var body = _.pick(req.body, camposPermitidos);
   try{
-    Errores.validarErroresUpdateTarea(body, id);
+    Errores.validarErroresUpdateTarea(body, id, req.tarea);
     Tarea.findOneAndUpdate({
       _creador: req.usuario._id,
       _id: id
@@ -199,7 +200,7 @@ app.get('/categorias', (req, res) => {
   }).then((categorias) => {
     res.send(categorias);
   }, (e) => {
-    res.status(400);
+    res.status(400).send(Errores.categoriaNoExiste);
   });
 });
 

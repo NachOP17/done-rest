@@ -1,5 +1,6 @@
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
+const {Tarea} = require('./tarea')
 
 var Errores = {
   correcto: {
@@ -186,7 +187,7 @@ var Errores = {
   // Errores de la categoría
   categoriaNoExiste: {
     codigo: 34,
-    mensaje: "La categoría ingresada no existe"
+    mensaje: "La categoría ingresada está desactivada o no existe"
   },
   noHayTareas: {
     codigo: 35,
@@ -344,18 +345,25 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
   }
 }
 
-function validarErroresUpdateTarea(body, id){
+
+
+function validarErroresUpdateTarea(body, id, tarea){
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
   if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (body.completado == undefined))
     throw(Errores.faltanDatos);
   if (body.titulo){
-  if(body.titulo.length>50)
+    if (tarea.completado == true)
+      throw (Errores.yaCompletada)
+    if(body.titulo.length>50)
       throw(Errores.tituloMuyLargo);
-  if( !isAlphanumeric(body.titulo))
-    throw(Errores.tituloNoValido);
+    if( !isAlphanumeric(body.titulo))
+      throw(Errores.tituloNoValido);
   }
   if (body.descripcion){
+    if (tarea.completado == true){
+      throw (Errores.yaCompletada);
+    }
     if (body.descripcion.length > 250)
         throw(Errores.descripcionMuyLarga);
     if(!isNotCode(body.descripcion))
