@@ -140,13 +140,18 @@ app.patch('/tareas/:id', autenticar, tareaCompletada, (req, res) => {
     }, {
       $set: body
     }, {new: true}).then((tarea) => {
-      if (tarea == null)  return res.status(404).send(Errores.idNoEncontrado)
+      if (tarea == null){
+        logger.error(Errores.idNoEncontrado);
+        return res.status(404).send(Errores.idNoEncontrado);
+      }
       res.status(200).send({tarea});
+      logger.info(Errores.correcto)
     }), (e) => {
       res.status(400).send(e)
     }
   } catch(e){
     res.status(400).send(e);
+    logger.error(e);
   }
 });
 
@@ -319,7 +324,7 @@ app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   // console.log(body);
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
-  logger.info('Body: \n',body);
+  // logger.info('Body: \n',body);
   try{
      Errores.validarErroresCambiaPass(body);
      if (user.password == Usuario.encrypt(body.passwordViejo)){

@@ -33,8 +33,11 @@ const logger = new (winston.Logger)({
 var tareaCompletada = (req, res, next) => {
   var id = req.params.id;
   var body = req.body;
-  if(!ObjectId.isValid(id))
-    return Promise.reject({code: 3})
+    logger.info(`PATCH /tareas/${id}`)
+    if(!ObjectId.isValid(id)){
+      logger.error(Errores.idInvalido);
+      return res.status(400).send(Errores.idInvalido)
+    }
   Tarea.findOne({
     _id: id,
     _creador: req.usuario.id
@@ -50,8 +53,9 @@ var tareaCompletada = (req, res, next) => {
     req.tarea = tarea;
     next();
   }).catch((e) => {
+    console.log(e);
      switch(e.code){
-       case 1: res.status(400).send(Errores.idNoEncontrado);
+       case 1: res.status(404).send(Errores.idNoEncontrado);
               logger.error(Errores.idNoEncontrado);
               break;
        case 2: res.status(400).send(Errores.yaCompletada);
