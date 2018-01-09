@@ -76,7 +76,8 @@ function isAlphanumeric(v) {
 
 function isNotCode(v) {
   var regex= /<\/?[\w\s="/.':;#-\/\?]+>/gi;
-  return !regex.test(v);
+  var regex2 = /\//ig;
+  return !regex.test(v) && !regex2.test(v);
 }
 
 function isValidDate(v) {
