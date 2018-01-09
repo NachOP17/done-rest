@@ -391,7 +391,6 @@ function validarErroresUpdateTarea(body, id, tarea){
 function isValidDate(v) {
   // console.log(v);
   // if(!v.getDate())
-    return Errores.noEsDate;
   var day = v.getDate() + 1;
   var month = v.getMonth();
   var year = v.getFullYear();
