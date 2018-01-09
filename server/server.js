@@ -160,7 +160,6 @@ app.patch('/usuarios/:id', autenticar, (req,res) => {
     Errores.validarErroresUpdateUsuario(body, id);
     Usuario.findByIdAndUpdate({
       _id: id,
-      _creador: req.usuario._id
     },{
       $set: body
     }, {new: true}).then((usuario) => {
