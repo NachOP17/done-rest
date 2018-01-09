@@ -5,6 +5,7 @@ const _ = require('lodash');
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
 
+var {tareaCompletada} = require('./middleware/tareaCompletada');
 var {mongoose} = require('./db/mongoose');
 var {Tarea} = require('./modelos/tarea');
 var {Usuario} = require('./modelos/usuario');
@@ -92,7 +93,8 @@ app.get('/tareas', autenticar, (req, res) =>{
 
 app.get('/tareas/:categoria', autenticar, (req, res) => {
   Categoria.find({
-    categoria: req.params.categoria
+    categoria: req.params.categoria,
+    activo: true
   }).then((categoria) => {
     if (!(categoria[0] == undefined)) {
       Tarea.find({
@@ -111,16 +113,27 @@ app.get('/tareas/:categoria', autenticar, (req, res) => {
       res.status(404).send(Errores.categoriaNoExiste);
     }
   }, (e) => {
-    res.status(400).send(e);
+    res.status(400).send(Errores.categoriaNoExiste);
   });
 });
 
-app.patch('/tareas/:id', autenticar, (req, res) => {
+app.get('/tareas/id/:id', autenticar, (req, res) => {
+  Tarea.findOne({
+    _id: req.params.id,
+    _creador: req.usuario.id
+  }).then((tarea) => {
+    res.status(200).send(tarea);
+  }).catch((e) => {
+    res.status(404).send(Errores.idTareaNoEncontrado);
+  })
+});
+
+app.patch('/tareas/:id', autenticar, tareaCompletada, (req, res) => {
   var id = req.params.id
   var camposPermitidos = ['titulo', 'descripcion', 'fechaParaSerCompletada', 'completado'];
   var body = _.pick(req.body, camposPermitidos);
   try{
-    Errores.validarErroresUpdateTarea(body, id);
+    Errores.validarErroresUpdateTarea(body, id, req.tarea);
     Tarea.findOneAndUpdate({
       _creador: req.usuario._id,
       _id: id
@@ -139,40 +152,23 @@ app.patch('/tareas/:id', autenticar, (req, res) => {
 
 //Actualiza los datos del usuario
 
-app.patch('/usuario/:id', autenticar, (req,res) =>{
-  var id = req.params.id;
-  var camposPermitidos = ['email','username','nombre','apellido']
-  var body = _.pick(req.body, camposPermitidos);
-  try{
-    Errores.validarErroresUpdateUsuario(body, id);
-    Usuario.findByIdAndUpdate(id,{$set: body}, {new: true}).then((usuario) => {
-      if(!usuario){
-        return res.status(404).send();
-      }
-      res.send({usuario});
-    })
-  } catch(e){
-    res.status(400).send(e);
-  }
-});
 
-
-app.post('/categorias', autenticar, (req, res) => {
-  logger.info('POST /categorias');
-  var categoria = new Categoria({
-    categoria: req.body.categoria,
-    activo: req.body.activo
-  });
-  var error = [];
-
-  categoria.save().then(() => {
-    res.status(200).send(Errores.correcto);
-    logger.info(Errores.correcto);
-  }).catch((e) => {
-    res.status(404).send(Errores.categoriaNoExiste);
-    logger.error(Errores.categoriaNoExiste);
-  })
-});
+// app.post('/categorias', autenticar, (req, res) => {
+//   logger.info('POST /categorias');
+//   var categoria = new Categoria({
+//     categoria: req.body.categoria,
+//     activo: req.body.activo
+//   });
+//   var error = [];
+//
+//   categoria.save().then(() => {
+//     res.status(200).send(Errores.correcto);
+//     logger.info(Errores.correcto);
+//   }).catch((e) => {
+//     res.status(404).send(Errores.categoriaNoExiste);
+//     logger.error(Errores.categoriaNoExiste);
+//   })
+// });
 
 
 app.get('/categorias', (req, res) => {
@@ -181,7 +177,7 @@ app.get('/categorias', (req, res) => {
   }).then((categorias) => {
     res.send(categorias);
   }, (e) => {
-    res.status(400);
+    res.status(400).send(Errores.categoriaNoExiste);
   });
 });
 
@@ -287,6 +283,40 @@ app.post('/usuarios/login', (req, res) => {
   });
 });
 
+
+app.post('/usuarios/changepass', (req, res) => {
+  logger.info('POST /usuarios/changepass');
+  var body = _.pick(req.body, 'email');
+  var email = req.body.email;
+  var id = "";
+
+  if (email == "") {
+    res.status(400).send(Errores.correoNoIngresado);
+  } else if (!validator.isEmail(email)) {
+    Usuario.findOne({username: email}).then((usuario) => {
+      email = usuario.email,
+      id = usuario._id;
+      logger.info(Errores.correcto);
+      res.status(200).send(Errores.correcto);
+      Mailer.passwordOlvidada(email, id);
+    }).catch((e) => {
+      logger.error(Errores.usuarioNoRegistrado);
+      res.status(404).send(Errores.usuarioNoRegistrado);
+    });
+  }
+  else {
+    Usuario.findOne({email}).then((usuario) => {
+      id = usuario._id;
+      logger.info(Errores.correcto);
+      res.status(200).send(Errores.correcto);
+      Mailer.passwordOlvidada(email, id);
+    }).catch((e) => {
+      logger.error(Errores.correoNoExiste);
+      res.status(404).send(Errores.correoNoExiste);
+    });
+  }
+});
+
 //
 // Cambiar contraseña
 
@@ -296,7 +326,7 @@ app.patch('/usuarios/pass', (req,res) => {
   try{
     Errores.validarErroresForgotPass(body);
     Usuario.findOne({email: body.email}).then((usuario) => {
-      if(usuario==null) return res.status(404).send();
+      if(usuario==null) return res.status(404).send(Errores.correoNoExiste);
       res.status(200).send(Mailer.generateRandomPassword(usuario.id))
     })
   } catch(e){
@@ -308,6 +338,7 @@ app.patch('/usuarios/pass', (req,res) => {
 app.patch('/usuarios/me/pass', autenticar, (req,res) => {
   var camposPermitidos = ['passwordViejo', 'password'];
   var body= _.pick(req.body, camposPermitidos);
+  // console.log(body);
   var user = req.usuario;
   logger.info('PATCH /usuarios/me/pass');
   logger.info('Body: \n',body);

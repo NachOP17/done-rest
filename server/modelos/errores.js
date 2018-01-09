@@ -1,5 +1,7 @@
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
+const {Tarea} = require('./tarea')
+const {Usuario}= require('./usuario');
 
 var Errores = {
   correcto: {
@@ -27,6 +29,10 @@ var Errores = {
   correoMuyLargo: {
     codigo: 9,
     mensaje: 'El correo es muy largo (Máximo 50 caracteres)'
+  },
+  correoNoExiste: {
+    codigo: 42,
+    mensaje: 'El correo ingresado no se encuentra registrado'
   },
 
   // Errores del Usuario
@@ -158,7 +164,7 @@ var Errores = {
   // Errores de la descripcion
   descripcionVacia: {
     codigo: 30,
-    mensaje: 'La descripción no puede estar vacío'
+    mensaje: 'La descripción no puede estar vacía'
   },
   descripcionMuyLarga: {
     codigo: 31,
@@ -182,7 +188,7 @@ var Errores = {
   // Errores de la categoría
   categoriaNoExiste: {
     codigo: 34,
-    mensaje: "La categoría ingresada no existe"
+    mensaje: "La categoría ingresada está desactivada o no existe"
   },
   noHayTareas: {
     codigo: 35,
@@ -199,12 +205,28 @@ var Errores = {
     mensaje: "Este usuario no está autorizado a eliminar la tarea que desea eliminar"
   },
 
+  yaCompletada: {
+    codigo: 43,
+    mensaje: "Esta tarea ya fue completada"
+  },
+
+  usuarioNoRegistrado: {
+    codigo: 44,
+    mensaje: "El usuario ingresado no se encuentra registrado"
+  },
+
+  idTareaNoEncontrado: {
+    codigo: 45,
+    mensaje: "La tarea que busca no le pertenece a este usuario o el usuario no está autorizado a buscar esta tarea"
+  },
+
   // Funciones
   validarErroresRegistro,
   validarErroresDeTareas,
   validarErroresCambiaPass,
   validarErroresUpdateTarea,
-  validarErroresForgotPass
+  validarErroresForgotPass,
+  validarErroresUpdateUsuario
 }
 
 function minimumYear() {
@@ -298,6 +320,10 @@ function validarErroresDeTareas(e) {
     if (validator.contains(jsonDelError, 'fechaParaSerCompletada')) {
       validadorDeErroresDeTareas(e.errors.fechaParaSerCompletada.kind, null, Errores.noEsDate, Errores.fechaEnPasado, errores);
     }
+
+    if (validator.contains(jsonDelError, 'completado')) {
+      validadorDeErroresDeTareas(e.errors.completado.kind, null, "Prueba", null, errores);
+    }
   }
   return errores;
 }
@@ -315,23 +341,35 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
     case 'isCode': errores.push(noValido);
       break;
     case 'fechaEnPasado': errores.push(muyLargo);
+      break;
+    case 'isBoolean': errores.push(noValido);
   }
 }
 
-function validarErroresUpdateTarea(body, id){
-  var errores = []
+
+
+function validarErroresUpdateTarea(body, id, tarea){
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
-  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (!body.completado))
+  if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (body.completado == undefined))
     throw(Errores.faltanDatos);
-  if(body.titulo.length>50)
-    throw(Errores.tituloMuyLargo);
-  if (body.titulo.length > 250)
-    throw(Errores.descripcionMuyLarga);
-  if( !isAlphanumeric(body.titulo))
-    throw(Errores.tituloNoValido);
-  if(!isCode(body.descripcion))
-    throw(Errores.isCode);
+  if (body.titulo){
+    if (tarea.completado == true)
+      throw (Errores.yaCompletada)
+    if(body.titulo.length>50)
+      throw(Errores.tituloMuyLargo);
+    if( !isAlphanumeric(body.titulo))
+      throw(Errores.tituloNoValido);
+  }
+  if (body.descripcion){
+    if (tarea.completado == true){
+      throw (Errores.yaCompletada);
+    }
+    if (body.descripcion.length > 250)
+        throw(Errores.descripcionMuyLarga);
+    if(!isCode(body.descripcion))
+          throw(Errores.isCode);
+  }
 }
 
 function validarErroresUpdateUsuario(body, id) {
@@ -374,7 +412,7 @@ var errores = []
 }
 
 function validarErroresForgotPass(body){
-  if(!body.email)
+  if((!body.email) || (body.email == ""))
     throw(Errores.faltanDatos);
   if(!validator.isEmail(body.email))
     throw (Errores.correoNoValido);

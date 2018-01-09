@@ -3,7 +3,8 @@ var {Usuario} = require('./modelos/usuario');
 
 var Mailer = {
   enviarCorreo,
-  generateRandomPassword
+  generateRandomPassword,
+  passwordOlvidada
 }
 
 function enviarCorreo(to, id) {
@@ -24,12 +25,41 @@ function enviarCorreo(to, id) {
     subject: 'Cuenta de Done bloqueada',
     html: '<p>Su cuenta ha sido bloqueada por seguridad. Hemos generado la siguiente contraseña' +
     ' para que pueda iniciar sesión: <b><i>' + generateRandomPassword(id) + '</b></i>. <br /> ' +
-    'Le recomendamos cambiar contraseña al iniciar sesión'
+    'Le recomendamos cambiar esta contraseña al iniciar sesión'
   };
 
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log();
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+}
+
+function passwordOlvidada(to, id) {
+
+  //console.log('El correo se está enviando');
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'pruebadoneapp@gmail.com',
+      pass: 'ucab12345'
+    }
+  });
+
+  var mailOptions = {
+    from: 'pruebadoneapp@gmail.com',
+    to: to,
+    subject: 'Nueva contraseña de Done',
+    html: '<p>Su nueva contraseña es: <b><i>' + generateRandomPassword(id) + '</b></i>. <br /> ' +
+    'Le recomendamos cambiar esta contraseña al iniciar sesión.'
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
     }
