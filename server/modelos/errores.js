@@ -360,7 +360,7 @@ function validarErroresUpdateTarea(body, id, tarea){
   if (body.titulo){
     if (tarea.completado == true)
       throw (Errores.yaCompletada)
-    if(body.titulo.length>50)
+    if(body.titulo.length>255)
       throw(Errores.tituloMuyLargo);
     if( !isAlphanumeric(body.titulo))
       throw(Errores.tituloNoValido);
@@ -375,6 +375,8 @@ function validarErroresUpdateTarea(body, id, tarea){
           throw(Errores.isCode);
   }
   if (body.fechaParaSerCompletada){
+    if(tarea.completado == true)
+      throw(Errores.yaCompletada)
     var v = new Date(body.fechaParaSerCompletada);
     if (v == "Invalid Date")
       throw (Errores.noEsDate)
