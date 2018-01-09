@@ -363,7 +363,7 @@ var errores = []
   if(body.nombre.length <= 1)
     throw(Errores.nombreMuyCorto);
   if(body.nombre.length > 50)
-    throw(Errores.nombreMuyLargo),
+    throw(Errores.nombreMuyLargo);
 
 //validaciones de apellido
   if(body.apellido.length <= 1)
