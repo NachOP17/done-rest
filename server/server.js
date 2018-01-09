@@ -150,6 +150,30 @@ app.patch('/tareas/:id', autenticar, tareaCompletada, (req, res) => {
   }
 });
 
+//Actualiza los datos del usuario
+
+app.patch('/usuarios/:id', autenticar, (req,res) => {
+  var id = req.params.id;
+  var camposPermitidos = ['email','username','nombre','apellido']
+  var body = _.pick(req.body, camposPermitidos);
+  try{
+    Errores.validarErroresUpdateUsuario(body, id);
+    Usuario.findByIdAndUpdate({
+      _id: id,
+    },{
+      $set: body
+    }, {new: true}).then((usuario) => {
+      if(!usuario){
+        return res.status(404).send(Errores.idNoEncontrado);
+      }
+      res.send({usuario});
+    })
+  } catch(e) {
+    res.status(400).send(e);
+  }
+});
+
+
 
 // app.post('/categorias', autenticar, (req, res) => {
 //   logger.info('POST /categorias');
@@ -200,6 +224,26 @@ app.post('/usuarios', (req, res) => {
   });
 });
 
+
+//Actualiza los datos del usuario
+
+app.patch('/usuario/:id', autenticar, (req, res) =>{
+  var id = req.params.id;
+  var camposPermitidos = ['email','username','nombre','apellido']
+  var body = _.pick(req.body, camposPermitidos)
+  try{
+    Errores.validarErroresUpdateUsuario(body, id);
+    Usuario.findByIdAndUpdate(id,{$set: body}, {new: true}).then((usuario) => {
+      if(!usuario){
+        return res.status(404).send();
+      }
+      res.send({usuario});
+    })
+  } catch(e){
+    res.status(400).send(e);
+  }
+
+});
 
 //GET busca un usuario
 // Busca los datos del usuario

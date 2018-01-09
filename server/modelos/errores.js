@@ -1,6 +1,7 @@
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
-const {Tarea} = require('./tarea')
+const {Tarea} = require('./tarea');
+const {Usuario}= require('./usuario')
 
 var Errores = {
   correcto: {
@@ -224,7 +225,8 @@ var Errores = {
   validarErroresDeTareas,
   validarErroresCambiaPass,
   validarErroresUpdateTarea,
-  validarErroresForgotPass
+  validarErroresForgotPass,
+  validarErroresUpdateUsuario
 }
 
 function minimumYear() {
@@ -365,9 +367,48 @@ function validarErroresUpdateTarea(body, id, tarea){
     }
     if (body.descripcion.length > 250)
         throw(Errores.descripcionMuyLarga);
-    if(!isCode(body.descripcion))
+    if(!isNotCode(body.descripcion))
           throw(Errores.isCode);
   }
+}
+
+function validarErroresUpdateUsuario(body, id) {
+var errores = []
+  if(!ObjectId.isValid(id))
+    throw(Errores,idInvalido);
+  if((body.email == "") && (body.username == "") && (body.nombre == "") && (body.apellido ==""))
+    throw(Errores.faltanDatos);
+
+//valiaciones de Email
+  if(!validator.isEmail(body.email))
+    throw (Errores.correoNoValido);
+  if(findOne({email: body.email}))
+    throw(Errores.correoExistente);
+  if(body.email.length <= 1)
+    throw(err.correoMuyCorto);
+  if(body.email.length > 50)
+    throw(err.correoMuyCorto);
+
+//validaciones de usuario
+  if(findOne({usuario: body.usuario}))
+    throw(Errores.usuarioExistente);
+  if(body.usuario <= 1)
+    throw(Errores.usuarioMuyCorto);
+  if(body.usuario >20)
+    throw(Errores.usuarioMuyLargo);
+
+//validaciones de nombre
+  if(body.nombre.length <= 1)
+    throw(Errores.nombreMuyCorto);
+  if(body.nombre.length > 50)
+    throw(Errores.nombreMuyLargo);
+
+//validaciones de apellido
+  if(body.apellido.length <= 1)
+    throw(Errores.apellidoMuyCorto);
+  if(body.apellido.length <= 1)
+    throw(Errores.apellidoMuyCorto);
+
 }
 
 function validarErroresForgotPass(body){
@@ -382,7 +423,7 @@ function isAlphanumeric(v) {
   return regex.test(v);
 }
 
-function isCode(v) {
+function isNotCode(v) {
   var regex= /<\/?[\w\s="/.':;#-\/\?]+>/gi;
   return !regex.test(v);
 }
