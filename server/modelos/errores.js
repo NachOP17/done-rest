@@ -346,18 +346,23 @@ function validadorDeErroresDeTareas(kind, noIngresado, noValido, muyLargo, error
 
 
 
-function validarErroresUpdateTarea(body, id){
+function validarErroresUpdateTarea(body, id, tarea){
   if(!ObjectId.isValid(id))
     throw(Errores.idInvalido);
   if((!body.titulo) && (!body.descripcion) && (!body.fechaParaSerCompletada) && (body.completado == undefined))
     throw(Errores.faltanDatos);
-  if (body.titulo) {
+  if (body.titulo){
+    if (tarea.completado == true)
+      throw (Errores.yaCompletada)
     if(body.titulo.length>50)
-        throw(Errores.tituloMuyLargo);
+      throw(Errores.tituloMuyLargo);
     if( !isAlphanumeric(body.titulo))
       throw(Errores.tituloNoValido);
   }
   if (body.descripcion){
+    if (tarea.completado == true){
+      throw (Errores.yaCompletada);
+    }
     if (body.descripcion.length > 250)
         throw(Errores.descripcionMuyLarga);
     if(!isCode(body.descripcion))

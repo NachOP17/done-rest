@@ -133,7 +133,7 @@ app.patch('/tareas/:id', autenticar, tareaCompletada, (req, res) => {
   var camposPermitidos = ['titulo', 'descripcion', 'fechaParaSerCompletada', 'completado'];
   var body = _.pick(req.body, camposPermitidos);
   try{
-    Errores.validarErroresUpdateTarea(body, id);
+    Errores.validarErroresUpdateTarea(body, id, req.tarea);
     Tarea.findOneAndUpdate({
       _creador: req.usuario._id,
       _id: id

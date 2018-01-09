@@ -1,8 +1,11 @@
+const {ObjectId} = require('mongodb');
+
 var {Tarea} = require('./../modelos/tarea');
 var {Categoria} = require('./../modelos/categoria');
 var {Errores} = require('./../modelos/errores');
 var {app} = require('./../server');
 var winston = require('winston');
+
 
 const tsFormat = () => (new Date()).toLocaleTimeString();
 
@@ -30,6 +33,8 @@ const logger = new (winston.Logger)({
 var tareaCompletada = (req, res, next) => {
   var id = req.params.id;
   var body = req.body;
+  if(!ObjectId.isValid(id))
+    return Promise.reject({code: 3})
   Tarea.findOne({
     _id: id,
     _creador: req.usuario.id
@@ -39,7 +44,7 @@ var tareaCompletada = (req, res, next) => {
       return Promise.reject({code: 1});
     }
     if(tarea.completado){
-      if( (body.completado == true) || body.completado == undefined )
+      if( (body.completado == true) || body.completado == undefined)
       return Promise.reject({code: 2});
     }
     req.tarea = tarea;
@@ -51,6 +56,10 @@ var tareaCompletada = (req, res, next) => {
               break;
        case 2: res.status(400).send(Errores.yaCompletada);
                logger.error(Errores.yaCompletada);
+               break;
+      case 3: res.status(400).send(Errores.idInvalido);
+              logger.error(Errores.idInvalido);
+              break;
     }
   });
 };
