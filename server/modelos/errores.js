@@ -1,7 +1,7 @@
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
 const {Tarea} = require('./tarea');
-const {Usuario}= require('./usuario')
+const {Usuario}= require('./usuario');
 
 var Errores = {
   correcto: {
@@ -219,6 +219,10 @@ var Errores = {
     codigo: 45,
     mensaje: "La tarea que busca no le pertenece a este usuario o el usuario no está autorizado a buscar esta tarea"
   },
+  noEsBool: {
+    codigo: 46,
+    mensaje: "Completado debe ser un booleano"
+  },
 
   // Funciones
   validarErroresRegistro,
@@ -370,6 +374,42 @@ function validarErroresUpdateTarea(body, id, tarea){
     if(!isNotCode(body.descripcion))
           throw(Errores.isCode);
   }
+  if (body.fechaParaSerCompletada){
+    var v = new Date(body.fechaParaSerCompletada);
+    if (v == "Invalid Date")
+      throw (Errores.noEsDate)
+    if (!isValidDate(v)){
+      throw(Errores.fechaEnPasado)
+    }
+  }
+  if(body.completado){
+    if((body.completado != true) && (body.completado != false))
+      throw (Errores.noEsBool)
+  }
+}
+
+function isValidDate(v) {
+  // console.log(v);
+  // if(!v.getDate())
+    return Errores.noEsDate;
+  var day = v.getDate() + 1;
+  var month = v.getMonth();
+  var year = v.getFullYear();
+  var currentDay = new Date().getDate();
+  var currentMonth = new Date().getMonth();
+  var currentYear = new Date().getFullYear();
+
+  console.log(`Date: ${day}/${month}/${year}`);
+  console.log(`Current date: ${currentDay}/${currentMonth}/${currentYear}`);
+
+  if (year < currentYear) {
+    return false;
+  } else if ((year == currentYear) && (month < currentMonth)) {
+    return false;
+  } else if ((month == currentMonth) && (day < currentDay)) {
+    return false;
+  }
+  return true;
 }
 
 function validarErroresUpdateUsuario(body, id) {
