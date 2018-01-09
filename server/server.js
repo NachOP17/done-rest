@@ -150,8 +150,6 @@ app.patch('/tareas/:id', autenticar, tareaCompletada, (req, res) => {
   }
 });
 
-//Actualiza los datos del usuario
-
 
 // app.post('/categorias', autenticar, (req, res) => {
 //   logger.info('POST /categorias');

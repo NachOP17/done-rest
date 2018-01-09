@@ -1,6 +1,6 @@
 const validator = require('validator');
 const {ObjectId} = require('mongodb');
-const {Tarea} = require('./tarea')
+const {Tarea} = require('./tarea');
 const {Usuario}= require('./usuario');
 
 var Errores = {
